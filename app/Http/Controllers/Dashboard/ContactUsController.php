@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
-use App\Models\Program;
-use App\Http\Requests\StoreProgramRequest;
-use App\Http\Requests\UpdateProgramRequest;
+use App\Models\ContactUs;
+use App\Http\Requests\StoreContactUsRequest;
+use App\Http\Requests\UpdateContactUsRequest;
+use App\Http\Controllers\Controller;
 
-class ProgramController extends Controller
+
+class ContactUsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class ProgramController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProgramRequest $request)
+    public function store(StoreContactUsRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class ProgramController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Program $program)
+    public function show(ContactUs $contactUs)
     {
         //
     }
@@ -43,7 +45,7 @@ class ProgramController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Program $program)
+    public function edit(ContactUs $contactUs)
     {
         //
     }
@@ -51,7 +53,7 @@ class ProgramController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProgramRequest $request, Program $program)
+    public function update(UpdateContactUsRequest $request, ContactUs $contactUs)
     {
         //
     }
@@ -59,7 +61,7 @@ class ProgramController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Program $program)
+    public function destroy(ContactUs $contactUs)
     {
         //
     }

@@ -79,31 +79,127 @@ class SettingSeeder extends Seeder
 
 
         //about
+        // Setting::create([
+        //     'key' => 'about_image',
+        //     'value' => '',
+        //     'label_en' => 'Image',
+        //     'label_ar' => 'الصورة',
+        //     'type' => 'image',
+        //     'group' => 'about',
+        // ]);
+
+        // Setting::create([
+        //     'key' => 'about_title',
+        //     'value' => 'من نحن',
+        //     'label_en' => 'Title',
+        //     'label_ar' => 'العنوان',
+        //     'type' => 'text',
+        //     'group' => 'about',
+        // ]);
+
+        // Setting::create([
+        //     'key' => 'about_description',
+        //     'value' => 'هذا النص هو نص افتراضي لمجتوى صفحة من نحن يمكن تغييره من خلال لوحة التحكم',
+        //     'label_en' => 'Description',
+        //     'label_ar' => 'نبذة عن المؤسسة',
+        //     'type' => 'long-text',
+        //     'group' => 'about',
+        // ]);
+
+
+        //vision
         Setting::create([
-            'key' => 'about_image',
+            'key' => 'vision_image',
             'value' => '',
             'label_en' => 'Image',
             'label_ar' => 'الصورة',
             'type' => 'image',
-            'group' => 'about',
+            'group' => 'vision',
         ]);
 
         Setting::create([
-            'key' => 'about_title',
-            'value' => 'من نحن',
+            'key' => 'vision_title',
+            'value' => 'رؤيتنا',
             'label_en' => 'Title',
             'label_ar' => 'العنوان',
             'type' => 'text',
-            'group' => 'about',
+            'group' => 'vision',
         ]);
 
         Setting::create([
-            'key' => 'about_description',
-            'value' => 'هذا النص هو نص افتراضي لمجتوى صفحة من نحن يمكن تغييره من خلال لوحة التحكم',
+            'key' => 'vision_description',
+            'value' => 'هذا النص هو نص افتراضي لمجتوى صفحة رؤيتنا يمكن تغييره من خلال لوحة التحكم',
             'label_en' => 'Description',
-            'label_ar' => 'نبذة عن المؤسسة',
+            'label_ar' => 'رؤية المؤسسة',
             'type' => 'long-text',
-            'group' => 'about',
+            'group' => 'vision',
+        ]);
+
+        //message
+        Setting::create([
+            'key' => 'message_image',
+            'value' => '',
+            'label_en' => 'Image',
+            'label_ar' => 'الصورة',
+            'type' => 'image',
+            'group' => 'message',
+        ]);
+
+        Setting::create([
+            'key' => 'message_title',
+            'value' => 'رسالتنا',
+            'label_en' => 'Title',
+            'label_ar' => 'العنوان',
+            'type' => 'text',
+            'group' => 'message',
+        ]);
+
+        Setting::create([
+            'key' => 'message_description',
+            'value' => 'هذا النص هو نص افتراضي لمجتوى صفحة رسالتنا يمكن تغييره من خلال لوحة التحكم',
+            'label_en' => 'Description',
+            'label_ar' => 'رسالة المؤسسة',
+            'type' => 'long-text',
+            'group' => 'message',
+        ]);
+
+
+        //principle
+        Setting::create([
+            'key' => 'principle_title',
+            'value' => 'مبادئنا و قيمنا',
+            'label_en' => 'Title',
+            'label_ar' => 'العنوان',
+            'type' => 'text',
+            'group' => 'principle',
+        ]);
+
+        Setting::create([
+            'key' => 'principle_description',
+            'value' => 'هذا النص هو نص افتراضي لمجتوى صفحة مبادئنا و قيمنا يمكن تغييره من خلال لوحة التحكم',
+            'label_en' => 'Description',
+            'label_ar' => 'رسالة المؤسسة',
+            'type' => 'long-text',
+            'group' => 'principle',
+        ]);
+
+         //objective
+         Setting::create([
+            'key' => 'objective_title',
+            'value' => 'أهدافنا',
+            'label_en' => 'Title',
+            'label_ar' => 'العنوان',
+            'type' => 'text',
+            'group' => 'objective',
+        ]);
+
+        Setting::create([
+            'key' => 'objective_description',
+            'value' => 'هذا النص هو نص افتراضي لمجتوى صفحة أهدافنا يمكن تغييره من خلال لوحة التحكم',
+            'label_en' => 'Description',
+            'label_ar' => 'هدف المؤسسة',
+            'type' => 'long-text',
+            'group' => 'objective',
         ]);
     }
 }

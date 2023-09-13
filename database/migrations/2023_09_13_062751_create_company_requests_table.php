@@ -24,6 +24,16 @@ return new class extends Migration
             $table->integer('centers_count');
             $table->longText('centers_address');
             $table->integer('employees_count');
+            $table->string('mi_registeration_number');
+            $table->string('mf_registeration_number');
+            $table->integer('current_projects_count');
+            $table->longText('main_donors');
+            $table->longText('total_employess_count');
+            $table->longText('beneficiaries_nationalities');
+            $table->longText('beneficiaries_age');
+            $table->longText('main_objectives');
+            $table->string('registeration_certification');
+            $table->string('organization_structure');
             $table->timestamps();
         });
     }

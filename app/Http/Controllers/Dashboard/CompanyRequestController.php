@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
-use App\Models\VolunteerRequest;
-use App\Http\Requests\StoreVolunteerRequestRequest;
-use App\Http\Requests\UpdateVolunteerRequestRequest;
+use App\Models\CompanyRequest;
+use App\Http\Requests\StoreCompanyRequestRequest;
+use App\Http\Requests\UpdateCompanyRequestRequest;
+use App\Http\Controllers\Controller;
 
-class VolunteerRequestController extends Controller
+
+class CompanyRequestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class VolunteerRequestController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreVolunteerRequestRequest $request)
+    public function store(StoreCompanyRequestRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class VolunteerRequestController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(VolunteerRequest $volunteerRequest)
+    public function show(CompanyRequest $companyRequest)
     {
         //
     }
@@ -43,7 +45,7 @@ class VolunteerRequestController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(VolunteerRequest $volunteerRequest)
+    public function edit(CompanyRequest $companyRequest)
     {
         //
     }
@@ -51,7 +53,7 @@ class VolunteerRequestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateVolunteerRequestRequest $request, VolunteerRequest $volunteerRequest)
+    public function update(UpdateCompanyRequestRequest $request, CompanyRequest $companyRequest)
     {
         //
     }
@@ -59,7 +61,7 @@ class VolunteerRequestController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(VolunteerRequest $volunteerRequest)
+    public function destroy(CompanyRequest $companyRequest)
     {
         //
     }

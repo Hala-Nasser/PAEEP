@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('achievements', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title_en');
+            $table->string('title_ar');
             $table->integer('count');
             $table->string('image');
             $table->timestamps();

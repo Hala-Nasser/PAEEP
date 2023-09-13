@@ -9,7 +9,11 @@
         <div class="aside-user d-flex align-items-sm-center justify-content-center py-5">
             <!--begin::Symbol-->
             <div class="symbol symbol-50px">
-                <img src="assets/media/avatars/300-1.jpg" alt="" />
+                @if (auth('admin')->user()->image)
+                    <img src="{{ stotage::url(auth('admin')->user()->image) }}" alt="" />
+                @else
+                    <img src="{{ asset('dist/assets/media/aside/person.png') }}" alt="" />
+                @endif
             </div>
             <!--end::Symbol-->
             <!--begin::Wrapper-->
@@ -19,7 +23,8 @@
                     <!--begin::Info-->
                     <div class="flex-grow-1 me-2">
                         <!--begin::Username-->
-                        <a href="#" class="text-white text-hover-primary fs-6 fw-bold">Paul Melone</a>
+                        <a href="#"
+                            class="text-white text-hover-primary fs-6 fw-bold">{{ auth('admin')->user()->name }}</a>
                         <!--end::Username-->
                     </div>
                     <!--end::Info-->
@@ -51,17 +56,22 @@
                                 <div class="menu-content d-flex align-items-center px-3">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-50px me-5">
-                                        <img alt="Logo" src="assets/media/avatars/300-1.jpg" />
+                                        @if (auth('admin')->user()->image)
+                                            <img src="{{ stotage::url(auth('admin')->user()->image) }}"
+                                                alt="" />
+                                        @else
+                                            <img src="{{ asset('dist/assets/media/aside/person.png') }}"
+                                                alt="" />
+                                        @endif
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Username-->
                                     <div class="d-flex flex-column">
-                                        <div class="fw-bolder d-flex align-items-center fs-5">Max Smith
-                                            <span
-                                                class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">Pro</span>
+                                        <div class="fw-bolder d-flex align-items-center fs-5">
+                                            {{ auth('admin')->user()->name }}
                                         </div>
                                         <a href="#"
-                                            class="fw-bold text-muted text-hover-primary fs-7">max@kt.com</a>
+                                            class="fw-bold text-muted text-hover-primary fs-7">{{ auth('admin')->user()->email }}</a>
                                     </div>
                                     <!--end::Username-->
                                 </div>
@@ -72,15 +82,13 @@
                             <!--end::Menu separator-->
                             <!--begin::Menu item-->
                             <div class="menu-item px-5">
-                                <a href="../../demo8/dist/account/overview.html" class="menu-link px-5">My
-                                    Profile</a>
+                                <a href="../../demo8/dist/account/overview.html" class="menu-link px-5">{{ trans('dashboard_layout.profile') }}</a>
                             </div>
                             <!--end::Menu item-->
 
                             <!--begin::Menu item-->
                             <div class="menu-item px-5 my-1">
-                                <a href="../../demo8/dist/account/settings.html" class="menu-link px-5">Change
-                                    Password</a>
+                                <a href="{{ route('admin.change-password') }}" class="menu-link px-5">{{ trans('dashboard_layout.change_password') }}</a>
                             </div>
                             <!--end::Menu item-->
                             <!--begin::Menu separator-->
@@ -89,7 +97,7 @@
                             <!--begin::Menu item-->
                             <div class="menu-item px-5">
                                 <a href="../../demo8/dist/authentication/flows/basic/sign-in.html"
-                                    class="menu-link px-5">Sign Out</a>
+                                    class="menu-link px-5">{{ trans('dashboard_layout.logout') }}</a>
                             </div>
                             <!--end::Menu item-->
                         </div>
@@ -117,7 +125,7 @@
             <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500"
                 id="#kt_aside_menu" data-kt-menu="true">
                 <div class="menu-item">
-                    <a class="menu-link @if (\Request::url() == URL('/'.LaravelLocalization::getCurrentLocale().'/dashboard/home/')) active @endif" href="{{ url('home') }}">
+                    <a class="menu-link @if (\Request::url() == URL('/' . LaravelLocalization::getCurrentLocale() . '/dashboard/home/')) active @endif" href="{{ route('home') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/coding/cod003.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -126,15 +134,147 @@
                             </span>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-title">Home</span>
+                        <span class="menu-title">{{ trans('general.home') }}</span>
                     </a>
                 </div>
 
                 <div class="menu-item">
+                    <a class="menu-link @if (\Request::url() == URL('/' . LaravelLocalization::getCurrentLocale() . '/dashboard/slider/')) active @endif"
+                        href="{{ route('slider.index') }}">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/coding/cod003.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <img src="{{ asset('dist/assets/media/aside/slider.png') }}"
+                                    style="height: 16px; width: 16px;" />
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">{{ trans('general.slider') }}</span>
+                    </a>
+                </div>
+
+                <div class="menu-item">
+                    <a class="menu-link @if (\Request::url() == URL('/' . LaravelLocalization::getCurrentLocale() . '/dashboard/news/')) active @endif"
+                        href="{{ route('news.index') }}">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/coding/cod003.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <img src="{{ asset('dist/assets/media/aside/news.png') }}"
+                                    style="height: 16px; width: 16px;" />
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">{{ trans('general.news') }}</span>
+                    </a>
+                </div>
+
+                <div class="menu-item">
+                    <a class="menu-link @if (\Request::url() == URL('/' . LaravelLocalization::getCurrentLocale() . '/dashboard/program/')) active @endif"
+                        href="{{ route('program.index') }}">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/coding/cod003.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <img src="{{ asset('dist/assets/media/aside/program.png') }}"
+                                    style="height: 16px; width: 16px;" />
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">{{ trans('general.programs') }}</span>
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a class="menu-link @if (\Request::url() == URL('/' . LaravelLocalization::getCurrentLocale() . '/dashboard/achievement/')) active @endif"
+                        href="{{ route('achievement.index') }}">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/coding/cod003.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <img src="{{ asset('dist/assets/media/aside/achievement.png') }}"
+                                    style="height: 16px; width: 16px;" />
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">{{ trans('general.achievements') }}</span>
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a class="menu-link @if (\Request::url() == URL('/' . LaravelLocalization::getCurrentLocale() . '/dashboard/partner/')) active @endif"
+                        href="{{ route('partner.index') }}">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/coding/cod003.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <img src="{{ asset('dist/assets/media/aside/partner.png') }}"
+                                    style="height: 16px; width: 16px;" />
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">{{ trans('general.partners') }}</span>
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a class="menu-link @if (\Request::url() == URL('/' . LaravelLocalization::getCurrentLocale() . '/dashboard/report/')) active @endif"
+                        href="{{ route('report.index') }}">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/coding/cod003.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <img src="{{ asset('dist/assets/media/aside/report.png') }}"
+                                    style="height: 16px; width: 16px;" />
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">{{ trans('general.reports') }}</span>
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a class="menu-link @if (\Request::url() == URL('/' . LaravelLocalization::getCurrentLocale() . '/dashboard/visual-library/')) active @endif"
+                        href="{{ route('visual-library.index') }}">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/coding/cod003.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <img src="{{ asset('dist/assets/media/aside/visual_library.png') }}"
+                                    style="height: 16px; width: 16px;" />
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">{{ trans('general.visual_library') }}</span>
+                    </a>
+                </div>
+
+                <div class="menu-item">
+                    <a class="menu-link @if (\Request::url() == URL('/' . LaravelLocalization::getCurrentLocale() . '/dashboard/contact-us/')) active @endif"
+                        href="{{ route('contact-us.index') }}">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/coding/cod003.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <img src="{{ asset('dist/assets/media/aside/contact_us.png') }}"
+                                    style="height: 16px; width: 16px;" />
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">{{ trans('general.contact_us') }}</span>
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a class="menu-link @if (\Request::url() == URL('/' . LaravelLocalization::getCurrentLocale() . '/dashboard/donationdonation/')) active @endif"
+                        href="{{ route('donation.index') }}">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/coding/cod003.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <img src="{{ asset('dist/assets/media/aside/donation.png') }}"
+                                    style="height: 16px; width: 16px;" />
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">{{ trans('general.donations') }}</span>
+                    </a>
+                </div>
+
+                {{-- <div class="menu-item">
                     <div class="menu-content pt-8 pb-2">
                         <span class="menu-section text-muted text-uppercase fs-8 ls-1">Crafted</span>
                     </div>
-                </div>
+                </div> --}}
+
+                <div class="separator my-2"></div>
 
                 <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
                     <span class="menu-link">
@@ -146,19 +286,76 @@
                             </span>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-title">Settings</span>
+                        <span class="menu-title">{{ trans('general.settings') }}</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
-                            <a class="menu-link @if (\Request::url() == URL('/'.LaravelLocalization::getCurrentLocale().'/dashboard/contact-info/')) active @endif" href="{{ url('contact-info') }}">
+                            <a class="menu-link @if (\Request::url() == URL('/' . LaravelLocalization::getCurrentLocale() . '/dashboard/contact-info/')) active @endif"
+                                href="{{ route('contact-info') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Contact Info</span>
+                                <span class="menu-title">{{ trans('general.contact_info') }}</span>
                             </a>
                         </div>
                     </div>
+                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        <div class="menu-item">
+                            <a class="menu-link @if (\Request::url() == URL('/' . LaravelLocalization::getCurrentLocale() . '/dashboard/about/')) active @endif"
+                                href="{{ route('about') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">{{ trans('general.about') }}</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        <div class="menu-item">
+                            <a class="menu-link @if (\Request::url() == URL('/' . LaravelLocalization::getCurrentLocale() . '/dashboard/vision/')) active @endif"
+                                href="{{ route('vision') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">{{ trans('general.vision') }}</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        <div class="menu-item">
+                            <a class="menu-link @if (\Request::url() == URL('/' . LaravelLocalization::getCurrentLocale() . '/dashboard/message/')) active @endif"
+                                href="{{ route('message') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">{{ trans('general.message') }}</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        <div class="menu-item">
+                            <a class="menu-link @if (\Request::url() == URL('/' . LaravelLocalization::getCurrentLocale() . '/dashboard/principle/')) active @endif"
+                                href="{{ route('principle') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">{{ trans('general.principle') }}</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        <div class="menu-item">
+                            <a class="menu-link @if (\Request::url() == URL('/' . LaravelLocalization::getCurrentLocale() . '/dashboard/objective/')) active @endif"
+                                href="{{ route('objective') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">{{ trans('general.objective') }}</span>
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <!--end::Menu-->

@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('partners', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name_en');
+            $table->string('name_ar');
             $table->string('image');
             $table->string('website_url');
             $table->boolean('status');

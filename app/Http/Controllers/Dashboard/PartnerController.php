@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
-use App\Models\CompanyRequest;
-use App\Http\Requests\StoreCompanyRequestRequest;
-use App\Http\Requests\UpdateCompanyRequestRequest;
+use App\Models\Partner;
+use App\Http\Requests\StorePartnerRequest;
+use App\Http\Requests\UpdatePartnerRequest;
+use App\Http\Controllers\Controller;
 
-class CompanyRequestController extends Controller
+
+class PartnerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class CompanyRequestController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCompanyRequestRequest $request)
+    public function store(StorePartnerRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class CompanyRequestController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(CompanyRequest $companyRequest)
+    public function show(Partner $partner)
     {
         //
     }
@@ -43,7 +45,7 @@ class CompanyRequestController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CompanyRequest $companyRequest)
+    public function edit(Partner $partner)
     {
         //
     }
@@ -51,7 +53,7 @@ class CompanyRequestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCompanyRequestRequest $request, CompanyRequest $companyRequest)
+    public function update(UpdatePartnerRequest $request, Partner $partner)
     {
         //
     }
@@ -59,7 +61,7 @@ class CompanyRequestController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CompanyRequest $companyRequest)
+    public function destroy(Partner $partner)
     {
         //
     }

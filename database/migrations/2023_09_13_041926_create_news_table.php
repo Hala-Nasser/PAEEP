@@ -15,10 +15,14 @@ return new class extends Migration
             $table->id();
             $table->date('date');
             $table->time('time');
-            $table->string('location');
-            $table->string('title');
-            $table->longText('description');
-            $table->longText('keywords');
+            $table->string('location_en');
+            $table->string('location_ar');
+            $table->string('title_en');
+            $table->string('title_ar');
+            $table->longText('description_en');
+            $table->longText('description_ar');
+            $table->longText('keywords_en');
+            $table->longText('keywords_ar');
             $table->string('image');
             $table->enum('type', ['news', 'advertisment']);
             $table->timestamps();

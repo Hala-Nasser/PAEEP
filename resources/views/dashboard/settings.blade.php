@@ -21,25 +21,25 @@
                 <!--begin::Card body-->
                 <div class="card-body p-9">
                     <!--begin::Row-->
-                    @foreach ($settings as $setting)
+                    @foreach ($data as $object)
                         <div class="row" style="margin-bottom:10px;">
                             <!--begin::Col-->
                             <div class="col-xl-3">
-                                <div class="fs-6 fw-bold mt-2 mb-3">{{ $setting->getLabel() }}</div>
+                                <div class="fs-6 fw-bold mt-2 mb-3">{{ $object->getLabel() }}</div>
                             </div>
                             <!--end::Col-->
-                            @if ($setting->type == 'text')
+                            @if ($object->type == 'text')
                                 <!--begin::Col-->
                                 <div class="col-xl-9 fv-row fv-plugins-icon-container">
                                     <input type="text" class="form-control form-control-solid"
-                                        name="{{ $setting->key }}" id="{{ $setting->key }}" value="{{$setting->value}}">
+                                        name="{{ $object->key }}" id="{{ $object->key }}" value="{{$object->value}}">
                                 </div>
                                 <!--end::Col-->
-                            @elseif($setting->type == 'long-text')
+                            @elseif($object->type == 'long-text')
                                 <div class="col-xl-9 fv-row fv-plugins-icon-container">
-                                    <textarea class="form-control" name="{{ $setting->key }}" id="content">{{$setting->value}}</textarea>
+                                    <textarea class="form-control my-text-area" name="{{ $object->key }}" id="content">{{$object->value}}</textarea>
                                 </div>
-                            @elseif($setting->type == 'image')
+                            @elseif($object->type == 'image')
                             <div class="col-lg-8">
                                 <!--begin::Image input-->
                                 <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url('assets/media/svg/avatars/blank.svg')">
@@ -151,22 +151,7 @@
 
 @section('js')
 <script>
-    tinymce.init({
-        selector: '#content'
-        , plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss'
-        , toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat'
-        , tinycomments_mode: 'embedded'
-        , tinycomments_author: 'Author name'
-        , mergetags_list: [{
-                value: 'First.Name'
-                , title: 'First Name'
-            }
-            , {
-                value: 'Email'
-                , title: 'Email'
-            }
-        , ]
-    });
+  
 
 </script>
 @endsection

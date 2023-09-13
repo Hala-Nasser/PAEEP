@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
-use App\Models\Donation;
-use App\Http\Requests\StoreDonationRequest;
-use App\Http\Requests\UpdateDonationRequest;
+use App\Models\VisualLibraryMedia;
+use App\Http\Requests\StoreVisualLibraryMediaRequest;
+use App\Http\Requests\UpdateVisualLibraryMediaRequest;
+use App\Http\Controllers\Controller;
 
-class DonationController extends Controller
+
+class VisualLibraryMediaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class DonationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreDonationRequest $request)
+    public function store(StoreVisualLibraryMediaRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class DonationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Donation $donation)
+    public function show(VisualLibraryMedia $visualLibraryMedia)
     {
         //
     }
@@ -43,7 +45,7 @@ class DonationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Donation $donation)
+    public function edit(VisualLibraryMedia $visualLibraryMedia)
     {
         //
     }
@@ -51,7 +53,7 @@ class DonationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDonationRequest $request, Donation $donation)
+    public function update(UpdateVisualLibraryMediaRequest $request, VisualLibraryMedia $visualLibraryMedia)
     {
         //
     }
@@ -59,7 +61,7 @@ class DonationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Donation $donation)
+    public function destroy(VisualLibraryMedia $visualLibraryMedia)
     {
         //
     }

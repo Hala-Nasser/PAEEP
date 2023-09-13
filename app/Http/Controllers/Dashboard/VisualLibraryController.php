@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
-use App\Models\ContactUs;
-use App\Http\Requests\StoreContactUsRequest;
-use App\Http\Requests\UpdateContactUsRequest;
+use App\Models\VisualLibrary;
+use App\Http\Requests\StoreVisualLibraryRequest;
+use App\Http\Requests\UpdateVisualLibraryRequest;
+use App\Http\Controllers\Controller;
 
-class ContactUsController extends Controller
+
+class VisualLibraryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class ContactUsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreContactUsRequest $request)
+    public function store(StoreVisualLibraryRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class ContactUsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ContactUs $contactUs)
+    public function show(VisualLibrary $visualLibrary)
     {
         //
     }
@@ -43,7 +45,7 @@ class ContactUsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ContactUs $contactUs)
+    public function edit(VisualLibrary $visualLibrary)
     {
         //
     }
@@ -51,7 +53,7 @@ class ContactUsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateContactUsRequest $request, ContactUs $contactUs)
+    public function update(UpdateVisualLibraryRequest $request, VisualLibrary $visualLibrary)
     {
         //
     }
@@ -59,7 +61,7 @@ class ContactUsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ContactUs $contactUs)
+    public function destroy(VisualLibrary $visualLibrary)
     {
         //
     }

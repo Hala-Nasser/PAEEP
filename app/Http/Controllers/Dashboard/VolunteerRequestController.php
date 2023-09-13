@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
-use App\Models\Reports;
-use App\Http\Requests\StoreReportsRequest;
-use App\Http\Requests\UpdateReportsRequest;
+use App\Models\VolunteerRequest;
+use App\Http\Requests\StoreVolunteerRequestRequest;
+use App\Http\Requests\UpdateVolunteerRequestRequest;
+use App\Http\Controllers\Controller;
 
-class ReportsController extends Controller
+
+class VolunteerRequestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class ReportsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreReportsRequest $request)
+    public function store(StoreVolunteerRequestRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class ReportsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Reports $reports)
+    public function show(VolunteerRequest $volunteerRequest)
     {
         //
     }
@@ -43,7 +45,7 @@ class ReportsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Reports $reports)
+    public function edit(VolunteerRequest $volunteerRequest)
     {
         //
     }
@@ -51,7 +53,7 @@ class ReportsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateReportsRequest $request, Reports $reports)
+    public function update(UpdateVolunteerRequestRequest $request, VolunteerRequest $volunteerRequest)
     {
         //
     }
@@ -59,7 +61,7 @@ class ReportsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Reports $reports)
+    public function destroy(VolunteerRequest $volunteerRequest)
     {
         //
     }

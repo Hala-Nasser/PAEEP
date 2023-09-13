@@ -33,6 +33,7 @@
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap4.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/fx0pygggvpx7ctfrqd4chbqj7eok3dm28fpefufmr8pyakgn/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
     <script src="{{asset('dist/assets/js/text-area.js')}}"></script>
 

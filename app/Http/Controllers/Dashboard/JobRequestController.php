@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
-use App\Models\VisualLibrary;
-use App\Http\Requests\StoreVisualLibraryRequest;
-use App\Http\Requests\UpdateVisualLibraryRequest;
+use App\Models\JobRequest;
+use App\Http\Requests\StoreJobRequestRequest;
+use App\Http\Requests\UpdateJobRequestRequest;
+use App\Http\Controllers\Controller;
 
-class VisualLibraryController extends Controller
+
+class JobRequestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class VisualLibraryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreVisualLibraryRequest $request)
+    public function store(StoreJobRequestRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class VisualLibraryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(VisualLibrary $visualLibrary)
+    public function show(JobRequest $jobRequest)
     {
         //
     }
@@ -43,7 +45,7 @@ class VisualLibraryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(VisualLibrary $visualLibrary)
+    public function edit(JobRequest $jobRequest)
     {
         //
     }
@@ -51,7 +53,7 @@ class VisualLibraryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateVisualLibraryRequest $request, VisualLibrary $visualLibrary)
+    public function update(UpdateJobRequestRequest $request, JobRequest $jobRequest)
     {
         //
     }
@@ -59,7 +61,7 @@ class VisualLibraryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(VisualLibrary $visualLibrary)
+    public function destroy(JobRequest $jobRequest)
     {
         //
     }

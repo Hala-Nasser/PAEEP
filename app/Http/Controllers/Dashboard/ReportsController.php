@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
-use App\Models\Slider;
-use App\Http\Requests\StoreSliderRequest;
-use App\Http\Requests\UpdateSliderRequest;
+use App\Models\Reports;
+use App\Http\Requests\StoreReportsRequest;
+use App\Http\Requests\UpdateReportsRequest;
+use App\Http\Controllers\Controller;
 
-class SliderController extends Controller
+
+class ReportsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class SliderController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSliderRequest $request)
+    public function store(StoreReportsRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class SliderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Slider $slider)
+    public function show(Reports $reports)
     {
         //
     }
@@ -43,7 +45,7 @@ class SliderController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Slider $slider)
+    public function edit(Reports $reports)
     {
         //
     }
@@ -51,7 +53,7 @@ class SliderController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSliderRequest $request, Slider $slider)
+    public function update(UpdateReportsRequest $request, Reports $reports)
     {
         //
     }
@@ -59,7 +61,7 @@ class SliderController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Slider $slider)
+    public function destroy(Reports $reports)
     {
         //
     }

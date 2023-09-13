@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title_en');
+            $table->string('title_ar');
             $table->string('image');
             $table->string('file');
             $table->timestamps();

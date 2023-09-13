@@ -1,4 +1,4 @@
-@extends('layouts.dashboard_layout')
+@extends('dashboard.layouts.dashboard_layout')
 
 @section('css')
     <link href="dist/assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />

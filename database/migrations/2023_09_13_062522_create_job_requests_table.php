@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('phone');
             $table->string('email');
-            $table->string('gender');
+            $table->enum('gender', ["male", "female"]);
             $table->longText('qualification');
             $table->date('birthday');
             $table->string('cv');

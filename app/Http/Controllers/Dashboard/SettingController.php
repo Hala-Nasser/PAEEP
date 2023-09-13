@@ -13,56 +13,40 @@ class SettingController extends Controller
      * Display a listing of the resource.
      */
 
-    public function index()
+    public function about()
     {
-        return view('dashboard.settings');
+        $data = Setting::where('group', 'about')->get();
+        return view('dashboard.settings', compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function vision()
     {
-        //
+        $data = Setting::where('group', 'vision')->get();
+        return view('dashboard.settings', compact('data'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreSettingRequest $request)
+    public function message()
     {
-        //
+        $data = Setting::where('group', 'message')->get();
+        return view('dashboard.settings', compact('data'));
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Setting $setting)
+    public function principle()
     {
-        //
+        $data = Setting::where('group', 'principle')->get();
+        return view('dashboard.settings', compact('data'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Setting $setting)
+    public function objective()
     {
-        //
+        $data = Setting::where('group', 'objective')->get();
+        return view('dashboard.settings', compact('data'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateSettingRequest $request, Setting $setting)
+    public function contactInfo()
     {
-        //
+        $data = Setting::where('group', 'contact-info')->get();
+        return view('dashboard.settings', compact('data'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Setting $setting)
-    {
-        //
-    }
 }

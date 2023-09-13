@@ -9,20 +9,33 @@ class StoreVisualLibraryMediaRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
+    protected $stopOnFirstFailure = true;
+
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
-     */
-    public function rules(): array
+    public function rules()
     {
         return [
-            //
+            'title_en' => 'required|string|min:3|max:30',
+            'title_ar' => 'required|string|min:3|max:30',
+            'description_en' => 'required|string|min:3',
+            'description_ar' => 'required|string|min:3',
+            'image' => 'required|image',
         ];
+    }
+
+    public function getData()
+    {
+        $data = $this->validated();
+
+        if ($this->hasFile('image')) {
+            $imageName = time() . "" . '.' . $this->file('image')->getClientOriginalExtension();
+            $this->file('image')->storePubliclyAs('Achievement', $imageName, ['disk' => 'public']);
+            $data['image'] = 'Achievement/' . $imageName;
+        }
+        return $data;
     }
 }

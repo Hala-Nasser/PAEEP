@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
-use App\Models\Achievement;
-use App\Http\Requests\StoreAchievementRequest;
-use App\Http\Requests\UpdateAchievementRequest;
+use App\Models\Donation;
+use App\Http\Requests\StoreDonationRequest;
+use App\Http\Requests\UpdateDonationRequest;
+use App\Http\Controllers\Controller;
 
-class AchievementController extends Controller
+
+class DonationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class AchievementController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreAchievementRequest $request)
+    public function store(StoreDonationRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class AchievementController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Achievement $achievement)
+    public function show(Donation $donation)
     {
         //
     }
@@ -43,7 +45,7 @@ class AchievementController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Achievement $achievement)
+    public function edit(Donation $donation)
     {
         //
     }
@@ -51,7 +53,7 @@ class AchievementController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAchievementRequest $request, Achievement $achievement)
+    public function update(UpdateDonationRequest $request, Donation $donation)
     {
         //
     }
@@ -59,7 +61,7 @@ class AchievementController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Achievement $achievement)
+    public function destroy(Donation $donation)
     {
         //
     }
