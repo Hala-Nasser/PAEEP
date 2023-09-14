@@ -19,7 +19,7 @@
                         <!--begin::Card header-->
                         <div class="card-header">
                             <!--begin::Card title-->
-                            <div class="card-title">
+                            <div class="card-title required">
                                 <h2>{{ trans('news.thumbnail') }}</h2>
                             </div>
                             <!--end::Card title-->
@@ -129,7 +129,7 @@
                             <!--begin::Input group-->
                             <div class="mb-10 fv-row">
                                 <!--begin::Label-->
-                                <label class="form-label">{{ trans('news.type') }}</label>
+                                <label class="form-label required">{{ trans('news.type') }}</label>
                                 <!--end::Label-->
                                 <!--begin::Select2-->
                                 <select class="form-select mb-2" data-control="select2" data-placeholder="Select an option"
@@ -235,11 +235,11 @@
                             </div>
 
                             <div class="mb-10 fv-row">
-                                <label class="form-label">{{ trans('news.keywords_en') }}</label>
+                                <label class="form-label required">{{ trans('news.keywords_en') }}</label>
                                 <input class="form-control" value="" id="keywords_en" />
                             </div>
                             <div class="mb-10 fv-row">
-                                <label class="form-label">{{ trans('news.keywords_ar') }}</label>
+                                <label class="form-label required">{{ trans('news.keywords_ar') }}</label>
                                 <input class="form-control" value="" id="keywords_ar" />
                             </div>
 
@@ -283,8 +283,8 @@
             let formData = new FormData();
             formData.append('title_en', document.getElementById('title_en').value);
             formData.append('title_ar', document.getElementById('title_ar').value);
-            formData.append('description_en', document.getElementById('description_en').value);
-            formData.append('description_ar', document.getElementById('description_ar').value);
+            formData.append('description_en', tinymce.get("description_en").getContent());
+            formData.append('description_ar', tinymce.get("description_ar").getContent());
             formData.append('date', document.getElementById('date').value);
             formData.append('time', document.getElementById('time').value);
             formData.append('location_en', document.getElementById('location_en').value);
@@ -298,7 +298,7 @@
             if (document.getElementById('image').files.length > 0) {
                 formData.append('image', document.getElementById('image').files[0]);
             }
-            axios.post('/dashboard/news', formData).then(function(response) {
+            axios.post('{{LaravelLocalization::getCurrentLocale()}}/dashboard/news', formData).then(function(response) {
                 console.log(response);
                 const Toast = Swal.mixin({
                     toast: true,

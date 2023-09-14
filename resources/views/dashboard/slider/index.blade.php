@@ -30,11 +30,11 @@
                         <thead>
                             <!--begin::Table row-->
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                <th class="w-10px pe-2">#</th>
-                                <th class="min-w-250px">{{ trans('general.slider') }}</th>
-                                <th class="min-w-100px">{{ trans('slider.status') }}</th>
-                                <th class="min-w-100px">{{ trans('slider.publish_date') }}</th>
-                                <th class="min-w-70px">{{ trans('general.actions') }}</th>
+                                <th class="w-10px pe-2" style="text-align: start;">#</th>
+                                <th class="min-w-250px" style="text-align: start;">{{ trans('general.slider') }}</th>
+                                <th class="min-w-100px" style="text-align: start;">{{ trans('slider.status') }}</th>
+                                <th class="min-w-100px" style="text-align: start;">{{ trans('slider.publish_date') }}</th>
+                                <th class="min-w-70px" style="text-align: start;">{{ trans('general.actions') }}</th>
                             </tr>
                             <!--end::Table row-->
                         </thead>
@@ -150,7 +150,7 @@
         }
 
         function performDelete(id, element) {
-            axios.delete('/dashboard/slider/' + id)
+            axios.delete('{{LaravelLocalization::getCurrentLocale()}}/dashboard/slider/' + id)
                 .then(function(response) {
                     console.log(response);
                     Swal.fire({

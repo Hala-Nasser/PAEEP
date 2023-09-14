@@ -68,7 +68,7 @@ Route::group([
         Route::get('home', [HomeController::class, 'index'])->name('home');
         Route::resource('admin', AdminController::class);
         Route::resource('achievement', AchievementController::class);
-        Route::resource('company-request', CompanyRequestController::class);
+        Route::resource('company-request', CompanyRequestController::class)->except('edit');
         Route::resource('contact-us', ContactUsController::class);
         Route::resource('donation', DonationController::class);
         Route::resource('job-request', JobRequestController::class);
@@ -78,8 +78,10 @@ Route::group([
         Route::resource('report', ReportsController::class);
         Route::resource('slider', SliderController::class);
         Route::resource('visual-library', VisualLibraryController::class);
-        Route::resource('visual-library-media', VisualLibraryMediaController::class);
+        // Route::resource('visual-library-media', VisualLibraryMediaController::class);
         Route::resource('volunteer-request', VolunteerRequestController::class);
+    Route::delete('visual-library-media/{visual_library_media}', [VisualLibraryController::class, 'deleteMedia']);
+
 
         Route::get('about', [SettingController::class, 'about'])->name('about');
         Route::get('vision', [SettingController::class, 'vision'])->name('vision');

@@ -34,4 +34,8 @@ class VisualLibrary extends Model
             return $this->description_en;
         }
     }
+
+    public function media(){
+        return $this->hasMany(VisualLibraryMedia::class);
+    }
 }

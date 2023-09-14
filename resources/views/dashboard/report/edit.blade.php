@@ -1,8 +1,7 @@
 @extends('dashboard.layouts.dashboard_layout')
 
 @section('css')
-    <link href="{{ asset('dist/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
-    <script src="{{ asset('dist/assets/plugins/global/plugins.bundle.js') }}"></script>
+    <link href="{{ asset('dist/assets/plugins/custom/toggle.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
@@ -20,7 +19,7 @@
                         <div class="card-header">
                             <!--begin::Card title-->
                             <div class="card-title required">
-                                <h2>{{ trans('achievement.thumbnail') }}</h2>
+                                <h2>{{ trans('report.thumbnail') }}</h2>
                             </div>
                             <!--end::Card title-->
                         </div>
@@ -29,7 +28,7 @@
                         <div class="card-body text-center pt-0">
                             <!--begin::Image input-->
                             <div class="image-input image-input-empty image-input-outline mb-3" data-kt-image-input="true"
-                                style="background-image: url({{ Storage::url($achievement->image) }})"
+                                style="background-image: url({{ Storage::url($report->image) }})"
                                 id="background">
                                 <!--begin::Preview existing avatar-->
                                 <div class="image-input-wrapper w-150px h-150px"></div>
@@ -62,7 +61,7 @@
                             </div>
                             <!--end::Image input-->
                             <!--begin::Description-->
-                            <div class="text-muted fs-7">{{ trans('achievement.thumbnail_description') }}</div>
+                            <div class="text-muted fs-7">{{ trans('report.thumbnail_description') }}</div>
                             <!--end::Description-->
                         </div>
                         <!--end::Card body-->
@@ -77,51 +76,58 @@
                         <!--begin::Card header-->
                         <div class="card-header">
                             <div class="card-title">
-                                <h2>{{ trans('achievement.general') }}</h2>
+                                <h2>{{ trans('report.general') }}</h2>
                             </div>
                         </div>
                         <!--end::Card header-->
                         <!--begin::Card body-->
+                            <!--begin::Card body-->
                         <div class="card-body pt-0">
-                             <!--begin::Input group-->
-                             <div class="mb-10 fv-row">
+                            <!--begin::Input group-->
+                            <div class="mb-10 fv-row">
                                 <!--begin::Label-->
-                                <label class="required form-label">{{ trans('achievement.achievement_title_en') }}</label>
+                                <label class="required form-label">{{ trans('report.report_title_en') }}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <input type="text" class="form-control mb-2"
-                                    placeholder="{{ trans('achievement.achievement_title_en') }}" value="{{$achievement->title_en}}" id="title_en" />
+                                    placeholder="{{ trans('report.report_title_en') }}" value="{{$report->title_en}}" id="title_en" />
                                 <!--end::Input-->
                             </div>
                             <!--end::Input group-->
                             <!--begin::Input group-->
                             <div class="mb-10 fv-row">
                                 <!--begin::Label-->
-                                <label class="required form-label">{{ trans('achievement.achievement_title_ar') }}</label>
+                                <label class="required form-label">{{ trans('report.report_title_ar') }}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <input type="text" class="form-control mb-2"
-                                    placeholder="{{ trans('achievement.achievement_title_ar') }}" value="{{$achievement->title_ar}}" id="title_ar" />
+                                    placeholder="{{ trans('report.report_title_ar') }}" value="{{$report->title_ar}}" id="title_ar" />
                                 <!--end::Input-->
                             </div>
                             <!--end::Input group-->
+
+                            <!--begin::Input group-->
                             <div class="mb-10 fv-row">
                                 <!--begin::Label-->
-                                <label class="required form-label">{{ trans('achievement.count') }}</label>
+                                <label class="required form-label">{{ trans('report.file') }}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="number" class="form-control mb-2"
-                                    placeholder="{{ trans('achievement.count') }}" value="{{$achievement->count}}" id="count" />
+                                <input type="file" class="form-control mb-2" value="{{$report->file}}" id="file" />
                                 <!--end::Input-->
+                                <label class="form-label" style="margin-top: 10px;"> {{trans('report.view_file')}}
+                                <a class="form-label" style="color:blue" href="{{ Storage::url($report->file) }}">{{trans('report.here')}}</a>
+                            </label>
                             </div>
+                            <!--end::Input group-->
 
+                        <!--end::Card body-->
                         </div>
                         <!--end::Card header-->
                     </div>
                     <!--end::General options-->
                     <div class="d-flex justify-content-end">
                         <!--begin::Button-->
-                        <a href="{{ route('achievement.index') }}" id="kt_ecommerce_add_product_cancel"
+                        <a href="{{ route('report.index') }}" id="kt_ecommerce_add_product_cancel"
                             class="btn btn-light me-5">{{ trans('general.cancel') }}</a>
                         <!--end::Button-->
                         <!--begin::Button-->
@@ -145,13 +151,16 @@
             let formData = new FormData();
             formData.append('title_en', document.getElementById('title_en').value);
             formData.append('title_ar', document.getElementById('title_ar').value);
-            formData.append('count', document.getElementById('count').value);
             formData.append('_method', 'PUT');
 
             if (document.getElementById('image').files.length > 0) {
                 formData.append('image', document.getElementById('image').files[0]);
             }
-            axios.post('{{LaravelLocalization::getCurrentLocale()}}/dashboard/achievement/{{$achievement->id}}', formData).then(function(response) {
+            if (document.getElementById('file').files.length > 0) {
+                formData.append('file', document.getElementById('file').files[0]);
+            }
+            axios.post('/dashboard/report/{{$report->id}}', formData).then(function(response) {
+
                 console.log(response);
                 const Toast = Swal.mixin({
                     toast: true,
@@ -168,7 +177,7 @@
                     icon: 'success',
                     title: response.data.message
                 })
-                window.location.href = "/dashboard/achievement";
+                window.location.href = "/dashboard/report";
 
 
             }).catch(function(error) {

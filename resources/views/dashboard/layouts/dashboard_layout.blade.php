@@ -36,6 +36,11 @@
     <script src="https://cdn.tiny.cloud/1/fx0pygggvpx7ctfrqd4chbqj7eok3dm28fpefufmr8pyakgn/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
     <script src="{{asset('dist/assets/js/text-area.js')}}"></script>
+    <style>
+        .tox-notification{
+            display: none !important;
+         }
+    </style>
 
     @yield('css')
 

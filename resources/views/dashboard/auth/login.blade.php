@@ -58,7 +58,7 @@
 <script>
     function performLogin() {
 
-        axios.post('/dashboard/login', {
+        axios.post('{{LaravelLocalization::getCurrentLocale()}}/dashboard/login', {
             email: document.getElementById('email').value,
             password: document.getElementById('password').value,
             // remember: document.getElementById('remember').checked,

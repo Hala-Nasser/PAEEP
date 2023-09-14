@@ -19,7 +19,7 @@
                         <!--begin::Card header-->
                         <div class="card-header">
                             <!--begin::Card title-->
-                            <div class="card-title">
+                            <div class="card-title required">
                                 <h2>{{ trans('achievement.thumbnail') }}</h2>
                             </div>
                             <!--end::Card title-->
@@ -150,7 +150,7 @@
             if (document.getElementById('image').files.length > 0) {
                 formData.append('image', document.getElementById('image').files[0]);
             }
-            axios.post('/dashboard/achievement', formData).then(function(response) {
+            axios.post('{{LaravelLocalization::getCurrentLocale()}}/dashboard/achievement', formData).then(function(response) {
                 console.log(response);
                 const Toast = Swal.mixin({
                     toast: true,

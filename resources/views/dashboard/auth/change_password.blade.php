@@ -88,7 +88,7 @@
             formData.append('new_password', document.getElementById('new_password').value);
             formData.append('confirm_new_password', document.getElementById('confirm_new_password').value);
 
-            axios.post('/dashboard/change-password', formData).then(function(response) {
+            axios.post('{{LaravelLocalization::getCurrentLocale()}}/dashboard/change-password', formData).then(function(response) {
 
                 console.log(response);
                 const Toast = Swal.mixin({

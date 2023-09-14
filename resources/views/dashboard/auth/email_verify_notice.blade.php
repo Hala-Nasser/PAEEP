@@ -65,7 +65,7 @@
 <script>
     function sendVerificationEmail() {
 
-        axios.post('/dashboard/verification-notification')
+        axios.post('{{LaravelLocalization::getCurrentLocale()}}/dashboard/verification-notification')
             .then(function(response) {
 
                 console.log(response);

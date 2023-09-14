@@ -1,8 +1,7 @@
 @extends('dashboard.layouts.dashboard_layout')
 
 @section('css')
-    <link href="{{ asset('dist/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
-    <script src="{{ asset('dist/assets/plugins/global/plugins.bundle.js') }}"></script>
+    <link href="{{ asset('dist/assets/plugins/custom/toggle.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
@@ -20,7 +19,7 @@
                         <div class="card-header">
                             <!--begin::Card title-->
                             <div class="card-title required">
-                                <h2>{{ trans('achievement.thumbnail') }}</h2>
+                                <h2>{{ trans('partner.thumbnail') }}</h2>
                             </div>
                             <!--end::Card title-->
                         </div>
@@ -29,7 +28,7 @@
                         <div class="card-body text-center pt-0">
                             <!--begin::Image input-->
                             <div class="image-input image-input-empty image-input-outline mb-3" data-kt-image-input="true"
-                                style="background-image: url({{ Storage::url($achievement->image) }})"
+                                style="background-image: url({{ Storage::url($partner->image) }})"
                                 id="background">
                                 <!--begin::Preview existing avatar-->
                                 <div class="image-input-wrapper w-150px h-150px"></div>
@@ -62,7 +61,7 @@
                             </div>
                             <!--end::Image input-->
                             <!--begin::Description-->
-                            <div class="text-muted fs-7">{{ trans('achievement.thumbnail_description') }}</div>
+                            <div class="text-muted fs-7">{{ trans('partner.thumbnail_description') }}</div>
                             <!--end::Description-->
                         </div>
                         <!--end::Card body-->
@@ -77,51 +76,65 @@
                         <!--begin::Card header-->
                         <div class="card-header">
                             <div class="card-title">
-                                <h2>{{ trans('achievement.general') }}</h2>
+                                <h2>{{ trans('partner.general') }}</h2>
                             </div>
                         </div>
                         <!--end::Card header-->
                         <!--begin::Card body-->
+                            <!--begin::Card body-->
                         <div class="card-body pt-0">
-                             <!--begin::Input group-->
-                             <div class="mb-10 fv-row">
+                            <!--begin::Input group-->
+                            <div class="mb-10 fv-row">
                                 <!--begin::Label-->
-                                <label class="required form-label">{{ trans('achievement.achievement_title_en') }}</label>
+                                <label class="required form-label">{{ trans('partner.partner_name_en') }}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <input type="text" class="form-control mb-2"
-                                    placeholder="{{ trans('achievement.achievement_title_en') }}" value="{{$achievement->title_en}}" id="title_en" />
+                                    placeholder="{{ trans('partner.partner_name_en') }}" value="{{$partner->name_en}}" id="name_en" />
                                 <!--end::Input-->
                             </div>
                             <!--end::Input group-->
                             <!--begin::Input group-->
                             <div class="mb-10 fv-row">
                                 <!--begin::Label-->
-                                <label class="required form-label">{{ trans('achievement.achievement_title_ar') }}</label>
+                                <label class="required form-label">{{ trans('partner.partner_name_ar') }}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <input type="text" class="form-control mb-2"
-                                    placeholder="{{ trans('achievement.achievement_title_ar') }}" value="{{$achievement->title_ar}}" id="title_ar" />
+                                    placeholder="{{ trans('partner.partner_name_ar') }}" value="{{$partner->name_ar}}" id="name_ar" />
                                 <!--end::Input-->
                             </div>
                             <!--end::Input group-->
-                            <div class="mb-10 fv-row">
+                             <!--begin::Input group-->
+                             <div class="mb-10 fv-row">
                                 <!--begin::Label-->
-                                <label class="required form-label">{{ trans('achievement.count') }}</label>
+                                <label class="required form-label">{{ trans('partner.website_url') }}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="number" class="form-control mb-2"
-                                    placeholder="{{ trans('achievement.count') }}" value="{{$achievement->count}}" id="count" />
+                                <input type="text" class="form-control mb-2"
+                                    placeholder="{{ trans('partner.website_url') }}" value="{{$partner->website_url}}" id="website_url" />
                                 <!--end::Input-->
                             </div>
-
+                            <!--end::Input group-->
+                            <!--begin::Input group-->
+                            <div style="margin-top: 10px;">
+                                <!--begin::Label-->
+                                <label class="required form-label">{{ trans('partner.status') }}</label>
+                                <!--end::Label-->
+                                <label class="switch" style="margin-left: 10px">
+                                    <input type="checkbox" id="status" @checked($partner->status )>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <!--end::Input group-->
+                        <!--end::Card body-->
                         </div>
                         <!--end::Card header-->
                     </div>
                     <!--end::General options-->
                     <div class="d-flex justify-content-end">
                         <!--begin::Button-->
-                        <a href="{{ route('achievement.index') }}" id="kt_ecommerce_add_product_cancel"
+                        <a href="{{ route('partner.index') }}" id="kt_ecommerce_add_product_cancel"
                             class="btn btn-light me-5">{{ trans('general.cancel') }}</a>
                         <!--end::Button-->
                         <!--begin::Button-->
@@ -143,15 +156,17 @@
     <script>
         function performUpdate() {
             let formData = new FormData();
-            formData.append('title_en', document.getElementById('title_en').value);
-            formData.append('title_ar', document.getElementById('title_ar').value);
-            formData.append('count', document.getElementById('count').value);
+            formData.append('name_en', document.getElementById('name_en').value);
+            formData.append('name_ar', document.getElementById('name_ar').value);
+            formData.append('website_url', document.getElementById('website_url').value);
+            formData.append('status', document.getElementById('status').checked);
             formData.append('_method', 'PUT');
 
             if (document.getElementById('image').files.length > 0) {
                 formData.append('image', document.getElementById('image').files[0]);
             }
-            axios.post('{{LaravelLocalization::getCurrentLocale()}}/dashboard/achievement/{{$achievement->id}}', formData).then(function(response) {
+            axios.post('/dashboard/partner/{{$partner->id}}', formData).then(function(response) {
+
                 console.log(response);
                 const Toast = Swal.mixin({
                     toast: true,
@@ -168,7 +183,7 @@
                     icon: 'success',
                     title: response.data.message
                 })
-                window.location.href = "/dashboard/achievement";
+                window.location.href = "/dashboard/partner";
 
 
             }).catch(function(error) {

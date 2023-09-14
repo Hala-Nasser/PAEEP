@@ -19,7 +19,7 @@ class SliderController extends Controller
      */
     public function index(Request $request)
     {
-        $current_date = Carbon::now()->toDateString('Y-m-d');
+        // $current_date = Carbon::now()->toDateString('Y-m-d');
 
         if ($request->ajax()) {
             // $data = Slider::select('*')->where('status', 1)->where('publish_date', '<=', $current_date)->get();

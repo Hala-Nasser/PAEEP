@@ -17,7 +17,7 @@
                     <!--begin::Thumbnail settings-->
                     <div class="card card-flush py-4">
                         <!--begin::Card header-->
-                        <div class="card-header">
+                        <div class="card-header required">
                             <!--begin::Card title-->
                             <div class="card-title">
                                 <h2>{{ trans('program.thumbnail') }}</h2>
@@ -170,14 +170,14 @@
             let formData = new FormData();
             formData.append('title_en', document.getElementById('title_en').value);
             formData.append('title_ar', document.getElementById('title_ar').value);
-            formData.append('description_en', document.getElementById('description_en').value);
-            formData.append('description_ar', document.getElementById('description_ar').value);
+            formData.append('description_en', tinymce.get("description_en").getContent());
+            formData.append('description_ar', tinymce.get("description_ar").getContent());
             formData.append('_method', 'PUT');
 
             if (document.getElementById('image').files.length > 0) {
                 formData.append('image', document.getElementById('image').files[0]);
             }
-            axios.post('/dashboard/program/{{$program->id}}', formData).then(function(response) {
+            axios.post('{{LaravelLocalization::getCurrentLocale()}}/dashboard/program/{{$program->id}}', formData).then(function(response) {
                 console.log(response);
                 const Toast = Swal.mixin({
                     toast: true,

@@ -14,7 +14,7 @@
             <!--begin::Card toolbar-->
             <div class="card-toolbar">
                 <!--begin::Add customer-->
-                <a href="{{ route('news.create') }}" class="btn btn-primary">{{ trans('news.create_title') }}</a>
+                <a href="{{ route('report.create') }}" class="btn btn-primary">{{ trans('report.create_title') }}</a>
                 <!--end::Add customer-->
             </div>
             <!--end::Card toolbar-->
@@ -31,9 +31,7 @@
                             <!--begin::Table row-->
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                 <th class="w-10px pe-2" style="text-align: start;">#</th>
-                                <th class="min-w-250px" style="text-align: start;">{{ trans('general.news') }}</th>
-                                <th class="min-w-100px" style="text-align: start;">{{ trans('news.location') }}</th>
-                                <th class="min-w-100px" style="text-align: start;">{{ trans('news.date') }}</th>
+                                <th class="min-w-150px" style="text-align: start;">{{ trans('general.report') }}</th>
                                 <th class="min-w-70px" style="text-align: start;">{{ trans('general.actions') }}</th>
                             </tr>
                             <!--end::Table row-->
@@ -101,22 +99,14 @@
                     processing: true,
                     serverSide: true,
                     language: table_language,
-                    ajax: "{{ route('news.index') }}",
+                    ajax: "{{ route('report.index') }}",
                     columns: [{
                             data: 'id',
                             name: 'id'
                         },
                         {
-                            data: 'news',
-                            name: 'news'
-                        },
-                        {
-                            data: 'location',
-                            name: 'location'
-                        },
-                        {
-                            data: 'date',
-                            name: 'date'
+                            data: 'report',
+                            name: 'report'
                         },
                         {
                             data: 'action',
@@ -129,10 +119,10 @@
     </script>
 
     <script>
-        function DeleteNews(id, element) {
+        function DeleteReport(id, element) {
             Swal.fire({
                 title: 'Are you sure?',
-                text: "This action will delete selected news!",
+                text: "This action will delete selected report!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -150,7 +140,7 @@
         }
 
         function performDelete(id, element) {
-            axios.delete('{{LaravelLocalization::getCurrentLocale()}}/dashboard/news/' + id)
+            axios.delete('{{LaravelLocalization::getCurrentLocale()}}/dashboard/report/' + id)
                 .then(function(response) {
                     console.log(response);
                     Swal.fire({
