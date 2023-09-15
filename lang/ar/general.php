@@ -18,6 +18,7 @@ return[
     'slider' => 'السلايدر',
     'about' => 'من نحن',
     'contact_info' => 'معلومات التواصل',
+    'social_media' => 'وسائل التواصل الاجتماعي',
     'vision' => 'رؤيتنا',
     'message' => 'رسالتنا',
     'objective' => 'أهدافنا',
@@ -39,5 +40,15 @@ return[
     'donation' => 'التبرع',
     'donations' => 'التبرعات',
     'agree' => 'موافق',
-    'disagree' => 'غير موافق'
+    'disagree' => 'غير موافق',
+    'read' => 'مقروء',
+    'not_read' => 'غير مقروء',
+    'image_allowed_files' => 'نوع الملفات المسموح بها: png, jpg, jpeg',
+    'company-request' => 'طلبات الشركة',
+    'job-request' => 'طلبات التوظيف',
+    'volunteer-request' => 'طلبات التطوع',
+    'female' => 'أنثى',
+    'male' => 'ذكر',
+    'yes' => 'نعم',
+    'no' => 'لا'
 ];

@@ -13,5 +13,7 @@ return[
     'slider_details' => 'تفاصيل السلايدر',
     'redirect' => 'توجيه المستخدم إلى',
     'choose_redirect' => 'قم باختيار الصفحة',
-    'publish_date' => 'تاريخ النشر'
+    'publish_date' => 'تاريخ النشر',
+    'button_text_en' => 'نص الزر بالانجليزية',
+    'button_text_ar' => 'نص الزر بالعربية',
 ];

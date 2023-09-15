@@ -40,6 +40,9 @@
         .tox-notification{
             display: none !important;
          }
+         div.dataTables_wrapper div.dataTables_filter {
+    text-align: end;
+}
     </style>
 
     @yield('css')

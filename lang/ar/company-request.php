@@ -1,0 +1,27 @@
+<?php
+return [
+    'name' => 'الاسم',
+    'organization_type' => 'نوع المؤسسة',
+    'address' => 'العنوان',
+    'foundation_year' => 'سنة التأسيس',
+    'website_url' => 'رابط موقع الويب',
+    'instagram_link' => 'رابط الانستجرام',
+    'facebook_link' => 'رابط الفيسبوك',
+    'annual_budget' => 'الميزانية السنوية',
+    'centers_count' => 'عدد المراكز',
+    'centers_address' => 'عناوين المراكز',
+    'employees_count' => 'عدد الموظفين',
+    'mi_registeration_number' => 'رقم التسجيل لدى وزارة الداخلية',
+    'mf_registeration_number' => 'رقم التسجيل لدى وزارة المالية',
+    'current_projects_count' => 'عدد المشاريع الحالية',
+    'main_donors' => 'المانحون الرئيسيون',
+    'total_employess_count' => 'مجمل عدد الموظفين',
+    'beneficiaries_nationalities' => 'جنسيات المستفيدين',
+    'beneficiaries_age' => 'أعمار المستفيدين',
+    'main_objectives' => 'الأهداف الرئيسية',
+    'registeration_certification' => 'شهادة التسجيل',
+    'organization_structure' => 'هيكلية المؤسسة',
+    'read_status' => 'حالة القراءة',
+    'request_details' => 'تفاصيل الطلب',
+    'here' => 'للتحميل اضغط هنا'
+];

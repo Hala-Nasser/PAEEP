@@ -28,6 +28,7 @@
                         <!--begin::Card body-->
                         <div class="card-body text-center pt-0">
                             <!--begin::Image input-->
+                            <p>{{ Storage::url($achievement->image) }}</p>
                             <div class="image-input image-input-empty image-input-outline mb-3" data-kt-image-input="true"
                                 style="background-image: url({{ Storage::url($achievement->image) }})"
                                 id="background">
@@ -151,7 +152,7 @@
             if (document.getElementById('image').files.length > 0) {
                 formData.append('image', document.getElementById('image').files[0]);
             }
-            axios.post('{{LaravelLocalization::getCurrentLocale()}}/dashboard/achievement/{{$achievement->id}}', formData).then(function(response) {
+            axios.post('/{{LaravelLocalization::getCurrentLocale()}}/dashboard/achievement/{{$achievement->id}}', formData).then(function(response) {
                 console.log(response);
                 const Toast = Swal.mixin({
                     toast: true,

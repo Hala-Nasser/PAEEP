@@ -103,16 +103,38 @@
                             <!--end::Input group-->
                             <!--begin::Input group-->
                             <div class="mb-10 fv-row">
-                            <!--begin::Label-->
-                            <label class="form-label">{{ trans('slider.redirect') }}</label>
-                            <!--end::Label-->
-                            <!--begin::Select2-->
-                            <select class="form-select mb-2" data-control="select2" data-placeholder="Select an option"
-                                id="redirect_to">
-                                <option value="-1">{{ trans('slider.choose_redirect') }}</option>
-                                <option value="{{route('contact-us.index')}}">{{ trans('general.contact_us') }}</option>
-                            </select>
-                            <!--end::Select2-->
+                                <!--begin::Label-->
+                                <label class="form-label">{{ trans('slider.redirect') }}</label>
+                                <!--end::Label-->
+                                <!--begin::Select2-->
+                                <select class="form-select mb-2" data-control="select2" data-placeholder="Select an option"
+                                    id="redirect_to">
+                                    <option value="-1">{{ trans('slider.choose_redirect') }}</option>
+                                    <option value="{{ route('contact-us.index') }}">{{ trans('general.contact_us') }}
+                                    </option>
+                                </select>
+                                <!--end::Select2-->
+                            </div>
+                            <!--end::Input group-->
+
+                            <div class="mb-10 fv-row">
+                                <!--begin::Label-->
+                                <label class="form-label">{{ trans('slider.button_text_en') }}</label>
+                                <!--end::Label-->
+                                <!--begin::Select2-->
+                                <input type="text" class="form-control mb-2"
+                                    placeholder="{{ trans('slider.button_text_en') }}" value="" id="button_text_en" />
+                                <!--end::Select2-->
+                            </div>
+
+                            <div class="mb-10 fv-row">
+                                <!--begin::Label-->
+                                <label class="form-label">{{ trans('slider.button_text_ar') }}</label>
+                                <!--end::Label-->
+                                <!--begin::Select2-->
+                                <input type="text" class="form-control mb-2"
+                                    placeholder="{{ trans('slider.button_text_ar') }}" value="" id="button_text_ar" />
+                                <!--end::Select2-->
                             </div>
                             <!--end::Input group-->
 
@@ -130,14 +152,14 @@
 
                             <div style="margin-top: 2.5rem">
                                 <!--begin::Label-->
-                                <label class="required form-label">{{trans('slider.publish_date')}}</label>
+                                <label class="required form-label">{{ trans('slider.publish_date') }}</label>
                                 <!--end::Label-->
                                 <div class="col-xl-9 fv-row">
                                     <div class="position-relative d-flex align-items-center">
                                         <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
                                         <span class="svg-icon position-absolute ms-4 mb-1 svg-icon-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none">
                                                 <path opacity="0.3"
                                                     d="M21 22H3C2.4 22 2 21.6 2 21V5C2 4.4 2.4 4 3 4H21C21.6 4 22 4.4 22 5V21C22 21.6 21.6 22 21 22Z"
                                                     fill="black" />
@@ -150,9 +172,8 @@
                                             </svg>
                                         </span>
                                         <!--end::Svg Icon-->
-                                        <input class="form-control form-control-solid ps-12"
-                                            id="publish_date" type="date"
-                                            value="" />
+                                        <input class="form-control form-control-solid ps-12" id="publish_date"
+                                            type="date" value="" />
                                     </div>
                                 </div>
                             </div>
@@ -229,11 +250,14 @@
             formData.append('redirect_to', document.getElementById('redirect_to').value);
             formData.append('status', document.getElementById('status').checked);
             formData.append('publish_date', document.getElementById('publish_date').value);
+            formData.append('button_text_en', document.getElementById('button_text_en').value);
+            formData.append('button_text_ar', document.getElementById('button_text_ar').value);
 
             if (document.getElementById('image').files.length > 0) {
                 formData.append('image', document.getElementById('image').files[0]);
             }
-            axios.post('{{LaravelLocalization::getCurrentLocale()}}/dashboard/slider', formData).then(function(response) {
+            axios.post('{{ LaravelLocalization::getCurrentLocale() }}/dashboard/slider', formData).then(function(
+            response) {
 
                 console.log(response);
                 const Toast = Swal.mixin({

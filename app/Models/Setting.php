@@ -10,6 +10,12 @@ class Setting extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'facebook',
+        'instagram',
+        'twitter',
+    ];
+
     public function getLabel(){
         if(LaravelLocalization::getCurrentLocale() == "ar"){
             return $this->label_ar;
@@ -17,4 +23,5 @@ class Setting extends Model
             return $this->label_en;
         }
     }
+
 }

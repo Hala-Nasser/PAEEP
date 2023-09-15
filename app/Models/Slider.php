@@ -18,7 +18,9 @@ class Slider extends Model
         'redirect_to',
         'publish_date',
         'image',
-        'status'
+        'status',
+        'button_text_en',
+        'button_text_ar'
     ];
 
     public function getIsActiveAttribute()
@@ -45,6 +47,15 @@ class Slider extends Model
             return $this->description_ar;
         } else {
             return $this->description_en;
+        }
+    }
+
+    public function getButtonTextAttribute()
+    {
+        if (LaravelLocalization::getCurrentLocale() == "ar") {
+            return $this->button_text_ar;
+        } else {
+            return $this->button_text_en;
         }
     }
 }

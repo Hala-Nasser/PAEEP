@@ -177,7 +177,7 @@
             if (document.getElementById('image').files.length > 0) {
                 formData.append('image', document.getElementById('image').files[0]);
             }
-            axios.post('{{LaravelLocalization::getCurrentLocale()}}/dashboard/program/{{$program->id}}', formData).then(function(response) {
+            axios.post('/{{LaravelLocalization::getCurrentLocale()}}/dashboard/program/{{$program->id}}', formData).then(function(response) {
                 console.log(response);
                 const Toast = Swal.mixin({
                     toast: true,

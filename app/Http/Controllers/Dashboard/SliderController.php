@@ -10,6 +10,7 @@ use \Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\Response as HttpFoundationResponse;
 use Yajra\DataTables\DataTables;
 
 class SliderController extends Controller
@@ -71,6 +72,13 @@ class SliderController extends Controller
      */
     public function store(StoreSliderRequest $request)
     {
+        if ($request->getData()['redirect_to'] != -1) {
+            if ($request['button_text_en'] == null) {
+                return response()->json(['message' => 'button text en required'], Response::HTTP_BAD_REQUEST);
+            } elseif ($request['button_text_ar'] == null) {
+                return response()->json(['message' => 'button text ar required'], Response::HTTP_BAD_REQUEST);
+            }
+        }
         $is_saved = Slider::create($request->getData());
         return $is_saved ? parent::successResponse() : parent::errorResponse();
     }
@@ -96,6 +104,13 @@ class SliderController extends Controller
      */
     public function update(UpdateSliderRequest $request, Slider $slider)
     {
+        if ($request->getData()['redirect_to'] != -1) {
+            if ($request['button_text_en'] == null) {
+                return response()->json(['message' => 'button text en required'], Response::HTTP_BAD_REQUEST);
+            } elseif ($request['button_text_ar'] == null) {
+                return response()->json(['message' => 'button text ar required'], Response::HTTP_BAD_REQUEST);
+            }
+        }
         $is_updated = $slider->update($request->getData());
         return $is_updated ? parent::successResponse() : parent::errorResponse();
     }

@@ -89,6 +89,10 @@ Route::group([
         Route::get('principle', [SettingController::class, 'principle'])->name('principle');
         Route::get('objective', [SettingController::class, 'objective'])->name('objective');
         Route::get('contact-info', [SettingController::class, 'contactInfo'])->name('contact-info');
+        Route::get('social-media', [SettingController::class, 'socialMedia'])->name('social-media');
+        Route::post('update-setting', [SettingController::class, 'update']);
+
+
 
 
         Route::get('logout', [LogoutController::class, 'logout'])->name('admin.logout');

@@ -250,7 +250,7 @@
             if (document.getElementById('image').files.length > 0) {
                 formData.append('image', document.getElementById('image').files[0]);
             }
-            axios.post('/dashboard/visual-library/{{$visualLibrary->id}}', formData).then(function(response) {
+            axios.post('/{{LaravelLocalization::getCurrentLocale()}}/dashboard/visual-library/{{$visualLibrary->id}}', formData).then(function(response) {
                 console.log(response);
                 const Toast = Swal.mixin({
                     toast: true,
@@ -319,8 +319,8 @@
 
     function DeleteMedia(id, element) {
         Swal.fire({
-            title: 'Are you sure?',
-            text: "This action will delete the current image of this visual library!",
+            title: '{{ trans('delete_popup.title') }}',
+            text: "{{trans('delete_popup.visual-library-media')}}",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',

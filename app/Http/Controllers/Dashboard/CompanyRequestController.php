@@ -4,18 +4,41 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Models\CompanyRequest;
 use App\Http\Requests\StoreCompanyRequestRequest;
-use App\Http\Requests\UpdateCompanyRequestRequest;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class CompanyRequestController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if ($request->ajax()) {
+            $data = CompanyRequest::all();
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('name', function($row){
+                    return '<a href="/dashboard/company-request/' . $row->id . '" class="text-gray-800 text-hover-primary fs-5 fw-bolder">' . $row->name . '</a>
+                    ';
+                })
+                ->addColumn('organization_type', function($row){
+                    return '<a href="/dashboard/company-request/' . $row->id . '" class="text-gray-800 text-hover-primary fs-5 fw-bolder">' . $row->organization_type . '</a>
+                    ';
+                })
+                ->addColumn('read_status', function($row){
+                    return $row->getIsReadAttribute();
+                })
+                ->addColumn('action', function ($row) {
+                    return '<button class="btn btn-danger btn-sm delete" onclick="DeleteCompanyRequest(' . $row->id . ',this)">
+                       ' . trans("general.delete") . '</button>';
+                })
+                ->rawColumns(['action', 'name', 'read_status', 'organization_type'])
+                ->make(true);
+        }
+
+        return response()->view('dashboard.company-request.index');
     }
 
     /**
@@ -39,7 +62,10 @@ class CompanyRequestController extends Controller
      */
     public function show(CompanyRequest $companyRequest)
     {
-        //
+        if($companyRequest->read_status == 0){
+            $companyRequest->update(['read_status' => '1']);
+            }
+            return response()->view('dashboard.company-request.show', compact('companyRequest'));
     }
 
     /**
@@ -53,7 +79,7 @@ class CompanyRequestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCompanyRequestRequest $request, CompanyRequest $companyRequest)
+    public function update(Request $request, CompanyRequest $companyRequest)
     {
         //
     }
@@ -63,6 +89,11 @@ class CompanyRequestController extends Controller
      */
     public function destroy(CompanyRequest $companyRequest)
     {
-        //
+        $is_deleted = $companyRequest->delete();
+        if ($is_deleted) {
+            return parent::successResponse();
+        } else {
+            return parent::errorResponse();
+        }
     }
 }

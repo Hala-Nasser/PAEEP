@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Storage;
 
 class UpdateSettingRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class UpdateSettingRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,5 +25,18 @@ class UpdateSettingRequest extends FormRequest
         return [
             //
         ];
+    }
+
+    public function getData()
+    {
+        $data = $this->validated();
+
+        if ($this->hasFile('image')) {
+            Storage::disk('public')->delete("$this->image");
+            $imageName = time() . "" . '.' . $this->file('image')->getClientOriginalExtension();
+            $this->file('image')->storePubliclyAs('Setting', $imageName, ['disk' => 'public']);
+            $data['image'] = 'Setting/' . $imageName;
+        }
+        return $data;
     }
 }

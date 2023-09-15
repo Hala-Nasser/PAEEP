@@ -131,14 +131,14 @@
     <script>
         function DeleteSlider(id, element) {
             Swal.fire({
-                title: 'Are you sure?',
-                text: "This action will delete selected slider!",
+                title: '{{ trans('delete_popup.title') }}',
+                text: "{{trans('delete_popup.slider')}}",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, Delete!',
-                cancelButtonText: 'Cancel'
+                confirmButtonText: '{{ trans('delete_popup.confirm') }}',
+                cancelButtonText: '{{ trans('delete_popup.cancel') }}'
             }).then((result) => {
 
                 if (result.isConfirmed) {

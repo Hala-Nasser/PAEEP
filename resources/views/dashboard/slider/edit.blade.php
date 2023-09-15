@@ -116,6 +116,26 @@
                             </div>
                             <!--end::Input group-->
 
+                            <div class="mb-10 fv-row">
+                                <!--begin::Label-->
+                                <label class="form-label">{{ trans('slider.button_text_en') }}</label>
+                                <!--end::Label-->
+                                <!--begin::Select2-->
+                                <input type="text" class="form-control mb-2"
+                                    placeholder="{{ trans('slider.button_text_en') }}" value="{{$slider->button_text_en}}" id="button_text_en" />
+                                <!--end::Select2-->
+                            </div>
+
+                            <div class="mb-10 fv-row">
+                                <!--begin::Label-->
+                                <label class="form-label">{{ trans('slider.button_text_ar') }}</label>
+                                <!--end::Label-->
+                                <!--begin::Select2-->
+                                <input type="text" class="form-control mb-2"
+                                    placeholder="{{ trans('slider.button_text_ar') }}" value="{{$slider->button_text_ar}}" id="button_text_ar" />
+                                <!--end::Select2-->
+                            </div>
+
                             <!--begin::Input group-->
                             <div style="margin-top: 10px;">
                                 <!--begin::Label-->
@@ -229,12 +249,14 @@
             formData.append('redirect_to', document.getElementById('redirect_to').value);
             formData.append('status', document.getElementById('status').checked);
             formData.append('publish_date', document.getElementById('publish_date').value);
+            formData.append('button_text_en', document.getElementById('button_text_en').value);
+            formData.append('button_text_ar', document.getElementById('button_text_ar').value);
             formData.append('_method', 'PUT');
 
             if (document.getElementById('image').files.length > 0) {
                 formData.append('image', document.getElementById('image').files[0]);
             }
-            axios.post('{{LaravelLocalization::getCurrentLocale()}}/dashboard/slider/{{$slider->id}}', formData).then(function(response) {
+            axios.post('/{{LaravelLocalization::getCurrentLocale()}}/dashboard/slider/{{$slider->id}}', formData).then(function(response) {
 
                 console.log(response);
                 const Toast = Swal.mixin({

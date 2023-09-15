@@ -13,5 +13,9 @@ return[
     'slider_details' => 'Slider Details',
     'redirect' => 'Redirect User to',
     'choose_redirect' => 'choose the page',
-    'publish_date' => 'Publish Date'
+    'publish_date' => 'Publish Date',
+    'button_text_en' => 'Text of button en',
+    'button_text_ar' => 'Text of button ar',
+
+
 ];

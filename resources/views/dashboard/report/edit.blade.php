@@ -28,8 +28,7 @@
                         <div class="card-body text-center pt-0">
                             <!--begin::Image input-->
                             <div class="image-input image-input-empty image-input-outline mb-3" data-kt-image-input="true"
-                                style="background-image: url({{ Storage::url($report->image) }})"
-                                id="background">
+                                style="background-image: url({{ Storage::url($report->image) }})" id="background">
                                 <!--begin::Preview existing avatar-->
                                 <div class="image-input-wrapper w-150px h-150px"></div>
                                 <!--end::Preview existing avatar-->
@@ -81,7 +80,7 @@
                         </div>
                         <!--end::Card header-->
                         <!--begin::Card body-->
-                            <!--begin::Card body-->
+                        <!--begin::Card body-->
                         <div class="card-body pt-0">
                             <!--begin::Input group-->
                             <div class="mb-10 fv-row">
@@ -90,7 +89,8 @@
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <input type="text" class="form-control mb-2"
-                                    placeholder="{{ trans('report.report_title_en') }}" value="{{$report->title_en}}" id="title_en" />
+                                    placeholder="{{ trans('report.report_title_en') }}" value="{{ $report->title_en }}"
+                                    id="title_en" />
                                 <!--end::Input-->
                             </div>
                             <!--end::Input group-->
@@ -101,7 +101,8 @@
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <input type="text" class="form-control mb-2"
-                                    placeholder="{{ trans('report.report_title_ar') }}" value="{{$report->title_ar}}" id="title_ar" />
+                                    placeholder="{{ trans('report.report_title_ar') }}" value="{{ $report->title_ar }}"
+                                    id="title_ar" />
                                 <!--end::Input-->
                             </div>
                             <!--end::Input group-->
@@ -112,15 +113,17 @@
                                 <label class="required form-label">{{ trans('report.file') }}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="file" class="form-control mb-2" value="{{$report->file}}" id="file" />
+                                <input type="file" class="form-control mb-2" value="{{ $report->file }}"
+                                    id="file" />
                                 <!--end::Input-->
-                                <label class="form-label" style="margin-top: 10px;"> {{trans('report.view_file')}}
-                                <a class="form-label" style="color:blue" href="{{ Storage::url($report->file) }}">{{trans('report.here')}}</a>
-                            </label>
+                                <label class="form-label" style="margin-top: 10px;"> {{ trans('report.view_file') }}
+                                    <a class="form-label" style="color:blue"
+                                        href="{{ Storage::url($report->file) }}">{{ trans('report.here') }}</a>
+                                </label>
                             </div>
                             <!--end::Input group-->
 
-                        <!--end::Card body-->
+                            <!--end::Card body-->
                         </div>
                         <!--end::Card header-->
                     </div>
@@ -159,45 +162,46 @@
             if (document.getElementById('file').files.length > 0) {
                 formData.append('file', document.getElementById('file').files[0]);
             }
-            axios.post('/dashboard/report/{{$report->id}}', formData).then(function(response) {
+            axios.post('/{{ LaravelLocalization::getCurrentLocale() }}/dashboard/report/{{ $report->id }}', formData)
+                .then(function(response) {
 
-                console.log(response);
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 1500,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
-                Toast.fire({
-                    icon: 'success',
-                    title: response.data.message
-                })
-                window.location.href = "/dashboard/report";
+                    console.log(response);
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'success',
+                        title: response.data.message
+                    })
+                    window.location.href = "/dashboard/report";
 
 
-            }).catch(function(error) {
-                console.log(error);
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 1500,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
-                Toast.fire({
-                    icon: 'error',
-                    title: error.response.data.message
-                })
-            });
+                }).catch(function(error) {
+                    console.log(error);
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'error',
+                        title: error.response.data.message
+                    })
+                });
         }
     </script>
 @endsection

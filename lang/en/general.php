@@ -18,6 +18,7 @@ return[
     'slider' => 'Slider',
     'about' => 'About',
     'contact_info' => 'Contact Info',
+    'social_media' => 'Socail Media',
     'vision' => 'Our Vision',
     'message' => 'Our Message',
     'objective' => 'Our Objectives',
@@ -39,6 +40,15 @@ return[
     'donation' => 'Donation',
     'donations' => 'Donations',
     'agree' => 'Agree',
-    'disagree' => 'Disagree'
-
+    'disagree' => 'Disagree',
+    'read' => 'Readen',
+    'not_read' => 'Unread',
+    'image_allowed_files' => 'Allowed file types: png, jpg, jpeg.',
+    'company-request' => 'Company Requests',
+    'job-request' => 'Job Requests',
+    'volunteer-request' => 'Volunteer Requests',
+    'female' => 'Female',
+    'male' => 'Male',
+    'yes' => 'Yes',
+    'no' => 'No'
 ];

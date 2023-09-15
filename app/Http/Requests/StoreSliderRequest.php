@@ -26,7 +26,10 @@ class StoreSliderRequest extends FormRequest
             'redirect_to' => 'nullable|string',
             'publish_date' => 'required|date',
             'image' => 'required|image',
-            'status' => 'required|in:true,false'
+            'status' => 'required|in:true,false',
+            'button_text_en' => 'nullable|string',
+            'button_text_ar' => 'nullable|string',
+
         ];
     }
 
