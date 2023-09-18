@@ -71,7 +71,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="contact_us.html">{{ trans('website_navbar.contact-us') }}</a>
+                    <a class="nav-link @if (\Request::url() == URL('/' . LaravelLocalization::getCurrentLocale() . '/website/contact-us/')) active @endif" href="{{url('website/contact-us')}}">{{ trans('website_navbar.contact-us') }}</a>
                 </li>
                 {{-- <li class="nav-item dropdown">
                     @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
@@ -109,13 +109,15 @@
                         <div class="areasearch">
                             <div class="inputser">
                                 <i class='bx bx-search searchnon'></i>
-                                <input type="text" placeholder="{{ trans('website_navbar.search-here') }}">
+                                <form>
+                                <input type="search" placeholder="{{ trans('website_navbar.search-here') }}" name="search" value="{{ request('search') }}">
+                            </form>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="btn_search">
-                    <a href="donate.html">
+                    <a href="{{url('website/donate')}}">
                         <div class="btnnow">
                             <h6>{{ trans('website_navbar.donate-now') }}</h6>
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"

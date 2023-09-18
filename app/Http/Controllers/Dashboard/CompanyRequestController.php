@@ -24,7 +24,7 @@ class CompanyRequestController extends Controller
                     ';
                 })
                 ->addColumn('organization_type', function($row){
-                    return '<a href="/dashboard/company-request/' . $row->id . '" class="text-gray-800 text-hover-primary fs-5 fw-bolder">' . $row->organization_type . '</a>
+                    return '<a href="/dashboard/company-request/' . $row->id . '" class="text-gray-800 text-hover-primary fs-5 fw-bolder">' . trans('website-requests.' . $row->organization_type) . '</a>
                     ';
                 })
                 ->addColumn('read_status', function($row){

@@ -22,10 +22,10 @@ class StoreDonationRequest extends FormRequest
             'name' => 'required|string|min:3|max:50',
             'email' => 'required|email',
             'phone' => 'required|numeric|min:10',
-            'message' => 'required|string|min:0',
+            'message' => 'nullable|string|min:0',
             'amount' => 'required|numeric|min:0',
             'program_id' => 'nullable|numeric|exists:programs,id',
-            'is_agree' => 'required|in:false,true'
+            'is_agree' => 'in:false,true'
         ];
     }
 

@@ -26,7 +26,7 @@ class ChangePasswordRequest extends FormRequest
         return [
             'password' => 'required|string|current-password:' . 'admin', //current-password: guard name (to check that the current password valus is correct)
             'new_password' => 'required|string|min:6',
-            'confirm_new_password' => 'required|same:new_password'
+            'confirm_new_password' => 'required|same:new_password',
         ];
     }
 

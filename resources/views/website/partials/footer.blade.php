@@ -53,7 +53,7 @@
                     <p><a href="{{url('website/job-request')}}">{{ trans('website_footer.job-req') }}</a></p>
                     <p><a href="{{url('website/volunteer-request')}}">{{ trans('website_footer.volunteer-req') }}</a></p>
                     <p><a href="{{url('website/company-request')}}">{{ trans('website_footer.company-req') }}</a></p>
-                    <p><a href="#">{{ trans('website_footer.contact-us') }}</a></p>
+                    <p><a href="{{url('website/contact-us')}}">{{ trans('website_footer.contact-us') }}</a></p>
                 </div>
             </div>
         </div>
@@ -97,7 +97,7 @@
                             @endswitch
                         @endif
                     @endforeach
-                    <a href="{{ $settings[2]->value }}" rel="noopener noreferrer" target="_blank">
+                    <a href="mailto: {{ $settings[2]->value }}" rel="noopener noreferrer" target="_blank">
                         <div class="icon_footericon">
                             <div class="imgfooticon">
                                 <i class='bx bx-envelope'></i>

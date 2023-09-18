@@ -22,6 +22,7 @@ class StoreContactUsRequest extends FormRequest
             'full_name' => 'required|string|min:3|max:50',
             'email' => 'required|email',
             'message' => 'required|string|min:0',
+            'agree' => 'accepted'
         ];
     }
 

@@ -13,7 +13,9 @@
                 <h1>{{ trans('website_footer.news') }}</h1>
                 <div class="serch-news">
                     <i class='bx bx-search'></i>
-                    <input type="text" placeholder="{{trans('website_navbar.search-here')}}">
+                    <form>
+                    <input type="search" placeholder="{{trans('website_navbar.search-here')}}" name="search" value="{{request('search')}}">
+                    </form>
                 </div>
             </div>
             <div class="allcardnews">
@@ -40,4 +42,13 @@
     </div>
 
 
+@stop
+
+@section('js')
+<script>
+$('#search').on('keyup',function(){
+    $value=$(this).val();
+    console.log($value);
+});
+</script>
 @stop

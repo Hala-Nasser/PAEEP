@@ -17,7 +17,10 @@
                     <h1>{{ $news->getTitleAttribute() }}</h1>
                     <div class="serch-news">
                         <i class='bx bx-search'></i>
-                        <input type="text" placeholder="{{ trans('website_navbar.search-here') }}">
+                        <form>
+                            <input type="search" placeholder="{{ trans('website_navbar.search-here') }}" name="search"
+                                value="{{ request('search') }}">
+                        </form>
                     </div>
                 </div>
                 <div class="allnewsdetails">
@@ -119,10 +122,12 @@
                                     </div>
                                 </a>
                                 <div class="icon_sot">
-                                    <a href=""><i class='bx bxl-whatsapp' style='color:#ffffff'></i></a>
-                                    <a href=""><i class='bx bxl-facebook' style='color:#ffffff'></i></a>
-                                    <a href=""><i class='bx bxl-twitter' style='color:#ffffff'></i></a>
-                                    <a href=""><i class='bx bxl-instagram' style='color:#ffffff'></i></a>
+                                    <a href="whatsapp://send?text={{ url()->current() }}"><i class='bx bxl-whatsapp'
+                                            style='color:#ffffff'></i></a>
+                                    <a href="https://www.facebook.com/sharer.php?u={{ url()->current() }}/"><i
+                                            class='bx bxl-facebook' style='color:#ffffff'></i></a>
+                                    <a href="https://twitter.com/intent/tweet?url={{ url()->current() }}/"><i
+                                            class='bx bxl-twitter' style='color:#ffffff'></i></a>
                                 </div>
                             </div>
                             <!-- </div> -->

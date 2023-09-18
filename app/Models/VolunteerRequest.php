@@ -33,21 +33,23 @@ class VolunteerRequest extends Model
         }
     }
 
-    // public function getVolunteeredBeforeAttribute()
-    // {
-    //     if ($this->volunteered_before) {
-    //         return trans("general.yes");
-    //     } else {
-    //         return trans("general.no");
-    //     }
-    // }
+    public function getIsVolunteeredAttribute()
 
-    // public function getHaveSkillsAttribute()
-    // {
-    //     if ($this->have_skills) {
-    //         return trans("general.yes");
-    //     } else {
-    //         return trans("general.no");
-    //     }
-    // }
+    // public function getVolunteeredBeforeAttribute()
+    {
+        if ($this->volunteered_before) {
+            return trans("general.yes");
+        } else {
+            return trans("general.no");
+        }
+    }
+
+    public function getIsSkillsAttribute()
+    {
+        if ($this->have_skills) {
+            return trans("general.yes");
+        } else {
+            return trans("general.no");
+        }
+    }
 }

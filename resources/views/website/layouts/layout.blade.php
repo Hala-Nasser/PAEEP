@@ -50,6 +50,8 @@
     <script src="{{ asset('website/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('website/js/scrollreveal.min.js') }}"></script>
     <script src="{{ asset('website/js/main.js') }}"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @yield('js')
 </body>
 

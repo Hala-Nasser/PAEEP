@@ -15,7 +15,7 @@
 .container .card .form{
     width:100%;
     height:auto;
-    
+
     display:flex;
 }
 
@@ -36,7 +36,7 @@
     height:100%;
  border-top-right-radius:20px;
  border-bottom-right-radius:20px;
- 
+
   padding:20px 30px;
   box-sizing:border-box;
 
@@ -44,7 +44,7 @@
 /*left-side-start*/
 .left-heading{
     color:#fff;
-   
+
 }
 .steps-content{
     margin-top:30px;
@@ -79,7 +79,7 @@
       color:#fff;
       font-size: 13px;
       text-align: right;
-  
+
 }
 @media (max-width:993px) {
     .progress-bar li{
@@ -106,7 +106,7 @@
     z-index:10;
     background-color:#0091DE;
 
-     
+
 }
 .input-text .input-div option{
      font-family: 'Almarai', sans-serif;
@@ -133,7 +133,7 @@
 }
 
 .progress-bar li:first-child:after{
-  display:none;  
+  display:none;
 }
 
 /*.progress-bar li:last-child:after{*/
@@ -148,7 +148,7 @@
     color:#fff;
 }
 .d-none{
-   display:none;   
+   display:none;
 }
 
 
@@ -218,7 +218,7 @@
 .input-text .input-div{
     width:100%;
     position:relative;
-    
+
 }
 .input-div input{
     font-size: 14px;
@@ -270,6 +270,18 @@ input[type="text"]{
     padding:0px 10px;
 }
 
+input[type="url"]{
+    width:100%;
+    height:40px;
+    border:none;
+    outline:0;
+    border-radius:11px;
+    border:1px solid #cbced4;
+    gap:20px;
+    box-sizing:border-box;
+    padding:0px 10px;
+}
+
 input[type="number"]{
     width:100%;
     height:40px;
@@ -298,7 +310,7 @@ select{
     right:10px;
     font-size:14px;
     transition:all 0.5s;
-    
+
 }
 
 .input-div input:focus ~ span,.input-div input:valid ~ span  {
@@ -328,11 +340,11 @@ select{
     gap:20px;
     margin-top: 135px;
     margin-right: 296px;
-    
+
 }
 @media (max-width:995px) {
     .button_space{
-        margin-right: 76px;  
+        margin-right: 76px;
     }
 }
 .button_space button:nth-child(1){
@@ -415,8 +427,8 @@ select{
     display:flex;
     flex-direction:column;
     width:100%;
-    
-} 
+
+}
 .user_name h3{
     color:#4c5b68;
 }
@@ -524,17 +536,17 @@ select{
 
      .input-text .input-div{
   margin-top:20px;
-    
+
 }
 
     .container .card .left-side {
-           
+
      display: none;
     }
 }
 @media (max-width:750px) {
     .container{
-        height:scroll; 
+        height:scroll;
     }
     .container .card {
         max-width: 320px;
@@ -546,19 +558,19 @@ select{
     }
     .container .card .right-side {
      width:100%;
-            
+
     }
      .input-text{
          display:block;
      }
-     
+
      .input-text .input-div{
   margin-top:20px;
-    
+
 }
 
     .container .card .left-side {
-           
+
      display: none;
     }
 }

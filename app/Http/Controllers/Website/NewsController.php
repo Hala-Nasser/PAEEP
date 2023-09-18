@@ -10,11 +10,29 @@ use Illuminate\Http\Request;
 class NewsController extends Controller
 {
     public function index(){
-        $news = News::paginate(9);
+        if (request('search')) {
+            $news = News::where('title_en', 'like', '%' . request('search') . '%')->
+            orWhere('title_ar', 'like', '%' . request('search') . '%')->
+            orWhere('description_ar', 'like', '%' . request('search') . '%')->
+            orWhere('description_en', 'like', '%' . request('search') . '%')
+            ->paginate(9);
+        } else {
+            $news = News::paginate(9);
+        }
         return response()->view('website.news', compact('news'));
     }
 
     public function show($id){
+        if (request('search')) {
+            $news = News::where('title_en', 'like', '%' . request('search') . '%')->
+            orWhere('title_ar', 'like', '%' . request('search') . '%')->
+            orWhere('description_ar', 'like', '%' . request('search') . '%')->
+            orWhere('description_en', 'like', '%' . request('search') . '%')
+            ->paginate(9);
+
+            return response()->view('website.news', compact('news'));
+
+        } else {
         $news = News::find($id);
         $time = new DateTime($news->time);
         $news->time =  $time->format('g:i A');
@@ -24,5 +42,6 @@ class NewsController extends Controller
         $latest->time =  $time->format('g:i A');
         }
         return response()->view('website.news_details', compact('news', 'latest_news'));
+    }
     }
 }

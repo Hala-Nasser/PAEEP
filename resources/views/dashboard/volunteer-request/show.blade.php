@@ -97,103 +97,96 @@
                                     style="display: block;align-self: center; margin-inline-end: 15px; white-space: nowrap;">{{ trans('volunteer-request.volunteered_before') }}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                @if ($volunteerRequest->volunteered_before)
-                                    <input type="text" class="form-control mb-2" value="{{ trans('general.yes') }}"
-                                        style="display: block;width: 100%;" readonly>
+                                <input type="text" class="form-control mb-2"
+                                    value="{{ $volunteerRequest->getIsVolunteeredAttribute() }}"
+                                    style="display: block;width: 100%;" readonly>
+                                <!--end::Input-->
+                            </div>
+                            @if ($volunteerRequest->volunteered_before)
+                                <div class="mb-10 fv-row" style="display: flex; margin-bottom:1rem !important">
+                                    <!--begin::Label-->
+                                    <label class="form-label"
+                                        style="display: block;align-self: center; margin-inline-end: 15px; white-space: nowrap;">{{ trans('volunteer-request.volunteer_info') }}</label>
+                                    <!--end::Label-->
+                                    <p class="form-control mb-2">{!! $volunteerRequest->volunteer_info !!}</p>
+                                </div>
+                            @endif
+
+                            <div class="mb-10 fv-row" style="display: flex; margin-bottom:1rem !important">
+                                <!--begin::Label-->
+                                <label class="form-label"
+                                    style="display: block;align-self: center; margin-inline-end: 15px; white-space: nowrap;">{{ trans('volunteer-request.have_skills') }}</label>
+                                <!--end::Label-->
+                                <input type="text" class="form-control mb-2"
+                                    value="{{ $volunteerRequest->getIsSkillsAttribute() }}"
+                                    style="display: block;width: 100%;" readonly>
+                            </div>
+
+                            @if ($volunteerRequest->have_skills)
+                                <div class="mb-10 fv-row" style="display: flex; margin-bottom:1rem !important">
+                                    <!--begin::Label-->
+                                    <label class="form-label"
+                                        style="display: block;align-self: center; margin-inline-end: 15px; white-space: nowrap;">{{ trans('volunteer-request.skills_info') }}</label>
+                                    <!--end::Label-->
+                                    <p class="form-control mb-2">{!! $volunteerRequest->skills_info !!}</p>
+                                </div>
+                            @endif
+
+                            <div style="display: flex;">
+                                <div class="mb-10 fv-row" style="display: flex;margin-bottom:1rem !important;width: 50%;">
+                                    <!--begin::Label-->
+                                    <label class="form-label"
+                                        style="display: block;align-self: center; margin-inline-end: 15px; white-space: nowrap;">{{ trans('volunteer-request.volunteer_beginning') }}</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input type="text" class="form-control mb-2"
+                                        value="{{ $volunteerRequest->volunteer_beginning }}"
+                                        style="display: block;width: 100%;" readonly="">
                                     <!--end::Input-->
+                                </div>
+                                <div style="width: 20px;"></div>
+                                <div class="mb-10 fv-row" style="display: flex;margin-bottom:1rem !important;width: 50%;">
+                                    <!--begin::Label-->
+                                    <label class="form-label"
+                                        style="display: block;align-self: center; margin-inline-end: 15px; white-space: nowrap;">{{ trans('volunteer-request.volunteer_ending') }}</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input type="text" class="form-control mb-2"
+                                        value="{{ $volunteerRequest->volunteer_ending }}"
+                                        style="display: block;width: 100%;" readonly="">
+                                    <!--end::Input-->
+                                </div>
                             </div>
                             <div class="mb-10 fv-row" style="display: flex; margin-bottom:1rem !important">
                                 <!--begin::Label-->
                                 <label class="form-label"
-                                    style="display: block;align-self: center; margin-inline-end: 15px; white-space: nowrap;">{{ trans('volunteer-request.volunteer_info') }}</label>
+                                    style="display: block;align-self: center; margin-inline-end: 15px; white-space: nowrap;">{{ trans('volunteer-request.educational_experience') }}</label>
                                 <!--end::Label-->
-                                <p class="form-control mb-2">{!! $volunteerRequest->volunteer_info !!}</p>
-                            </div>
-                        @else
-                            <input type="text" class="form-control mb-2" value="{{ trans('general.no') }}"
-                                style="display: block;width: 100%;" readonly>
-                            <!--end::Input-->
-                        </div>
-                        @endif
+                                <!--begin::Input-->
+                                <p class="form-control mb-2">{!! $volunteerRequest->educational_experience !!}</p>
 
-                        <div class="mb-10 fv-row" style="display: flex; margin-bottom:1rem !important">
-                            <!--begin::Label-->
-                            <label class="form-label"
-                                style="display: block;align-self: center; margin-inline-end: 15px; white-space: nowrap;">{{ trans('volunteer-request.have_skills') }}</label>
-                            <!--end::Label-->
-                            @if ($volunteerRequest->have_skills)
-                                <input type="text" class="form-control mb-2" value="{{ trans('general.yes') }}"
-                                    style="display: block;width: 100%;" readonly>
                                 <!--end::Input-->
-                        </div>
-                        <div class="mb-10 fv-row" style="display: flex; margin-bottom:1rem !important">
-                            <!--begin::Label-->
-                            <label class="form-label"
-                                style="display: block;align-self: center; margin-inline-end: 15px; white-space: nowrap;">{{ trans('volunteer-request.skills_info') }}</label>
-                            <!--end::Label-->
-                            <p class="form-control mb-2">{!! $volunteerRequest->skills_info !!}</p>
-                        </div>
-                    @else
-                        <input type="text" class="form-control mb-2" value="{{ trans('general.no') }}"
-                            style="display: block;width: 100%;" readonly>
-                        <!--end::Input-->
-                    </div>
-                    @endif
+                            </div>
 
-                    <div style="display: flex;">
-                        <div class="mb-10 fv-row" style="display: flex;margin-bottom:1rem !important;width: 50%;">
-                            <!--begin::Label-->
-                            <label class="form-label"
-                                style="display: block;align-self: center; margin-inline-end: 15px; white-space: nowrap;">{{ trans('volunteer-request.volunteer_beginning') }}</label>
-                            <!--end::Label-->
-                            <!--begin::Input-->
-                            <input type="text" class="form-control mb-2" value="{{ $volunteerRequest->volunteer_beginning }}"
-                                style="display: block;width: 100%;" readonly="">
-                            <!--end::Input-->
+                            <div class="mb-10 fv-row" style="display: flex; margin-bottom:1rem !important">
+                                <!--begin::Label-->
+                                <label class="form-label"
+                                    style="display: block;align-self: center; margin-inline-end: 15px; white-space: nowrap;">{{ trans('volunteer-request.cv') }}</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <a class="form-label" style="color:blue"
+                                    href="{{ Storage::url($volunteerRequest->cv) }}">{{ trans('volunteer-request.here') }}</a>
+                                <!--end::Input-->
+                            </div>
                         </div>
-                        <div style="width: 20px;"></div>
-                        <div class="mb-10 fv-row" style="display: flex;margin-bottom:1rem !important;width: 50%;">
-                            <!--begin::Label-->
-                            <label class="form-label"
-                                style="display: block;align-self: center; margin-inline-end: 15px; white-space: nowrap;">{{ trans('volunteer-request.volunteer_ending') }}</label>
-                            <!--end::Label-->
-                            <!--begin::Input-->
-                            <input type="text" class="form-control mb-2"
-                                value="{{ $volunteerRequest->volunteer_ending }}" style="display: block;width: 100%;"
-                                readonly="">
-                            <!--end::Input-->
-                        </div>
+                        <!--end::Card header-->
                     </div>
-                    <div class="mb-10 fv-row" style="display: flex; margin-bottom:1rem !important">
-                        <!--begin::Label-->
-                        <label class="form-label"
-                            style="display: block;align-self: center; margin-inline-end: 15px; white-space: nowrap;">{{ trans('volunteer-request.educational_experience') }}</label>
-                        <!--end::Label-->
-                        <!--begin::Input-->
-                        <p class="form-control mb-2">{!! $volunteerRequest->educational_experience !!}</p>
-
-                        <!--end::Input-->
-                    </div>
-
-                    <div class="mb-10 fv-row" style="display: flex; margin-bottom:1rem !important">
-                        <!--begin::Label-->
-                        <label class="form-label"
-                            style="display: block;align-self: center; margin-inline-end: 15px; white-space: nowrap;">{{ trans('volunteer-request.cv') }}</label>
-                        <!--end::Label-->
-                        <!--begin::Input-->
-                        <a class="form-label" style="color:blue"
-                            href="{{ Storage::url($volunteerRequest->cv) }}">{{ trans('volunteer-request.here') }}</a>
-                        <!--end::Input-->
-                    </div>
+                    <!--end::Message content-->
                 </div>
-                <!--end::Card header-->
+                <!--end::Message accordion-->
             </div>
-            <!--end::Message content-->
         </div>
-        <!--end::Message accordion-->
-    </div>
-    </div>
-    <!--end::Card-->
+        <!--end::Card-->
     </div>
 @stop
 

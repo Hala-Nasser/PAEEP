@@ -19,6 +19,7 @@
             <form id="setting-form" class="form d-flex flex-column flex-lg-row"
                 onsubmit="event.preventDefault(); performUpdate();">
                 <!--begin::Card body-->
+                <input type="hidden" value="{{$group}}" id="group" name="group">
                 <div class="card-body p-9">
                     <!--begin::Row-->
                     @foreach ($data as $object)

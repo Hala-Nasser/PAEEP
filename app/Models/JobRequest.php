@@ -32,9 +32,4 @@ class JobRequest extends Model
         }
     }
 
-    // public function getGenderAttribute()
-    // {
-    //     return $this->gender;
-    //     return trans("general. '.{{$this->gender}}.'");
-    // }
 }

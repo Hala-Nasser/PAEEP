@@ -42,10 +42,11 @@ use App\Models\News;
 |
 */
 
-Route::get('/', function () {
-    dd(12);
-    return view('welcome');
-});
+
+// Route::get('/', function () {
+//     dd(12);
+//     return view('welcome');
+// });
 
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
@@ -71,7 +72,7 @@ Route::group([
     });
 
     Route::middleware(['auth:admin', 'verified'])->prefix('dashboard/')->group(function () {
-        Route::get('home', [HomeController::class, 'index'])->name('home');
+        Route::get('home', [HomeController::class, 'index'])->name('website-home');
         Route::resource('admin', AdminController::class);
         Route::resource('achievement', AchievementController::class);
         Route::resource('company-request', CompanyRequestController::class)->except('edit');
@@ -114,7 +115,7 @@ Route::group([
 ], function () {
 
     Route::prefix('website/')->group(function () {
-        Route::get('home', [WebsiteHomeController::class, 'index']);
+        Route::get('home', [WebsiteHomeController::class, 'index'])->name('home');
         Route::get('news', [WebsiteNewsController::class, 'index']);
         Route::get('news/{id}', [WebsiteNewsController::class, 'show']);
         Route::get('about', [WebsiteSettingController::class, 'index']);
@@ -134,6 +135,16 @@ Route::group([
         Route::post('job-request', [RequestsController::class, 'storeJobRequest']);
         Route::get('volunteer-request', [RequestsController::class, 'createVolunteerRequest']);
         Route::post('volunteer-request', [RequestsController::class, 'storeVolunteerRequest']);
+        Route::get('contact-us', [RequestsController::class, 'createContactUs']);
+        Route::post('contact-us', [RequestsController::class, 'storeContactUs']);
+        Route::get('donate', [RequestsController::class, 'createDonate'])->name('donate');
+        Route::post('donate', [RequestsController::class, 'storeDonate']);
+
+
+
+        // Route::get('checkout', [RequestsController::class, 'checkout'])->name('checkout');
+        // Route::post('session', [RequestsController::class, 'session'])->name('session');
+        // Route::get('success', [RequestsController::class, 'success'])->name('success');
 
     });
 });
