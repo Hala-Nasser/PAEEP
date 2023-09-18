@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="81.5" height="30.5" viewBox="0 0 81.5 30.5">
+  <g id="secureCheckOut" transform="translate(-143.189 -3326.269)">
+    <rect id="secureCheckOut-2" data-name="secureCheckOut" width="81" height="30" rx="4" transform="translate(143.439 3326.519)" fill="none" stroke="#0091de" stroke-width="0.5"/>
+    <g id="vuesax_twotone_shield-security" data-name="vuesax/twotone/shield-security" transform="translate(148.082 3331.356)">
+      <g id="vuesax_twotone_shield-security-2" data-name="vuesax/twotone/shield-security">
+        <g id="shield-security">
+          <path id="Vector" d="M1.77,1.789A2.939,2.939,0,0,0,0,4.339v6.293a4.118,4.118,0,0,0,1.465,2.914l3.642,2.719a3.855,3.855,0,0,0,4.353,0L13.1,13.545a4.118,4.118,0,0,0,1.465-2.914V4.339A2.941,2.941,0,0,0,12.8,1.781L8.571.2A4.307,4.307,0,0,0,6,.2Z" transform="translate(2.888 1.692)" fill="none" stroke="#0091de" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke-dasharray="0 0"/>
+          <path id="Vector-2" data-name="Vector" d="M20.327,0V20.327H0V0Z" transform="translate(20.327 20.327) rotate(180)" fill="none" stroke="#0091de" stroke-width="1" opacity="0"/>
+          <g id="Group_619" data-name="Group 619" transform="translate(8.47 7.199)" opacity="0.4">
+            <path id="Vector-3" data-name="Vector" d="M1.694,3.388A1.694,1.694,0,1,1,3.388,1.694,1.694,1.694,0,0,1,1.694,3.388Z" fill="none" stroke="#0091de" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1" stroke-dasharray="0 0"/>
+            <path id="Vector-4" data-name="Vector" d="M0,0V2.541" transform="translate(1.694 3.388)" fill="none" stroke="#0091de" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1" stroke-dasharray="0 0"/>
+          </g>
+        </g>
+      </g>
+    </g>
+    <text id="Secure_Checkout" data-name="Secure
+Checkout" transform="translate(170.439 3339.519)" fill="#042d4d" font-size="8" font-family="Poppins-Medium, Poppins" font-weight="500"><tspan x="0" y="0">Secure</tspan><tspan font-family="Poppins-Regular, Poppins" font-weight="400"><tspan x="0" y="8">Checkout</tspan></tspan></text>
+  </g>
+</svg>

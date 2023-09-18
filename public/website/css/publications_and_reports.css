@@ -1,0 +1,63 @@
+
+
+.allcardspiblicationsss{
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+
+.cardpubb{
+    width: 22% ;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+}
+@media (max-width:900px) {
+    .cardpubb{
+        width: 30% ;
+    }
+}
+@media (max-width:750px) {
+    .cardpubb{
+        width: 47% ;
+    }
+}
+@media (max-width:500px) {
+    .allcardspiblicationsss{
+        justify-content: center;
+    }
+    .cardpubb{
+        width: 95% ;
+    }
+}
+.cardpubb img{
+    position:absolute;
+    object-fit: cover;
+    object-position: center center;
+    width: 100%;
+    height: 200px;
+}
+
+.popcc{
+    background-color: #0091DE;
+    padding: 4px 10px;
+    margin: 10px;
+    display: inline-block;
+    border-radius: 50px;
+    position: relative;
+    color: #fff;
+}
+
+.textcardpop{
+    position: absolute;
+    bottom: 0;
+    color: #fff;
+    margin: 10px;
+    width: 90%;
+
+}

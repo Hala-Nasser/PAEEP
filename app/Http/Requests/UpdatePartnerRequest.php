@@ -20,8 +20,8 @@ class UpdatePartnerRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_en' => 'required|string|min:3|max:30',
-            'name_ar' => 'required|string|min:3|max:30',
+            'name_en' => 'required|string|min:3',
+            'name_ar' => 'required|string|min:3',
             'website_url' => 'required|string|min:3',
             'status' => 'required|in:false,true',
             'image' => 'image',

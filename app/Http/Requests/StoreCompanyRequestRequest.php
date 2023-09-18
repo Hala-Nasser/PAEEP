@@ -19,7 +19,7 @@ class StoreCompanyRequestRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|min:3|max:50',
+            'name' => 'required|string|min:3',
             'organization_type' => 'required|string',
             'address' => 'required|string',
             'foundation_year' => 'required|string',

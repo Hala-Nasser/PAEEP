@@ -10,6 +10,8 @@ class UpdateSettingRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
+    protected $stopOnFirstFailure = true;
+
     public function authorize(): bool
     {
         return true;
@@ -23,20 +25,7 @@ class UpdateSettingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+        
         ];
-    }
-
-    public function getData()
-    {
-        $data = $this->validated();
-
-        if ($this->hasFile('image')) {
-            Storage::disk('public')->delete("$this->image");
-            $imageName = time() . "" . '.' . $this->file('image')->getClientOriginalExtension();
-            $this->file('image')->storePubliclyAs('Setting', $imageName, ['disk' => 'public']);
-            $data['image'] = 'Setting/' . $imageName;
-        }
-        return $data;
     }
 }

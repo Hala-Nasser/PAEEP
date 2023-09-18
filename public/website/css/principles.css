@@ -1,0 +1,48 @@
+
+
+.line_priciples{
+    width: 45px;
+    height: 5px;
+    background-color: #0091DE;
+}
+.text_princples {
+    width: 47%;  
+}
+.text_princples h4{
+    color: #0091DE;  
+}
+.text_princples p{
+
+    margin-right: 10px;
+    color: #707070;
+}
+.arrowtext{
+    display: flex;
+    align-items: flex-start;
+}
+.arrowtext p{
+    text-align: justify;
+}
+.arrowtext i{
+    font-size: 30px;
+    color: #0091DE;
+}
+.headtex_principles {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin: 30px 0 20px 0 ;
+}
+.texts_prinp{
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width:810px){
+    .texts_prinp{
+        flex-direction: column;
+    }
+    .text_princples {
+        width: 100%;  
+    }
+}

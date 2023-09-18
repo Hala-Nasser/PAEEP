@@ -210,7 +210,7 @@ class SettingSeeder extends Seeder
 
         Setting::create([
             'key' => 'message_title_en',
-            'value' => 'Our Message',
+            'value' => 'Our Mission',
             'label_en' => 'Title en',
             'label_ar' => 'العنوان بالانجليزية',
             'type' => 'text',
@@ -285,7 +285,7 @@ class SettingSeeder extends Seeder
          //objective
          Setting::create([
             'key' => 'objective_title_en',
-            'value' => 'Our objectives',
+            'value' => 'Our Goals',
             'label_en' => 'Title en',
             'label_ar' => 'العنوان بالانجليزية',
             'type' => 'text',

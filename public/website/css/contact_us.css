@@ -1,0 +1,155 @@
+.body_cotact{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    margin-top: 30px;
+}
+
+
+.left_contact{
+    width: 45%;
+    
+}
+
+.input_name input{
+    border: none;
+    outline: none;
+    padding: 13px 15px 10px 0;
+    margin: 20px 0 20px 10px;
+    width: 45%;
+    border-radius: 6px;
+    background-color: #F9FBFC;
+}
+textarea{
+    border: none;
+    outline: none;
+    width: 92%;
+    padding: 10px;
+    border-radius: 6px;
+    height: 200px !important;
+    resize: none !important;
+    background-color: #F9FBFC;
+}
+
+.checkbox_text{
+    display: flex;
+    align-items: center ;
+    gap: 20px;
+}
+.checkbox_text input{
+    width: 20px;
+    height: 20px;
+}
+.checkbox_text p{
+    padding-top: 15px;
+}
+
+
+.btn_donate{
+    width: 92%;
+    margin-top: 70px;
+    padding: 13px;
+    color: #FFFFFF;
+    background-color: #0091DE;
+    border: none;
+    border-radius: 10px;
+    transition: all .5s ease;
+}
+.btn_donate:hover{
+
+    color: #FFFFFF;
+    background-color: #01458E;
+
+}
+
+.line_contant{
+    width: 80%;
+    height: 10px;
+    background-color: #0091DE;
+    margin: 30px 0;
+}
+
+.icon_text_contact{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.imgd{
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    border: 1px solid #0091DE;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon_text_contact p{
+    color: #140606;
+}
+.icon_text_contact:nth-child(5){
+    align-items: flex-start;
+
+}
+.right_contact{
+    width: 50%;
+}
+.right_contact .btn_donate{
+    margin-top: 10px;
+}
+
+.left_contact .imgfooticon{
+    border: 1px solid #0091DE;
+    border-radius: 10px;
+}
+.left_contact .imgfooticon i{
+    color: #0091DE;
+}
+.left_contact .imgfooticon:hover i{
+    color: #FFFFFF;
+}
+
+@media (max-width:867px){
+    .body_cotact{
+        flex-direction: column;
+        padding: 20px;
+        align-items: center;
+        gap: 60px;
+    }
+    .right_contact{
+        width: 100%;
+    }
+    .left_contact{
+        width: 100%;
+    }
+    .input_name input{
+        width: 48%;
+    }
+    textarea{
+        width: 100%;
+    }
+    .btn_donate{
+        width: 100%;
+    }
+}
+@media (max-width:700px){
+    .input_name input{
+        width: 100%;
+        margin: 10px 0 ;
+    }
+    textarea{
+        margin-top: 15px !important;
+    }
+    .icon_text_contact:nth-child(5) p{
+        font-size: 14px;
+    }
+}
+@media (max-width:380px){
+    .icon_text_contact:nth-child(5) p{
+        font-size: 12px;
+    }
+}

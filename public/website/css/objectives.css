@@ -1,0 +1,26 @@
+
+
+.objective .text_princples  {
+    width: 100%;
+}
+
+.objective .text_princples .aa {
+    width: 100%;
+}
+.arrowst{
+    display: flex;
+    justify-content: space-between;
+}
+.arrowtext{
+    width: 48%;
+    margin-top: 10px;
+}
+
+@media (max-width:600px) {
+    .arrowtext{
+        width: 100%;
+    }
+    .arrowst{
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,208 @@
+.progr{
+    flex-direction: column;
+}
+
+.tabs{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.taps{
+    display: flex;
+    gap: 10px;
+}
+
+.cardd{
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+.tap{
+    height: 43px;
+    padding: 0 10px;
+    background-color: #707070;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+    transition: all .4s ease;
+}
+.select{
+    background-color:#01458E ;
+}
+.tap:hover{
+    background-color:#01458E ;
+    color: #fff;
+}
+.leftside{
+    width: 20%;
+}
+.allarrowtext{
+    background-color: #fff;
+    padding: 8px;
+    border-radius: 10px;
+    line-height: 120%;
+    position: sticky;
+    -webkit-position:sticky;
+    top:87px;
+}
+
+.cardsside > h5{
+    margin: 15px 0;
+    color: #0091DE;
+}
+.arrowtext{
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+.arrowtext i{
+    font-size: 30px;
+    color: #0091DE;
+    margin-top: -2px;
+}
+.allcardpro{
+    margin-top: 0;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.rightside{
+    width: 100%;
+}
+.rightside .cardpro{
+    width: 23%;
+    height: 400px;
+}
+
+.navigation{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px; 
+}
+
+@media (max-width:1200px) {
+    .containerr{
+        margin: 0 40px;
+    }
+}
+@media (max-width:1050px) {
+    .cardpro{
+        width: 30% !important;
+    }
+}
+
+@media (max-width:900px) {
+    .containerr{
+        margin: 0 30px;
+    }
+    .allcardpro{
+        justify-content: center;
+    }
+    .cardpro{
+        width: 40% !important;
+    }
+}
+
+@media (max-width:850px) {
+    .tabs{
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .progr .serch-news{
+        display: flex;
+        border: 1px #0091DE solid;
+        width: 80%;
+    }
+    .progr .serch-news input{
+        width: 100%;
+    }
+    .rightside .cardpro{
+        width: 70%;
+        height: 400px;
+    }
+    .cardd{
+        gap: 0;
+    }
+    
+}
+@media (max-width:650px) {
+    .cardpro{
+        width: 70% !important;
+    }
+}
+@media (max-width:480px) {
+    .cardpro{
+        width: 99% !important;
+    }
+}
+@media (max-width:585px) {
+    .taps{
+        flex-wrap: wrap;
+    }
+    .tap{
+        height: 35px;
+        padding: 0 10px;
+        background-color: #707070;
+    }
+    .tap h6{
+        font-size: 12px;
+    }
+    .cardsside > h5{
+        margin: 15px 0;
+        color: #0091DE;
+        font-size: 16px;
+        position: sticky;
+    }
+
+    .progr .serch-news{
+        display: flex;
+        border: 1px #0091DE solid;
+        align-items: center;
+        width: 90%;
+        height: 45px;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+    .progr .serch-news i{
+        background-color: #0091DE;
+        font-size: 30px;
+        padding: 10px 20px;
+        padding-right: 10px;
+        /* border-radius:  0  20px  20px  0; */
+        color: #fff;
+    }
+    .progr .serch-news input{
+        border: none;
+        padding: 14px ;
+        /* border-radius: 20px  0 0  20px; */
+        outline: none;
+        width: 100%;
+    }
+    .centserch{
+        display: flex;
+        justify-content: center;
+    }
+    .arrowtext{
+        gap: 0px;
+    }
+    .arrowtext i{
+        font-size: 23px;
+    }
+    .rightside .cardpro{
+        width: 90%;
+        height: 400px;
+    }
+    .allarrowtext{
+        padding: 8px;
+        padding-right: 0px;
+    }
+}
+@media (max-width:380px) {
+    .arrowtext i{
+        font-size: 21px;
+    }
+}

@@ -65,21 +65,12 @@ class SettingController extends Controller
 
     public function update(UpdateSettingRequest $request)
     {
-
-        // if($request['logo']){
-        //     $this->StoreImage($request['logo']);
-        // }
-        // if($request['logo_icon']){
-        //     $this->StoreImage($request['logo_icon']);
-        // }
-        // dd($request['logo']);
-
         $keys_for_update = array_keys($request->toArray());
         // dd($keys_for_update);
         foreach ($keys_for_update as $key) {
             $setting = Setting::where('key', $key)->first();
-            if($key == "logo"){
-                $setting->value = $this->StoreImage($request['logo']);
+            if($key == "logo" || $key == "logo_icon" || $key == "about_image" || $key == "vision_image" || $key == "message_image"){
+                $setting->value = $this->StoreImage($request[$key]);
             }else{
                 $setting->value = $request[$key];
             }
@@ -90,7 +81,7 @@ class SettingController extends Controller
     }
 
     public function StoreImage($image){
-            $imageName = time() . "" . '.' . $image->getClientOriginalExtension();
+            $imageName = time() . "" . random_int(1, 999999) . '.'  . $image->getClientOriginalExtension();
             $image->storePubliclyAs('SettingImage', $imageName, ['disk' => 'public']);
             $image = 'SettingImage/' . $imageName;
             return $image;

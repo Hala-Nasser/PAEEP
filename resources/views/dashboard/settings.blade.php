@@ -37,18 +37,24 @@
                                 <!--end::Col-->
                             @elseif($object->type == 'long-text')
                                 <div class="col-xl-9 fv-row fv-plugins-icon-container">
-                                    <textarea class="form-control my-text-area" name="{{ $object->key }}" id="content">{{ $object->value }}</textarea>
+                                    <textarea class="form-control my-text-area" name="{{ $object->key }}" id="{{ $object->key }}">{{ $object->value }}</textarea>
                                 </div>
                             @elseif($object->type == 'image')
                                 <div class="col-lg-8">
                                     <!--begin::Image input-->
-                                    <p>{{ Storage::url($object->value) }}</p>
-                                    <div class="image-input image-input-outline" data-kt-image-input="true"
-                                        style="background-image: url({{ Storage::url($object->value) }})">
+                                        @if ($object->value)
+                                            <div class="image-input image-input-empty image-input-outline mb-3"
+                                                data-kt-image-input="true"
+                                                style="background-image: url({{ Storage::url($object->value) }})"
+                                                id="background">
+                                            @else
+                                                <div class="image-input image-input-empty image-input-outline mb-3"
+                                                    data-kt-image-input="true"
+                                                    style="background-image: url({{ asset('dist/assets/media/svg/files/blank-image.svg') }})"
+                                                    id="background">
+                                        @endif
                                         <!--begin::Preview existing avatar-->
-                                        <div class="image-input-wrapper w-125px h-125px bgi-position-center"
-                                            style="background-size: 75%; background-image: url('{{ asset('dist/assets/media/svg/files/blank-image.svg') }}')">
-                                        </div>
+                                        <div class="image-input-wrapper w-150px h-150px"></div>
                                         <!--end::Preview existing avatar-->
                                         <!--begin::Label-->
                                         <label
@@ -57,7 +63,8 @@
                                             data-bs-original-title="Change avatar">
                                             <i class="bi bi-pencil-fill fs-7"></i>
                                             <!--begin::Inputs-->
-                                            <input type="file" accept=".png, .jpg, .jpeg" id="{{ $object->key }}" name="{{ $object->key }}">
+                                            <input type="file" accept=".png, .jpg, .jpeg" id="{{ $object->key }}"
+                                                name="{{ $object->key }}">
                                             <input type="hidden">
                                             <!--end::Inputs-->
                                         </label>
@@ -111,26 +118,27 @@
         function performUpdate() {
             let myform = document.getElementById("setting-form");
             let formData = new FormData(myform);
-            // let formData = new FormData();
-            // formData.append('title_en', document.getElementById('title_en').value);
-            // formData.append('title_ar', document.getElementById('title_ar').value);
             // formData.append('_method', 'PUT');
 
-            if("{{$data[0]->group}}" == "contact-info"){
-                if (document.getElementById('logo').files.length > 0) {
-                formData.append('logo', document.getElementById('logo').files[0]);
+            if ("{{ $data[0]->group }}" == "contact-info") {
+                formData.append('description_en', tinymce.get("description_en").getContent());
+                formData.append('description_ar', tinymce.get("description_ar").getContent());
+            }else if("{{ $data[0]->group }}" == "about"){
+                formData.append('about_description_en', tinymce.get("about_description_en").getContent());
+                formData.append('about_description_ar', tinymce.get("about_description_ar").getContent());
+            }else if("{{ $data[0]->group }}" == "vision"){
+                formData.append('vision_description_en', tinymce.get("vision_description_en").getContent());
+                formData.append('vision_description_ar', tinymce.get("vision_description_ar").getContent());
+            }else if("{{ $data[0]->group }}" == "message"){
+                formData.append('message_description_en', tinymce.get("message_description_en").getContent());
+                formData.append('message_description_ar', tinymce.get("message_description_ar").getContent());
+            }else if("{{ $data[0]->group }}" == "principle"){
+                formData.append('principle_description_en', tinymce.get("principle_description_en").getContent());
+                formData.append('principle_description_ar', tinymce.get("principle_description_ar").getContent());
+            }else if("{{ $data[0]->group }}" == "objective"){
+                formData.append('objective_description_en', tinymce.get("objective_description_en").getContent());
+                formData.append('objective_description_ar', tinymce.get("objective_description_ar").getContent());
             }
-
-            if (document.getElementById('logo_icon').files.length > 0) {
-                formData.append('logo_icon', document.getElementById('logo_icon').files[0]);
-            }
-            }
-            // if (document.getElementById('image').files.length > 0) {
-            //     formData.append('image', document.getElementById('image').files[0]);
-            // }
-            // if (document.getElementById('file').files.length > 0) {
-            //     formData.append('file', document.getElementById('file').files[0]);
-            // }
 
             axios.post('/{{ LaravelLocalization::getCurrentLocale() }}/dashboard/update-setting', formData)
                 .then(function(response) {

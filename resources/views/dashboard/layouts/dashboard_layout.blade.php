@@ -7,16 +7,26 @@
 
 <head>
     <base href="../../../">
-    <title>PAEEP</title>
+    @if (LaravelLocalization::getCurrentLocale() == 'ar')
+        <title>{{$settings[4]->value}}</title>
+    @else
+        <title>{{$settings[3]->value}}</title>
+    @endif
+
     <meta charset="utf-8" />
     <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
-    <link rel="shortcut icon" href="{{ asset('dist/assets/media/logos/logo_icon.png') }}" />
+    @if ($settings[1]->value != null)
+        <link rel="shortcut icon" href="{{ Storage::url($settings[1]->value) }}" />
+    @else
+        <link rel="shortcut icon" href="{{ asset('dist/assets/media/logos/logo_icon.png') }}" />
+    @endif
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <!--end::Fonts-->
 
     @if (LaravelLocalization::getCurrentLocale() == 'ar')
-        <link href="{{ asset('dist/assets/plugins/global/plugins.bundle.rtl.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('dist/assets/plugins/global/plugins.bundle.rtl.css') }}" rel="stylesheet"
+            type="text/css" />
         <link href="{{ asset('dist/assets/css/style.bundle.rtl.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('dist/assets/plugins/custom/datatables/datatables.bundle.rtl.css') }}" rel="stylesheet"
             type="text/css" />
@@ -33,16 +43,18 @@
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap4.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.tiny.cloud/1/fx0pygggvpx7ctfrqd4chbqj7eok3dm28fpefufmr8pyakgn/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/fx0pygggvpx7ctfrqd4chbqj7eok3dm28fpefufmr8pyakgn/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script>
 
-    <script src="{{asset('dist/assets/js/text-area.js')}}"></script>
+    <script src="{{ asset('dist/assets/js/text-area.js') }}"></script>
     <style>
-        .tox-notification{
+        .tox-notification {
             display: none !important;
-         }
-         div.dataTables_wrapper div.dataTables_filter {
-    text-align: end;
-}
+        }
+
+        div.dataTables_wrapper div.dataTables_filter {
+            text-align: end;
+        }
     </style>
 
     @yield('css')
@@ -67,8 +79,15 @@
                     <!--begin::Brand-->
                     <div class="header-brand">
                         <!--begin::Logo-->
-                        <a href="../../demo8/dist/index.html">
-                            <img alt="Logo" src="{{asset('dist/assets/media/logos/logo.png')}}" class="h-25px h-lg-25px" />
+                        <a>
+                            @if ($settings[1]->value)
+                                <link rel="shortcut icon" href="" />
+                                <img alt="Logo" src="{{ Storage::url($settings[0]->value) }}"
+                                    class="h-25px h-lg-25px" />
+                            @else
+                                <img alt="Logo" src="{{ asset('dist/assets/media/logos/logo.png') }}"
+                                    class="h-25px h-lg-25px" />
+                            @endif
                         </a>
                         <!--end::Logo-->
                     </div>
@@ -93,7 +112,7 @@
                     <div class="post d-flex flex-column-fluid" id="kt_post">
                         <!--begin::Container-->
                         <div id="kt_content_container" class="container-xxl">
-                           @yield('content')
+                            @yield('content')
                         </div>
                         <!--end::Container-->
                     </div>
@@ -111,7 +130,7 @@
     <!--end::Root-->
     <!--end::Main-->
     <!--begin::Scrolltop-->
-   @include('dashboard.partials.scrolltop')
+    @include('dashboard.partials.scrolltop')
     <!--end::Scrolltop-->
     <!--begin::Javascript-->
     <script>

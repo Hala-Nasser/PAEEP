@@ -24,6 +24,13 @@ use App\Http\Controllers\Dashboard\VisualLibraryMediaController;
 use App\Http\Controllers\Dashboard\VolunteerRequestController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
+use App\Http\Controllers\Website\HomeController as WebsiteHomeController;
+use App\Http\Controllers\Website\NewsController as WebsiteNewsController;
+use App\Http\Controllers\Website\ProgramController as WebsiteProgramController;
+use App\Http\Controllers\Website\RequestsController;
+use App\Http\Controllers\Website\SettingController as WebsiteSettingController;
+use App\Models\News;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,7 +45,6 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 Route::get('/', function () {
     dd(12);
     return view('welcome');
-
 });
 
 Route::group([
@@ -78,10 +84,8 @@ Route::group([
         Route::resource('report', ReportsController::class);
         Route::resource('slider', SliderController::class);
         Route::resource('visual-library', VisualLibraryController::class);
-        // Route::resource('visual-library-media', VisualLibraryMediaController::class);
         Route::resource('volunteer-request', VolunteerRequestController::class);
-    Route::delete('visual-library-media/{visual_library_media}', [VisualLibraryController::class, 'deleteMedia']);
-
+        Route::delete('visual-library-media/{visual_library_media}', [VisualLibraryController::class, 'deleteMedia']);
 
         Route::get('about', [SettingController::class, 'about'])->name('about');
         Route::get('vision', [SettingController::class, 'vision'])->name('vision');
@@ -92,9 +96,6 @@ Route::group([
         Route::get('social-media', [SettingController::class, 'socialMedia'])->name('social-media');
         Route::post('update-setting', [SettingController::class, 'update']);
 
-
-
-
         Route::get('logout', [LogoutController::class, 'logout'])->name('admin.logout');
         Route::get('change-password', [ChangePasswordController::class, 'showChangePassword'])->name('admin.change-password');
         Route::post('change-password', [ChangePasswordController::class, 'changePassword']);
@@ -103,5 +104,36 @@ Route::group([
 
         // Route::get('role/{role}/permissions', [RoleController::class, 'editRolePermissions'])->name('role.edit-permissions');
         // Route::put('role/{role}/permissions', [RoleController::class, 'updateRolePermissions']);
+    });
+});
+
+
+Route::group([
+    'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+], function () {
+
+    Route::prefix('website/')->group(function () {
+        Route::get('home', [WebsiteHomeController::class, 'index']);
+        Route::get('news', [WebsiteNewsController::class, 'index']);
+        Route::get('news/{id}', [WebsiteNewsController::class, 'show']);
+        Route::get('about', [WebsiteSettingController::class, 'index']);
+        Route::get('vision', [WebsiteSettingController::class, 'index']);
+        Route::get('mission', [WebsiteSettingController::class, 'index']);
+        Route::get('principle', [WebsiteSettingController::class, 'index']);
+        Route::get('goals', [WebsiteSettingController::class, 'index']);
+        Route::get('publications-and-reports', [WebsiteSettingController::class, 'publicationsAndReports']);
+        Route::get('visual-library', [WebsiteSettingController::class, 'visualLibrary']);
+        Route::get('visual-library/{id}', [WebsiteSettingController::class, 'visualLibraryDetails']);
+        Route::get('programs', [WebsiteProgramController::class, 'index']);
+        Route::get('program/{id}', [WebsiteProgramController::class, 'show']);
+
+        Route::get('company-request', [RequestsController::class, 'createCompanyRequest']);
+        Route::post('company-request', [RequestsController::class, 'storeCompanyRequest']);
+        Route::get('job-request', [RequestsController::class, 'createJobRequest']);
+        Route::post('job-request', [RequestsController::class, 'storeJobRequest']);
+        Route::get('volunteer-request', [RequestsController::class, 'createVolunteerRequest']);
+        Route::post('volunteer-request', [RequestsController::class, 'storeVolunteerRequest']);
+
     });
 });

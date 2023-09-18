@@ -1,0 +1,23 @@
+
+.newss{
+    flex-direction: column;
+}
+.newss p{
+    color: #707070;
+}
+.bodyprogdetails h3{
+   margin: 20px 0 10px 0;
+}
+.bodyprogdetails p{
+    color: #707070;
+}
+.bodyprogdetails li{
+    color: #707070;
+}
+.bodyprogdetails ol{
+    padding: 15px;
+}
+.program_more h2{
+    font-weight: 600;
+    margin-bottom: 20px;
+}

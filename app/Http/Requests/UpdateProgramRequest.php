@@ -20,8 +20,8 @@ class UpdateProgramRequest extends FormRequest
     public function rules()
     {
         return [
-            'title_en' => 'required|string|min:3|max:30',
-            'title_ar' => 'required|string|min:3|max:30',
+            'title_en' => 'required|string|min:3',
+            'title_ar' => 'required|string|min:3',
             'description_en' => 'required|string|min:3',
             'description_ar' => 'required|string|min:3',
             'image' => 'image',
