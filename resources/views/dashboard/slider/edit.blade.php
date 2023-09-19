@@ -28,8 +28,7 @@
                         <div class="card-body text-center pt-0">
                             <!--begin::Image input-->
                             <div class="image-input image-input-empty image-input-outline mb-3" data-kt-image-input="true"
-                                style="background-image: url({{ Storage::url($slider->image) }})"
-                                id="background">
+                                style="background-image: url({{ Storage::url($slider->image) }})" id="background">
                                 <!--begin::Preview existing avatar-->
                                 <div class="image-input-wrapper w-150px h-150px"></div>
                                 <!--end::Preview existing avatar-->
@@ -86,7 +85,8 @@
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <input type="text" class="form-control mb-2"
-                                    placeholder="{{ trans('slider.slider_title_en') }}" value="{{$slider->title_en}}" id="title_en" />
+                                    placeholder="{{ trans('slider.slider_title_en') }}" value="{{ $slider->title_en }}"
+                                    id="title_en" />
                                 <!--end::Input-->
                             </div>
                             <!--end::Input group-->
@@ -97,22 +97,36 @@
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <input type="text" class="form-control mb-2"
-                                    placeholder="{{ trans('slider.slider_title_ar') }}" value="{{$slider->title_ar}}" id="title_ar" />
+                                    placeholder="{{ trans('slider.slider_title_ar') }}" value="{{ $slider->title_ar }}"
+                                    id="title_ar" />
                                 <!--end::Input-->
                             </div>
                             <!--end::Input group-->
                             <!--begin::Input group-->
                             <div class="mb-10 fv-row">
-                            <!--begin::Label-->
-                            <label class="form-label">{{ trans('slider.redirect') }}</label>
-                            <!--end::Label-->
-                            <!--begin::Select2-->
-                            <select class="form-select mb-2" data-control="select2" data-placeholder="Select an option"
-                                id="redirect_to">
-                                <option value="-1">{{ trans('slider.choose_redirect') }}</option>
-                                <option value="{{route('contact-us.index')}}" @selected(route('contact-us.index') == $slider->redirect_to)>{{ trans('general.contact_us') }}</option>
-                            </select>
-                            <!--end::Select2-->
+                                <!--begin::Label-->
+                                <label class="form-label">{{ trans('slider.redirect') }}</label>
+                                <!--end::Label-->
+                                <!--begin::Select2-->
+                                <select class="form-select mb-2" data-control="select2" data-placeholder="Select an option"
+                                    id="redirect_to">
+                                    <option value="-1">{{ trans('slider.choose_redirect') }}</option>
+                                    <option value="{{ url('website/contact-us') }}" @selected(url('website/contact-us') == $slider->redirect_to)>
+                                        {{ trans('general.contact_us') }}</option>
+                                    <option value="{{ url('website/about') }}" @selected(url('website/about') == $slider->redirect_to)>
+                                        {{ trans('general.about') }}</option>
+                                    <option value="{{ url('website/vision') }}" @selected(url('website/vision') == $slider->redirect_to)>
+                                        {{ trans('general.vision') }}</option>
+                                    <option value="{{ url('website/mission') }}" @selected(url('website/mission') == $slider->redirect_to)>
+                                        {{ trans('general.message') }}</option>
+                                    <option value="{{ url('website/principle') }}" @selected(url('website/principle') == $slider->redirect_to)>
+                                        {{ trans('general.principle') }}</option>
+                                    <option value="{{ url('website/goals') }}" @selected(url('website/goals') == $slider->redirect_to)>
+                                        {{ trans('general.objective') }}</option>
+                                    <option value="{{ url('website/donate') }}" @selected(url('website/donate') == $slider->redirect_to)>
+                                        {{ trans('website_navbar.donate-now') }}</option>
+                                </select>
+                                <!--end::Select2-->
                             </div>
                             <!--end::Input group-->
 
@@ -122,7 +136,8 @@
                                 <!--end::Label-->
                                 <!--begin::Select2-->
                                 <input type="text" class="form-control mb-2"
-                                    placeholder="{{ trans('slider.button_text_en') }}" value="{{$slider->button_text_en}}" id="button_text_en" />
+                                    placeholder="{{ trans('slider.button_text_en') }}"
+                                    value="{{ $slider->button_text_en }}" id="button_text_en" />
                                 <!--end::Select2-->
                             </div>
 
@@ -132,7 +147,8 @@
                                 <!--end::Label-->
                                 <!--begin::Select2-->
                                 <input type="text" class="form-control mb-2"
-                                    placeholder="{{ trans('slider.button_text_ar') }}" value="{{$slider->button_text_ar}}" id="button_text_ar" />
+                                    placeholder="{{ trans('slider.button_text_ar') }}"
+                                    value="{{ $slider->button_text_ar }}" id="button_text_ar" />
                                 <!--end::Select2-->
                             </div>
 
@@ -142,7 +158,7 @@
                                 <label class="required form-label">{{ trans('slider.status') }}</label>
                                 <!--end::Label-->
                                 <label class="switch" style="margin-left: 10px">
-                                    <input type="checkbox" id="status" @checked($slider->status )>
+                                    <input type="checkbox" id="status" @checked($slider->status)>
                                     <span class="slider round"></span>
                                 </label>
                             </div>
@@ -150,14 +166,14 @@
 
                             <div style="margin-top: 2.5rem">
                                 <!--begin::Label-->
-                                <label class="required form-label">{{trans('slider.publish_date')}}</label>
+                                <label class="required form-label">{{ trans('slider.publish_date') }}</label>
                                 <!--end::Label-->
                                 <div class="col-xl-9 fv-row">
                                     <div class="position-relative d-flex align-items-center">
                                         <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
                                         <span class="svg-icon position-absolute ms-4 mb-1 svg-icon-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none">
                                                 <path opacity="0.3"
                                                     d="M21 22H3C2.4 22 2 21.6 2 21V5C2 4.4 2.4 4 3 4H21C21.6 4 22 4.4 22 5V21C22 21.6 21.6 22 21 22Z"
                                                     fill="black" />
@@ -170,9 +186,8 @@
                                             </svg>
                                         </span>
                                         <!--end::Svg Icon-->
-                                        <input class="form-control form-control-solid ps-12"
-                                            id="publish_date" type="date"
-                                            value="{{$slider->publish_date}}" />
+                                        <input class="form-control form-control-solid ps-12" id="publish_date"
+                                            type="date" value="{{ $slider->publish_date }}" />
                                     </div>
                                 </div>
                             </div>
@@ -256,46 +271,47 @@
             if (document.getElementById('image').files.length > 0) {
                 formData.append('image', document.getElementById('image').files[0]);
             }
-            axios.post('/{{LaravelLocalization::getCurrentLocale()}}/dashboard/slider/{{$slider->id}}', formData).then(function(response) {
+            axios.post('/{{ LaravelLocalization::getCurrentLocale() }}/dashboard/slider/{{ $slider->id }}', formData)
+                .then(function(response) {
 
-                console.log(response);
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 1500,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
-                Toast.fire({
-                    icon: 'success',
-                    title: response.data.message
-                })
+                    console.log(response);
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'success',
+                        title: response.data.message
+                    })
 
-                window.location.href = "/dashboard/slider";
+                    window.location.href = "/dashboard/slider";
 
 
-            }).catch(function(error) {
-                console.log(error);
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 1500,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
-                Toast.fire({
-                    icon: 'error',
-                    title: error.response.data.message
-                })
-            });
+                }).catch(function(error) {
+                    console.log(error);
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'error',
+                        title: error.response.data.message
+                    })
+                });
         }
     </script>
 @endsection

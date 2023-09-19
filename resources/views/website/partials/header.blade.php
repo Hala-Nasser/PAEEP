@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-light" id="navbar">
     <div class="container-fluid ">
-        <a class="navbar-brand" href="index.html"><img src="{{ asset('website/imges/Group 8541.png') }}" alt=""></a>
+        <a class="navbar-brand" href="{{route('website-home')}}"><img src="{{ asset('website/imges/Group 8541.png') }}" alt=""></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

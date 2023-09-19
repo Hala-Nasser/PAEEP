@@ -135,7 +135,7 @@
                                     @forelse ($visualLibrary->media as $media)
                                         <tr>
                                             <td class="min-w-70px">
-                                                <a href="" class="symbol symbol-50px">
+                                                <a href="{{ Storage::url($media->image) }}" class="symbol symbol-50px">
                                                     <span class="symbol-label"
                                                         style="background-image:url({{ Storage::url($media->image) }});"></span>
                                                 </a>

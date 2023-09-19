@@ -13,8 +13,8 @@
         </section>
         <section class="allnewss">
             <div class="newss">
-                <h1>{{$program->getTitleAttribute()}}</h1>
-                <p>{!!$program->getDescriptionAttribute()!!}</p>
+                <h1>{{ $program->getTitleAttribute() }}</h1>
+                <p>{!! $program->getDescriptionAttribute() !!}</p>
             </div>
             <div class="program_more">
 
@@ -23,32 +23,20 @@
                 <div class="allcardpro">
 
                     @forelse ($other_programs as $other)
-                    {{-- <div class=" card cardNews ">
-                        <img src="{{Storage::url($other->image)}}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="news_details.html">
-                                <h5 class="card-title">{{$other->getTitleAttribute()}}</h5>
-                            </a>
-                            <p class="card-text">{{$other->getDescriptionAttribute()}}</p>
-                        </div>
-                    </div> --}}
-                    <a href="{{ url('/website/program/' . $other->id) }}">
-                        <div class="cardpro">
-                            <img src="{{ Storage::url($other->image) }}" alt="" data-tilt data-tilt-scale="1.1">
-                            <h4><a
-                                    href="{{ url('/website/program/$program->id') }}">{{ $other->getTitleAttribute() }}</a>
-                            </h4>
-                        </div>
-                    </a>
+                        <a href="{{ url('/website/program/' . $other->id) }}">
+                            <div class="cardpro">
+                                <img src="{{ Storage::url($other->image) }}" alt="" data-tilt
+                                    data-tilt-scale="1.1">
+                                <h4><a
+                                        href="{{ url('/website/program/$program->id') }}">{{ $other->getTitleAttribute() }}</a>
+                                </h4>
+                            </div>
+                        </a>
                     @empty
-
                     @endforelse
                 </div>
 
             </div>
-
-
-
         </section>
     </div>
 @stop

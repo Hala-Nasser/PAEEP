@@ -13,9 +13,9 @@ class ProgramController extends Controller
         return response()->view('website.programs', compact('programs'));
     }
 
-    public function show($id){
-        $program = Program::find($id);
-        $other_programs = Program::where('id', '!=' , $id)->orderBy('created_at','desc')->take(5)->get();
+    public function show($slug){
+        $program = Program::select('*')->where('slug',$slug)->first();
+        $other_programs = Program::where('slug', '!=' , $slug)->orderBy('created_at','desc')->take(5)->get();
 
         return response()->view('website.program_details', compact('program', 'other_programs'));
     }

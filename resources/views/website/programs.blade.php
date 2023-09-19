@@ -18,17 +18,17 @@
                             <div class="allcardpro">
                                 @forelse ($programs as $program)
                                     <div class="cardpro">
-                                        <a href="{{ url('website/program/' . $program->id) }}">
+                                        <a href="{{ url('website/program/' . $program->slug) }}">
                                             <img src="{{ Storage::url($program->image) }}" alt="" data-tilt
                                                 data-tilt-scale="1.1">
                                         </a>
                                         <h4>
                                             <a
-                                                href="{{ url('website/program/' . $program->id) }}">{{ $program->getTitleAttribute() }}</a>
+                                                href="{{ url('website/program/' . $program->slug) }}">{{ $program->getTitleAttribute() }}</a>
                                         </h4>
                                         <p
                                             style=" display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;">
-                                            {{ $program->getDescriptionAttribute() }}</p>
+                                            {!! $program->getDescriptionAttribute() !!}</p>
                                     </div>
                                 @empty
                                 @endforelse

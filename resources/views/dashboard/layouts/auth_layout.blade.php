@@ -38,7 +38,7 @@
             <!--begin::Content-->
             <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
                 <!--begin::Logo-->
-                <a href="../../demo8/dist/index.html" class="mb-12">
+                <a class="mb-12">
                     <img alt="Logo" src="{{ asset('dist/assets/media/logos/logo.png') }}" class="h-40px" />
                 </a>
                 <!--end::Logo-->

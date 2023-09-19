@@ -7,6 +7,7 @@ use App\Http\Requests\StoreContactUsRequest;
 use App\Http\Requests\StoreDonationRequest;
 use App\Models\CompanyRequest;
 use App\Models\ContactUs;
+use App\Models\Donation;
 use App\Models\JobRequest;
 use App\Models\Program;
 use App\Models\VolunteerRequest;
@@ -83,51 +84,50 @@ class RequestsController extends Controller
     }
 
 
-    public function checkout()
+    public function createDonate()
     {
         $programs = Program::all();
         return response()->view('website.donate', compact('programs'));
     }
 
-    public function session(StoreDonationRequest $request)
+    public function storeDonate(StoreDonationRequest $request)
     {
-        // \Stripe\Stripe::setApiKey(config('stripe.sk'));
+         \Stripe\Stripe::setApiKey(config('stripe.sk'));
 
-        // // $productname = $request->get('productname');
-        // $totalprice = $request->get('amount');
-        // $two0 = "00";
-        // $total = "$totalprice$two0";
+        $donor_name = $request->get('name');
+        $amount = $request->get('amount');
+        $two0 = "00";
+        $total = "$amount$two0";
 
-        // $session = \Stripe\Checkout\Session::create([
-        //     'line_items'  => [
-        //         [
-        //             'price_data' => [
-        //                 'currency'     => 'USD',
-        //                 'product_data' => [
-        //                     "name" => "donation",
-        //                 ],
-        //                 'unit_amount'  => $total,
-        //             ],
-        //             'quantity'   => 1,
-        //         ],
+        $session = \Stripe\Checkout\Session::create([
+            'line_items'  => [
+                [
+                    'price_data' => [
+                        'currency'     => 'USD',
+                        'product_data' => [
+                            "name" => $donor_name,
+                        ],
+                        'unit_amount'  => $total,
+                    ],
+                    'quantity'   => 1,
+                ],
 
-        //     ],
-        //     'mode'        => 'payment',
-        //     'success_url' => route('success'),
-        //     'cancel_url'  => route('checkout'),
-        // ]);
+            ],
+            'mode'        => 'payment',
+            'success_url' => route('success'),
+            'cancel_url'  => route('donate'),
+        ]);
 
-        // return redirect()->away($session->url);
-        $is_saved = ContactUs::create($request->getData());
+        return redirect()->away($session->url);
+        $is_saved = Donation::create($request->getData());
         return $is_saved ? parent::successResponse() : parent::errorResponse();
     }
 
-    // public function success()
-    // {
-    //     return "Thanks for you order You have just completed your payment. The seeler will reach out to you as soon as possible";
-    // }
-
-    public function storeFile($request, $key, $location)
+    public function success()
+    {
+        return "Thanks for you order You have just completed your payment. The seeler will reach out to you as soon as possible";
+    }
+     public function storeFile($request, $key, $location)
     {
         if ($request->hasFile($key)) {
             $fileName = time() . "" . '.' . $request->file($key)->getClientOriginalExtension();

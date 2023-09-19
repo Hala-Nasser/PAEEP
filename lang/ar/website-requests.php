@@ -78,5 +78,16 @@ return[
     'message' => 'رسالتك',
     'agree' => 'أوافق على سياسة الخصوصية',
     'contact_info' => 'معلومات التواصل',
-    'send' => 'إرسال'
+    'send' => 'إرسال',
+
+    'donor_details' => 'تفاصيل المتبرع',
+    'donor_name' => 'اسم المتبرع',
+    'choose_program' => 'اختر البرنامج للتبرع له',
+    'donor_introducing' => 'التعريف بالمتبرع',
+    'accept_introducing' => 'لا بأس في ذكر اسمي في لوائح شرف المتبرعين',
+    'choose_amount' => 'اختر مبلغ التبرع',
+    'another_amount' => 'أدخل مبلغ اخر',
+    'donation_type' => 'نوع التبرع',
+    'donate' => 'تبرع',
+    'trust_from' => 'موثوق من'
 ];

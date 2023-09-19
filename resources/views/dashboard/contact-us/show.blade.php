@@ -16,7 +16,7 @@
                             <div class="pe-5">
                                 <!--begin::Author details-->
                                 <div class="d-flex align-items-center flex-wrap gap-1">
-                                    <a href="#"
+                                    <a 
                                         class="fw-bolder text-dark text-hover-primary">{{ $contact_u->email }}</a>
                                     {{-- <span class="text-muted fw-bolder">1 day ago</span> --}}
                                 </div>

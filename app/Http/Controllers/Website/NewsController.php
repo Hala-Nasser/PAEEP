@@ -22,7 +22,7 @@ class NewsController extends Controller
         return response()->view('website.news', compact('news'));
     }
 
-    public function show($id){
+    public function show($slug){
         if (request('search')) {
             $news = News::where('title_en', 'like', '%' . request('search') . '%')->
             orWhere('title_ar', 'like', '%' . request('search') . '%')->
@@ -33,10 +33,10 @@ class NewsController extends Controller
             return response()->view('website.news', compact('news'));
 
         } else {
-        $news = News::find($id);
+        $news = News::select('*')->where('slug',$slug)->first();
         $time = new DateTime($news->time);
         $news->time =  $time->format('g:i A');
-        $latest_news = News::where('id', '!=' , $id)->orderBy('created_at','desc')->take(5)->get();
+        $latest_news = News::where('slug', '!=' , $slug)->orderBy('created_at','desc')->take(5)->get();
         foreach($latest_news as $latest){
         $time = new DateTime($latest->time);
         $latest->time =  $time->format('g:i A');

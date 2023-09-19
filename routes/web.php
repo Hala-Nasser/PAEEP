@@ -27,8 +27,11 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Website\HomeController as WebsiteHomeController;
 use App\Http\Controllers\Website\NewsController as WebsiteNewsController;
 use App\Http\Controllers\Website\ProgramController as WebsiteProgramController;
+use App\Http\Controllers\Website\ReportController;
 use App\Http\Controllers\Website\RequestsController;
 use App\Http\Controllers\Website\SettingController as WebsiteSettingController;
+use App\Http\Controllers\Website\VisualLibraryController as WebsiteVisualLibraryController;
+
 use App\Models\News;
 
 /*
@@ -72,7 +75,7 @@ Route::group([
     });
 
     Route::middleware(['auth:admin', 'verified'])->prefix('dashboard/')->group(function () {
-        Route::get('home', [HomeController::class, 'index'])->name('website-home');
+        Route::get('home', [HomeController::class, 'index'])->name('home');
         Route::resource('admin', AdminController::class);
         Route::resource('achievement', AchievementController::class);
         Route::resource('company-request', CompanyRequestController::class)->except('edit');
@@ -115,19 +118,19 @@ Route::group([
 ], function () {
 
     Route::prefix('website/')->group(function () {
-        Route::get('home', [WebsiteHomeController::class, 'index'])->name('home');
+        Route::get('home', [WebsiteHomeController::class, 'index'])->name('website-home');
         Route::get('news', [WebsiteNewsController::class, 'index']);
-        Route::get('news/{id}', [WebsiteNewsController::class, 'show']);
+        Route::get('news/{slug}', [WebsiteNewsController::class, 'show']);
         Route::get('about', [WebsiteSettingController::class, 'index']);
         Route::get('vision', [WebsiteSettingController::class, 'index']);
         Route::get('mission', [WebsiteSettingController::class, 'index']);
         Route::get('principle', [WebsiteSettingController::class, 'index']);
         Route::get('goals', [WebsiteSettingController::class, 'index']);
-        Route::get('publications-and-reports', [WebsiteSettingController::class, 'publicationsAndReports']);
-        Route::get('visual-library', [WebsiteSettingController::class, 'visualLibrary']);
-        Route::get('visual-library/{id}', [WebsiteSettingController::class, 'visualLibraryDetails']);
+        Route::get('publications-and-reports', [ReportController::class, 'publicationsAndReports']);
+        Route::get('visual-library', [WebsiteVisualLibraryController::class, 'visualLibrary']);
+        Route::get('visual-library/{slug}', [WebsiteVisualLibraryController::class, 'visualLibraryDetails']);
         Route::get('programs', [WebsiteProgramController::class, 'index']);
-        Route::get('program/{id}', [WebsiteProgramController::class, 'show']);
+        Route::get('program/{slug}', [WebsiteProgramController::class, 'show']);
 
         Route::get('company-request', [RequestsController::class, 'createCompanyRequest']);
         Route::post('company-request', [RequestsController::class, 'storeCompanyRequest']);
@@ -144,7 +147,7 @@ Route::group([
 
         // Route::get('checkout', [RequestsController::class, 'checkout'])->name('checkout');
         // Route::post('session', [RequestsController::class, 'session'])->name('session');
-        // Route::get('success', [RequestsController::class, 'success'])->name('success');
+        Route::get('success', [RequestsController::class, 'success'])->name('success');
 
     });
 });

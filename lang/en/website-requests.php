@@ -78,5 +78,17 @@ return[
     'message' => 'Your Message',
     'agree' => 'I agree to the privacy policy',
     'contact_info' => 'Contact Information',
-    'send' => 'Send'
+    'send' => 'Send',
+
+    'donor_details' => 'Donor Details',
+    'donor_name' => 'Donor Name',
+    'choose_program' => 'Select the program to donate to',
+    'donor_introducing' => 'Donor Introducing',
+    'accept_introducing' => 'I agree to have my name mentioned in the donor honor rolls',
+    'choose_amount' => 'Choose the amount to donate',
+    'another_amount' => 'Enter another amount',
+    'donation_type' => 'Donation Type',
+    'donate' => 'Donate',
+    'trust_from' => 'Trust from'
+
 ];

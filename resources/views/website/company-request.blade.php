@@ -4,9 +4,9 @@
     <link rel="stylesheet" href="{{ asset('website/css/companyrequest.css') }}">
     <style>
         /* .li{
-            text-align: start;
-            direction: ltr;
-        } */
+                text-align: start;
+                direction: ltr;
+            } */
     </style>
 @stop
 
@@ -22,7 +22,8 @@
                             <h3><span class="step-number"> </span>{{ trans('website-requests.basic_info') }}</h3>
                         </div>
                         <ul class="progress-bar">
-                            <li class="active" style="text-align: start;">{{ trans('website-requests.general_assoc_info') }}</li>
+                            <li class="active" style="text-align: start;">{{ trans('website-requests.general_assoc_info') }}
+                            </li>
                             <li style="text-align: start;">{{ trans('website-requests.additional_info') }}</li>
                             <li style="text-align: start;">{{ trans('website-requests.additional_info') }}</li>
                             <li style="text-align: start;">{{ trans('website-requests.centers_info') }}</li>
@@ -39,8 +40,7 @@
                             </div>
                             <div class="input-text">
                                 <div class="input-div">
-                                    <input type="text" id="name" name="name"
-                                        style=" font-size: 12px;"
+                                    <input type="text" id="name" name="name" style=" font-size: 12px;"
                                         placeholder="{{ trans('website-requests.enterprise_full_name') }}">
                                 </div>
                             </div>
@@ -48,19 +48,34 @@
                             <div class="input-text" style="margin-bottom:5px;">
                                 <div class="input-div" style="top: -20px;">
                                     <select name="organization_type" id="organization_type">
-                                        <option value="Cultural_and_artistic_center">{{trans('website-requests.Cultural_and_artistic_center')}}</option>
-                                        <option value="Educational_or_higher_education_institution">{{trans('website-requests.Educational_or_higher_education_institution')}}</option>
-                                        <option value="Government_agency">{{trans('website-requests.Government_agency')}}</option>
-                                        <option value="International_non-governmental_organization">{{trans('website-requests.International_non-governmental_organization')}}</option>
-                                        <option value="Media_and_Press_Organization">{{trans('website-requests.Media_and_Press_Organization')}}</option>
-                                        <option value="NGO">{{trans('website-requests.NGO')}}</option>
-                                        <option value="Organizations_of_people_with_disabilities">{{trans('website-requests.Organizations_of_people_with_disabilities')}}</option>
-                                        <option value="Private_company">{{trans('website-requests.Private_company')}}</option>
-                                        <option value="Research_and_Advocacy_Center">{{trans('website-requests.Research_and_Advocacy_Center')}}</option>
-                                        <option value="Social_enterprise">{{trans('website-requests.Social_enterprise')}}</option>
-                                        <option value="Technical_or_vocational_education_institute">{{trans('website-requests.Technical_or_vocational_education_institute')}}</option>
-                                        <option value="Youth_group">{{trans('website-requests.Youth_group')}}</option>
-                                        <option value="Youth_Training_Center">{{trans('website-requests.Youth_Training_Center')}}</option>
+                                        <option value="Cultural_and_artistic_center">
+                                            {{ trans('website-requests.Cultural_and_artistic_center') }}</option>
+                                        <option value="Educational_or_higher_education_institution">
+                                            {{ trans('website-requests.Educational_or_higher_education_institution') }}
+                                        </option>
+                                        <option value="Government_agency">{{ trans('website-requests.Government_agency') }}
+                                        </option>
+                                        <option value="International_non-governmental_organization">
+                                            {{ trans('website-requests.International_non-governmental_organization') }}
+                                        </option>
+                                        <option value="Media_and_Press_Organization">
+                                            {{ trans('website-requests.Media_and_Press_Organization') }}</option>
+                                        <option value="NGO">{{ trans('website-requests.NGO') }}</option>
+                                        <option value="Organizations_of_people_with_disabilities">
+                                            {{ trans('website-requests.Organizations_of_people_with_disabilities') }}
+                                        </option>
+                                        <option value="Private_company">{{ trans('website-requests.Private_company') }}
+                                        </option>
+                                        <option value="Research_and_Advocacy_Center">
+                                            {{ trans('website-requests.Research_and_Advocacy_Center') }}</option>
+                                        <option value="Social_enterprise">{{ trans('website-requests.Social_enterprise') }}
+                                        </option>
+                                        <option value="Technical_or_vocational_education_institute">
+                                            {{ trans('website-requests.Technical_or_vocational_education_institute') }}
+                                        </option>
+                                        <option value="Youth_group">{{ trans('website-requests.Youth_group') }}</option>
+                                        <option value="Youth_Training_Center">
+                                            {{ trans('website-requests.Youth_Training_Center') }}</option>
 
                                     </select>
                                 </div>
@@ -82,8 +97,8 @@
                                 </div>
                             </div>
                             <div class="buttons" style="text-align: left;">
-                                <button type="button"
-                                class="next_button" onclick="validateForm(0);">{{ trans('website-requests.next_one') }}</button>
+                                <button type="button" class="next_button"
+                                    onclick="validateForm(0);">{{ trans('website-requests.next_one') }}</button>
                             </div>
                         </div>
                         <div class="main">
@@ -126,8 +141,8 @@
                             </div>
                             <div class="buttons button_space">
                                 <button class="back_button">{{ trans('website-requests.back') }}</button>
-                                <button type="button"
-                                class="next_button" onclick="validateForm(1);">{{ trans('website-requests.next_one') }}</button>
+                                <button type="button" class="next_button"
+                                    onclick="validateForm(1);">{{ trans('website-requests.next_one') }}</button>
                             </div>
                         </div>
                         <div class="main">
@@ -158,8 +173,8 @@
                             </div>
                             <div class="buttons button_space">
                                 <button class="back_button">{{ trans('website-requests.back') }}</button>
-                                <button type="button"
-                                class="next_button" onclick="validateForm(2);">{{ trans('website-requests.next_one') }}</button>
+                                <button type="button" class="next_button"
+                                    onclick="validateForm(2);">{{ trans('website-requests.next_one') }}</button>
                             </div>
                         </div>
 
@@ -175,8 +190,7 @@
                             </div>
                             <div class="input-text">
                                 <div class="input-div">
-                                    <input type="text" id="current_projects_count"
-                                        name="current_projects_count"
+                                    <input type="text" id="current_projects_count" name="current_projects_count"
                                         placeholder="{{ trans('website-requests.current_projects_num') }}">
 
                                 </div>
@@ -199,8 +213,8 @@
 
                             <div class="buttons button_space">
                                 <button class="back_button">{{ trans('website-requests.back') }}</button>
-                                <button type="button"
-                                class="next_button" onclick="validateForm(3);">{{ trans('website-requests.next_one') }}</button>
+                                <button type="button" class="next_button"
+                                    onclick="validateForm(3);">{{ trans('website-requests.next_one') }}</button>
                             </div>
                         </div>
                         <!-- ---------------- -->
@@ -213,8 +227,8 @@
 
                             <div class="input-text">
                                 <div class="input-div">
-                                    <textarea class="form-control" id="beneficiaries_nationalities" name="beneficiaries_nationalities"
-                                        rows="4" placeholder="{{ trans('website-requests.nationalities') }}" style="height: 100px;"></textarea>
+                                    <textarea class="form-control" id="beneficiaries_nationalities" name="beneficiaries_nationalities" rows="4"
+                                        placeholder="{{ trans('website-requests.nationalities') }}" style="height: 100px;"></textarea>
 
                                 </div>
                             </div>
@@ -235,8 +249,8 @@
 
                             <div class="buttons button_space">
                                 <button class="back_button">{{ trans('website-requests.back') }}</button>
-                                <button type="button"
-                                class="next_button" onclick="validateForm(4);">{{ trans('website-requests.next_one') }}</button>
+                                <button type="button" class="next_button"
+                                    onclick="validateForm(4);">{{ trans('website-requests.next_one') }}</button>
                             </div>
                         </div>
                         <!-- ---------------- -->
@@ -263,14 +277,14 @@
                             </div>
                             <div class="buttons button_space">
                                 <button class="back_button">{{ trans('website-requests.back') }}</button>
-                                <button type="button"
-                                class="next_button" onclick="validateForm(5);">{{ trans('website-requests.next_one') }}</button>
+                                <button type="button" class="next_button"
+                                    onclick="validateForm(5);">{{ trans('website-requests.next_one') }}</button>
                             </div>
                         </div>
                         <!-- ---------------- -->
                     </div>
                 </div>
-    </form>
+            </form>
 
         </div>
     </div>

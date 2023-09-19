@@ -41,12 +41,12 @@
 
                         <!--end:Email content-->
                         <div style="padding-bottom: 10px">Kind regards,
-                            <br>The E-book Team.
+                            <br>The PAEEP Team.
             <tr>
                 <td align="center" valign="center"
                     style="font-size: 13px; text-align:center;padding: 20px; color: #6d6e7c;">
                     <p>Copyright ©
-                        <a href="" rel="noopener" target="_blank">E-book</a>.
+                        <a href="" rel="noopener" target="_blank">PAEEP</a>.
                     </p>
                 </td>
             </tr></br>

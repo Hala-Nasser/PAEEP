@@ -8,9 +8,9 @@
 <head>
     <base href="../../../">
     @if (LaravelLocalization::getCurrentLocale() == 'ar')
-        <title>{{$settings[4]->value}}</title>
+        <title>{{ $settings[4]->value }}</title>
     @else
-        <title>{{$settings[3]->value}}</title>
+        <title>{{ $settings[3]->value }}</title>
     @endif
 
     <meta charset="utf-8" />
@@ -55,6 +55,15 @@
         div.dataTables_wrapper div.dataTables_filter {
             text-align: end;
         }
+
+        @font-face {
+            font-family: "Font";
+            src: url("{{ asset('dist/assets/fonts/ElMessiri-VariableFont_wght.ttf') }}");
+
+        }
+        *{
+            font-family: "Font"
+        }
     </style>
 
     @yield('css')
@@ -81,7 +90,7 @@
                         <!--begin::Logo-->
                         <a>
                             @if ($settings[1]->value)
-                                <link rel="shortcut icon" href="" />
+                                <link rel="shortcut icon" href="{{route('home')}}" />
                                 <img alt="Logo" src="{{ Storage::url($settings[0]->value) }}"
                                     class="h-25px h-lg-25px" />
                             @else

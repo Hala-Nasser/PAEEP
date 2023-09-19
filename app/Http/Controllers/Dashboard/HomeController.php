@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Donation;
+use App\Models\Partner;
+use App\Models\Program;
 
 class HomeController extends Controller
 {
@@ -16,6 +19,10 @@ class HomeController extends Controller
         // }
         // dd($categories);
         // return view('dashboard.home',compact('categories_count', 'sub_categories_count', 'books_count', 'categories'));
-        return view('dashboard.home');
+
+        $programs_count = Program::count();
+        $donations_count = Donation::count();
+        $partners_count = Partner::count();
+        return view('dashboard.home', compact('programs_count', 'donations_count', 'partners_count'));
     }
 }

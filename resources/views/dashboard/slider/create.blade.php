@@ -110,8 +110,13 @@
                                 <select class="form-select mb-2" data-control="select2" data-placeholder="Select an option"
                                     id="redirect_to">
                                     <option value="-1">{{ trans('slider.choose_redirect') }}</option>
-                                    <option value="{{ route('contact-us.index') }}">{{ trans('general.contact_us') }}
-                                    </option>
+                                    <option value="{{ url('website/contact-us') }}">{{ trans('general.contact_us') }}</option>
+                                    <option value="{{ url('website/about') }}">{{ trans('general.about') }}</option>
+                                    <option value="{{ url('website/vision') }}">{{ trans('general.vision') }}</option>
+                                    <option value="{{ url('website/mission') }}">{{ trans('general.message') }}</option>
+                                    <option value="{{ url('website/principle') }}">{{ trans('general.principle') }}</option>
+                                    <option value="{{ url('website/goals') }}">{{ trans('general.objective') }}</option>
+                                    <option value="{{ url('website/donate') }}">{{ trans('website_navbar.donate-now') }}</option>
                                 </select>
                                 <!--end::Select2-->
                             </div>

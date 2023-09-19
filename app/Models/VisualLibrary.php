@@ -5,10 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Cviebrock\EloquentSluggable\Sluggable;
+
 
 class VisualLibrary extends Model
 {
     use HasFactory;
+    use Sluggable;
+
     protected $fillable = [
         'title_en',
         'title_ar',
@@ -37,5 +41,15 @@ class VisualLibrary extends Model
 
     public function media(){
         return $this->hasMany(VisualLibraryMedia::class);
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' =>
+            [
+                'source' => 'title_en'
+            ]
+        ];
     }
 }

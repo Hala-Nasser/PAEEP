@@ -23,7 +23,7 @@
                     <!--begin::Info-->
                     <div class="flex-grow-1 me-2">
                         <!--begin::Username-->
-                        <a href="#"
+                        <a
                             class="text-white text-hover-primary fs-6 fw-bold">{{ auth('admin')->user()->name }}</a>
                         <!--end::Username-->
                     </div>
@@ -70,7 +70,7 @@
                                         <div class="fw-bolder d-flex align-items-center fs-5">
                                             {{ auth('admin')->user()->name }}
                                         </div>
-                                        <a href="#"
+                                        <a
                                             class="fw-bold text-muted text-hover-primary fs-7">{{ auth('admin')->user()->email }}</a>
                                     </div>
                                     <!--end::Username-->
@@ -81,9 +81,9 @@
                             <div class="separator my-2"></div>
                             <!--end::Menu separator-->
                             <!--begin::Menu item-->
-                            <div class="menu-item px-5">
+                            <!--<div class="menu-item px-5">
                                 <a href="../../demo8/dist/account/overview.html" class="menu-link px-5">{{ trans('dashboard_layout.profile') }}</a>
-                            </div>
+                            </div>-->
                             <!--end::Menu item-->
 
                             <!--begin::Menu item-->
@@ -96,7 +96,7 @@
                             <!--end::Menu separator-->
                             <!--begin::Menu item-->
                             <div class="menu-item px-5">
-                                <a href="../../demo8/dist/authentication/flows/basic/sign-in.html"
+                                <a href="{{ route('admin.logout') }}"
                                     class="menu-link px-5">{{ trans('dashboard_layout.logout') }}</a>
                             </div>
                             <!--end::Menu item-->

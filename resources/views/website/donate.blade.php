@@ -15,57 +15,45 @@
     <div class="containerr">
         <section class="hedsid">
             <h6><a href="{{ url('website/home') }}">{{ trans('website_navbar.home') }} / </a></h6>
-            <h6>{{ trans('website_footer.donate') }}</h6>
+            <h6>{{ trans('website_navbar.donate-now') }}</h6>
         </section>
         <section class="aboutt">
-            <h1> تبرع الان </h1>
+            <h1>{{ trans('website_navbar.donate-now') }}</h1>
             <form class="body_donate" id="donate_form" onsubmit="event.preventDefault(); performStore();">
                 <div class="right_donate">
-                    <h2>تفاصيل المتبرع</h2>
+                    <h2>{{ trans('website-requests.donor_details') }}</h2>
                     <div class="blowline"></div>
                     <div class="input_donate">
-                        <input type="text" id="name" name="name" placeholder="اسم المتبرع">
-                        <input type="email" id="email" name="email" placeholder="البريد الالكتروني">
+                        <input type="text" id="name" name="name" placeholder="{{ trans('website-requests.donor_name') }}">
+                        <input type="email" id="email" name="email" placeholder="{{ trans('website-requests.email') }}">
                     </div>
                     <div class="input_donate">
                         <div class="selectPhone">
                             <input class="inputPhoneI" type="tel" id="phone" name="phone"
-                                placeholder="رقم الهاتف">
+                                placeholder="{{ trans('website-requests.phone') }}">
                         </div>
                         <select class="form-select" aria-label="" name="program_id" id="program_id">
-                            <option selected value="-1">اختر المشروع الذي تود التبرع به</option>
+                            <option selected value="-1">{{ trans('website-requests.choose_program') }}</option>
                             @foreach ($programs as $program)
-                            <option value="{{$program->id}}">{{$program->getTitleAttribute()}}</option>
+                                <option value="{{ $program->id }}">{{ $program->getTitleAttribute() }}</option>
                             @endforeach
-                            {{-- <option value="1">الإغاثة الطارئة</option>
-                            <option value="2">الإغاثة الطارئة</option>
-                            <option value="3">الإغاثة الطارئة</option> --}}
                         </select>
                     </div>
-                    {{-- <div class="input_donate">
-                        <select type="text" class="form-select" id="country" name="country" placeholder="الدولة">
-                            <option value="">اختر الدولة</option>
-                        </select>
-                        <select name="state" id="state" class="form-select">
-                            <option value="">اختر المدينة</option>
-                        </select>
-                    </div> --}}
                     <div class="input_donate">
-                        <textarea name="message" id="message" cols="30" rows="10" placeholder="رسالتك لنا"></textarea>
+                        <textarea name="message" id="message" cols="30" rows="10" placeholder="{{ trans('website-requests.message') }}"></textarea>
                     </div>
                     <div class="inputCheck">
                         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="is_agree">
                         <label class="form-check-label" for="defaultCheck1">
-                            التعريف بالمتبرع
+                            {{ trans('website-requests.donor_introducing') }}
                             <br>
-                            لا بأس بذكر اسمي في في لوائح الشرف والشكر
+                            {{ trans('website-requests.accept_introducing') }}
                         </label>
                     </div>
                 </div>
                 <div class="leftdonateForm">
                     <div class="mt-4">
-                        <label style="font-weight: bold; font-size: 16px;" for="">اختر المبلغ المراد التبرع
-                            به</label>
+                        <label style="font-weight: bold; font-size: 16px;" for="">{{ trans('website-requests.choose_amount') }}</label>
                         <div class="cardsDonate">
                             <div class="cardDonate active">
                                 <i class='bx bx-check'></i>
@@ -97,7 +85,7 @@
                                 <input class="form-check-input inputCheckA" type="checkbox" value=""
                                     id="defaultCheck2">
                                 <label class="form-check-label " for="defaultCheck2">
-                                    إضافة مبلغ اخر
+                                    {{ trans('website-requests.another_amount') }}
                                 </label>
                             </div>
                         </div>
@@ -110,7 +98,7 @@
                         </div>
                     </div>
                     <div class="mt-4">
-                        <h5>طريقة التبرع</h5>
+                        <h5>{{ trans('website-requests.donation_type') }}</h5>
                         <div class="cardsDonate">
                             <div class="cardDonateS active">
                                 <i class='bx bx-check'></i>
@@ -119,10 +107,10 @@
                         </div>
                     </div>
                     {{-- <button class="btnDonare">تبرع</button> --}}
-                    <button type="submit" class="btnDonare">تبرع</button>
+                    <button type="submit" class="btnDonare">{{ trans('website-requests.donate') }}</button>
 
                     <div class="mt-4">
-                        <h5>موثوق من</h5>
+                        <h5>{{ trans('website-requests.trust_from') }}</h5>
                         <div class="imgGC">
                             <img src="{{ asset('website/images/masterCardS.svg') }}" alt="">
                             <img src="{{ asset('website/images/visaa.svg') }}" alt="">
@@ -209,62 +197,60 @@
             let formData = new FormData(myform);
             if (document.getElementById('program_id').value != -1) {
 
-            axios.post('/{{ LaravelLocalization::getCurrentLocale() }}/website/donate', formData)
-                .then(function(response) {
+                axios.post('/{{ LaravelLocalization::getCurrentLocale() }}/website/donate', formData)
+                    .then(function(response) {
 
-                    console.log(response);
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-                    Toast.fire({
-                        icon: 'success',
-                        title: response.data.message
-                    })
-                    // window.location.href = "/website/volunteer-request";
-
-                }).catch(function(error) {
-                    console.log(error);
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-                    Toast.fire({
-                        icon: 'error',
-                        title: error.response.data.message
-                    })
-                });
-        }else{
-            const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-                    Toast.fire({
-                        icon: 'error',
-                        title: "select program please"
-                    })
+                        console.log(response);
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 1500,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+                        Toast.fire({
+                            icon: 'success',
+                            title: response.data.message
+                        })
+                    }).catch(function(error) {
+                        console.log(error);
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 1500,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+                        Toast.fire({
+                            icon: 'error',
+                            title: error.response.data.message
+                        })
+                    });
+            } else {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    icon: 'error',
+                    title: "select program please"
+                })
+            }
         }
-    }
     </script>
 @stop

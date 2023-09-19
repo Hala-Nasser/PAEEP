@@ -27,7 +27,7 @@
                     <div class="right_newsdeta">
                         <h5
                             style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-                            {{ $news->getDescriptionAttribute() }}
+                            {!! $news->getDescriptionAttribute() !!}
                         </h5>
                         <div class="icons_ns">
                             <div class="icon_n">
@@ -146,10 +146,10 @@
                                             alt="">
                                     </div>
                                     <div class="textlnews">
-                                        <a href="#">
+                                        <a>
                                             <h6>{{ $latest->getTitleAttribute() }}</h6>
                                         </a>
-                                        <p>{{ $latest->getDescriptionAttribute() }}</p>
+                                        <p>{!! $latest->getDescriptionAttribute() !!}</p>
                                         <div class="nononews">
                                             <svg id="Group_37" data-name="Group 37" xmlns="http://www.w3.org/2000/svg"
                                                 xmlns:xlink="http://www.w3.org/1999/xlink" width="16.477" height="16.487"
