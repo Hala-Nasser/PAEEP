@@ -7,9 +7,7 @@
 @section('content')
     <div class="container">
         <div class="card">
-            {{-- <form id="job-request-form" onsubmit="event.preventDefault(); performStore();"> --}}
             <form id="job-request-form">
-
                 <div class="form">
                     <div class="left-side">
                         <div class="left-heading">
@@ -18,8 +16,8 @@
                             <h3><span class="step-number"> </span>{{ trans('website-requests.basic_info') }}</h3>
                         </div>
                         <ul class="progress-bar">
-                            <li class="active">{{ trans('website-requests.basic_info') }}</li>
-                            <li>{{ trans('website-requests.additional_info') }}</li>
+                            <li class="active" style="text-align: start;">{{ trans('website-requests.basic_info') }}</li>
+                            <li style="text-align: start;">{{ trans('website-requests.additional_info') }}</li>
                         </ul>
                     </div>
                     <div class="right-side">
@@ -30,31 +28,31 @@
                             </div>
                             <div class="input-text">
                                 <div class="input-div">
-                                    <input type="text" required require id="first_name" name="first_name"
+                                    <input type="text" id="first_name" name="first_name"
                                         placeholder="{{ trans('website-requests.first_name') }}" value="{{request('first_name')}}">
                                 </div>
                                 <div class="input-div">
-                                    <input type="text" id="father_name" name="father_name" required require
+                                    <input type="text" id="father_name" name="father_name"
                                         placeholder="{{ trans('website-requests.father_name') }}" value="{{request('father_name')}}">
                                 </div>
                             </div>
                             <div class="input-text">
                                 <div class="input-div">
-                                    <input type="text" required require id="grandfather_name" name="grandfather_name"
+                                    <input type="text" id="grandfather_name" name="grandfather_name"
                                         placeholder="{{ trans('website-requests.grandfather_name') }}" value="{{request('grandfather_name')}}">
                                 </div>
                                 <div class="input-div">
-                                    <input type="text" required require id="last_name" name="last_name"
+                                    <input type="text" id="last_name" name="last_name"
                                         placeholder="{{ trans('website-requests.last_name') }}" value="{{request('last_name')}}">
                                 </div>
                             </div>
                             <div class="input-text">
                                 <div class="input-div numinputr">
-                                    <input type="number" required require id="phone" name="phone"
+                                    <input type="text" id="phone" name="phone"
                                         placeholder="{{ trans('website-requests.phone') }}" value="{{request('phone')}}">
                                 </div>
                                 <div class="input-div ">
-                                    <input type="text" required require id="email" name="email"
+                                    <input type="text" id="email" name="email"
                                         placeholder="{{ trans('website-requests.email') }}" value="{{request('email')}}">
                                 </div>
                             </div>
@@ -107,8 +105,6 @@
                             </div>
                             <div class="buttons button_space">
                                 <button class="back_button">{{ trans('website-requests.back') }}</button>
-                                {{-- <button type="submit"
-                                    class="next_button">{{ trans('website-requests.next_one') }}</button> --}}
                             <button type="button" onclick="validateForm(1);" class="next_button">{{ trans('website-requests.next_one') }}</button>
                                 </div>
                         </div>
@@ -131,101 +127,5 @@
             });
         });
 
-        // function validateForm($page_number) {
-        //     let formData = new FormData();
-        //     formData.append('first_name', document.getElementById('first_name').value);
-        //     formData.append('father_name', document.getElementById('father_name').value);
-        //     formData.append('grandfather_name', document.getElementById('grandfather_name').value);
-        //     formData.append('last_name', document.getElementById('last_name').value);
-        //     formData.append('gender', document.getElementById('gender').value);
-        //     formData.append('qualification', document.getElementById('qualification').value);
-        //     formData.append('page_number', $page_number);
-
-        //     axios.post('/website/job-request', formData)
-        //         .then(function(response) {
-
-        //             console.log(response);
-        //             const Toast = Swal.mixin({
-        //                 toast: true,
-        //                 position: 'top-end',
-        //                 showConfirmButton: false,
-        //                 timer: 1500,
-        //                 timerProgressBar: true,
-        //                 didOpen: (toast) => {
-        //                     toast.addEventListener('mouseenter', Swal.stopTimer)
-        //                     toast.addEventListener('mouseleave', Swal.resumeTimer)
-        //                 }
-        //             })
-        //             Toast.fire({
-        //                 icon: 'success',
-        //                 title: response.data.message
-        //             })
-
-        //         }).catch(function(error) {
-        //             console.log(error);
-        //             const Toast = Swal.mixin({
-        //                 toast: true,
-        //                 position: 'top-end',
-        //                 showConfirmButton: false,
-        //                 timer: 1500,
-        //                 timerProgressBar: true,
-        //                 didOpen: (toast) => {
-        //                     toast.addEventListener('mouseenter', Swal.stopTimer)
-        //                     toast.addEventListener('mouseleave', Swal.resumeTimer)
-        //                 }
-        //             })
-        //             Toast.fire({
-        //                 icon: 'error',
-        //                 title: error.response.data.message
-        //             })
-        //         });
-        // }
-
-        function performStore() {
-            let myform = document.getElementById("job-request-form");
-            let formData = new FormData(myform);
-
-            // axios.post('/{{ LaravelLocalization::getCurrentLocale() }}/website/job-request', formData)
-            axios.post('/website/job-request', formData)
-
-                .then(function(response) {
-
-                    console.log(response);
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-                    Toast.fire({
-                        icon: 'success',
-                        title: response.data.message
-                    })
-                    window.location.href = "/website/job-request";
-
-                }).catch(function(error) {
-                    console.log(error);
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-                    Toast.fire({
-                        icon: 'error',
-                        title: error.response.data.message
-                    })
-                });
-        }
     </script>
 @stop

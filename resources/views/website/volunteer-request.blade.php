@@ -7,7 +7,7 @@
 @section('content')
     <div class="container">
         <div class="card">
-            <form id="volunteer-request-form" onsubmit="event.preventDefault(); performStore();">
+            <form id="volunteer-request-form">
                 <div class="form">
                     <div class="left-side">
                         <div class="left-heading">
@@ -16,8 +16,8 @@
                             <h3><span class="step-number"> </span>{{trans('website-requests.basic_info')}}</h3>
                         </div>
                         <ul class="progress-bar">
-                            <li class="active">{{trans('website-requests.basic_info')}}</li>
-                            <li>{{trans('website-requests.additional_info')}}</li>
+                            <li class="active" style="text-align: start;">{{trans('website-requests.basic_info')}}</li>
+                            <li style="text-align: start;">{{trans('website-requests.additional_info')}}</li>
                         </ul>
                     </div>
                     <div class="right-side">
@@ -28,27 +28,27 @@
                             </div>
                             <div class="input-text">
                                 <div class="input-div">
-                                    <input type="text" required require id="full_name" name="full_name"
+                                    <input type="text" id="full_name" name="full_name" value="{{request('full_name')}}"
                                         placeholder="{{trans('website-requests.full_name')}}">
                                 </div>
                                 <div class="input-div">
-                                    <input type="number" required require id="phone" name="phone" placeholder="{{trans('website-requests.phone')}}">
+                                    <input type="text" value="{{request('phone')}}" id="phone" name="phone" placeholder="{{trans('website-requests.phone')}}">
                                 </div>
                             </div>
                             <div class="input-text">
                                 <div class="input-div">
-                                    <input type="text" required require id="email" name="email"
+                                    <input type="text" id="email" name="email" value="{{request('email')}}"
                                         placeholder="{{trans('website-requests.email')}}">
                                 </div>
                                 <div class="input-div">
-                                    <input type="text" required require id="address" name="address"
+                                    <input type="text" id="address" name="address" value="{{request('address')}}"
                                         placeholder="{{trans('website-requests.address')}}">
                                 </div>
                             </div>
                             <span>{{ trans('website-requests.volunteered_before') }}</span>
                             <div class="input-text" style="margin-bottom: 10px">
                                 <div class="input-div" style="top: -20px">
-                                    <select id="volunteered_before" name="volunteered_before" required require>
+                                    <select id="volunteered_before" name="volunteered_before">
                                         <option value="1">{{trans('website-requests.yes')}}</option>
                                         <option value="0">{{trans('website-requests.no')}}</option>
                                     </select>
@@ -56,14 +56,14 @@
                             </div>
                             <div class="input-text" style="margin-top: -10px">
                                 <div class="input-div">
-                                    <input type="text" id="volunteer_info" name="volunteer_info"
+                                    <input type="text" id="volunteer_info" name="volunteer_info" value="{{request('volunteered_info')}}"
                                         placeholder="{{trans('website-requests.mention_breifly')}}">
                                 </div>
                             </div>
                             <span>{{ trans('website-requests.have_skills') }}</span>
                             <div class="input-text" style="margin-bottom: 10px">
                                 <div class="input-div" style="top: -20px">
-                                    <select id="have_skills" name="have_skills" required require>
+                                    <select id="have_skills" name="have_skills">
                                         <option value="1">{{trans('website-requests.yes')}}</option>
                                         <option value="0">{{trans('website-requests.no')}}</option>
                                     </select>
@@ -71,12 +71,12 @@
                             </div>
                             <div class="input-text" style="margin-top: -10px">
                                 <div class="input-div">
-                                    <input type="text" id="skills_info" name="skills_info"
+                                    <input type="text" id="skills_info" name="skills_info" value="{{request('skills_info')}}"
                                         placeholder="{{trans('website-requests.mention_breifly')}}">
                                 </div>
                             </div>
                             <div class="buttons">
-                                <button class="next_button">{{trans('website-requests.next_one')}}</button>
+                                <button type="button" onclick="validateForm(0);" class="next_button">{{ trans('website-requests.next_one') }}</button>
                             </div>
                         </div>
                         <div class="main">
@@ -87,32 +87,31 @@
                             <span>{{ trans('website-requests.volunteer_beginning') }}</span>
                             <div class="input-text" style="margin-bottom: 5px;">
                                 <div class="input-div" style="top: -20px;">
-                                    <input type="date" id="volunteer_beginning" name="volunteer_beginning" required require>
+                                    <input type="date" id="volunteer_beginning" name="volunteer_beginning" value="{{request('volunteer_beginning')}}">
                                 </div>
                             </div>
                             <span>{{ trans('website-requests.volunteer_ending') }}</span>
                             <div class="input-text" style="margin-bottom: -20px;">
                                 <div class="input-div" style="top: -20px;">
-                                    <input type="date" id="volunteer_ending" name="volunteer_ending" required require>
+                                    <input type="date" id="volunteer_ending" name="volunteer_ending" value="{{request('volunteer_ending')}}">
                                 </div>
                             </div>
                             <div class="input-text">
                                 <div class="input-div">
-                                    <input type="text" required require id="educational_experience"
-                                        name="educational_experience" style="height: 93px;">
+                                    <input type="text" id="educational_experience"
+                                        name="educational_experience" style="height: 93px;" value="{{request('educational_experience')}}">
                                     <span>{{trans('website-requests.educational_experience')}}</span>
                                 </div>
                             </div>
                             <span>{{ trans('website-requests.cv') }}</span>
                             <div class="input-text" style="margin-top: 5px;">
                                 <div class="input-div fileinput">
-                                    <input type="file" id="cv" name="cv" required require>
+                                    <input type="file" id="cv" name="cv">
                                 </div>
                             </div>
-                            <div class="buttons button_space">
+                            <div class="buttons button_space" style="margin-top: 70px">
                                 <button class="back_button">{{trans('website-requests.back')}}</button>
-                                <button type="submit" class="next_button"
-                                    >{{ trans('website-requests.next_one') }}</button>
+                                <button type="button" onclick="validateForm(1);" class="next_button">{{ trans('website-requests.next_one') }}</button>
                             </div>
                         </div>
                     </div>
@@ -124,58 +123,4 @@
 
 @section('js')
     <script src="{{ asset('website/js/volunteerrequest.js') }}"></script>
-    <script>
-         $(document).ready(function() {
-            $(window).keydown(function(event) {
-                if (event.keyCode == 13) {
-                    event.preventDefault();
-                    return false;
-                }
-            });
-        });
-        function performStore() {
-            let myform = document.getElementById("volunteer-request-form");
-            let formData = new FormData(myform);
-
-            axios.post('/{{ LaravelLocalization::getCurrentLocale() }}/website/volunteer-request', formData)
-                .then(function(response) {
-
-                    console.log(response);
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-                    Toast.fire({
-                        icon: 'success',
-                        title: response.data.message
-                    })
-                    window.location.href = "/website/volunteer-request";
-
-                }).catch(function(error) {
-                    console.log(error);
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-                    Toast.fire({
-                        icon: 'error',
-                        title: error.response.data.message
-                    })
-                });
-        }
-    </script>
 @stop
