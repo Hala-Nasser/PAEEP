@@ -109,10 +109,10 @@ Route::group([
 });
 
 
-// Route::group([
-//     'prefix' => LaravelLocalization::setLocale(),
-//     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
-// ], function () {
+Route::group([
+    'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+], function () {
 
     Route::prefix('website/')->group(function () {
         Route::get('home', [WebsiteHomeController::class, 'index'])->name('home');
@@ -147,4 +147,4 @@ Route::group([
         // Route::get('success', [RequestsController::class, 'success'])->name('success');
 
     });
-// });
+});
