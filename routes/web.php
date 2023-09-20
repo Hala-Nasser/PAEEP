@@ -22,6 +22,7 @@ use App\Http\Controllers\Dashboard\SliderController;
 use App\Http\Controllers\Dashboard\VisualLibraryController;
 use App\Http\Controllers\Dashboard\VisualLibraryMediaController;
 use App\Http\Controllers\Dashboard\VolunteerRequestController;
+use App\Http\Controllers\Dashboard\NotificationController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 use App\Http\Controllers\Website\HomeController as WebsiteHomeController;
@@ -90,6 +91,9 @@ Route::group([
         Route::resource('visual-library', VisualLibraryController::class);
         Route::resource('volunteer-request', VolunteerRequestController::class);
         Route::delete('visual-library-media/{visual_library_media}', [VisualLibraryController::class, 'deleteMedia']);
+
+        Route::resource('notification', NotificationController::class);
+
 
         Route::get('about', [SettingController::class, 'about'])->name('about');
         Route::get('vision', [SettingController::class, 'vision'])->name('vision');

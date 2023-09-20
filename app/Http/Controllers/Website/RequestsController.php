@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Website;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreContactUsRequest;
 use App\Http\Requests\StoreDonationRequest;
+use App\Models\Admin;
 use App\Models\CompanyRequest;
 use App\Models\ContactUs;
 use App\Models\Donation;
 use App\Models\JobRequest;
 use App\Models\Program;
 use App\Models\VolunteerRequest;
+use App\Notifications\NewJobRequestNotification;
 use Illuminate\Http\Request;
 
 class RequestsController extends Controller
@@ -48,6 +50,11 @@ class RequestsController extends Controller
         if ($request['page_number'] == 1) {
             $request_data['cv'] = $this->storeFile($request, 'cv', 'JobRequest');
             $is_saved = JobRequest::create($request_data);
+            if($is_saved){
+                $admin = Admin::where('email', 'hala.n.nofal@gmail.com')->first();
+                $applier_fullname = $request_data['first_name'] . ' ' . $request_data['last_name'];
+                $admin->notify(new NewJobRequestNotification($applier_fullname, $is_saved->id));
+            }
             return $is_saved ? parent::successResponse() : parent::errorResponse();
         }
     }
