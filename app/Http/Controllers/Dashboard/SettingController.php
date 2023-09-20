@@ -127,7 +127,7 @@ class SettingController extends Controller
                     'email' => 'required|email',
                     'name_en' => 'required|string|min:3',
                     'name_ar' => 'required|string|min:3',
-                    'phone' => 'required|regex:/^([0-9\-\+]*)$/',
+                    'phone' => 'required|regex:/^([0-9\-\+\(\)\ ]*)$/',
                     'address_en' => 'required|string|min:3',
                     'address_ar' => 'required|string|min:3',
                     'description_en' => 'required|string|min:3',

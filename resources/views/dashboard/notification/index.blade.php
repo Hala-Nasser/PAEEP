@@ -25,8 +25,8 @@
                             <!--begin::Table row-->
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                 {{-- <th class="w-10px pe-2" style="text-align: start;">#</th> --}}
-                                <th class="min-w-250px" style="text-align: start;">Title</th>
-                                <th class="min-w-100px" style="text-align: start;">Message</th>
+                                <th class="min-w-150px" style="text-align: start;">Title</th>
+                                <th class="min-w-200px" style="text-align: start;">Message</th>
                                 <th class="min-w-100px" style="text-align: start;">Read At</th>
                                 <th class="min-w-70px" style="text-align: start;">{{ trans('general.actions') }}</th>
                             </tr>
@@ -116,7 +116,7 @@
                             data: 'action',
                             name: 'action',
                         },
-                    ]
+                    ],
                 });
             });
         });

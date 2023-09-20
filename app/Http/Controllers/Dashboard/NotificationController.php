@@ -23,13 +23,11 @@ class NotificationController extends Controller
                 //     ';
                 // })
                 ->addColumn('title', function ($row) {
-                    $row->markAsRead();
-                    return '<a href="/dashboard/job-request/' . $row->data['request_id'] . '" class="text-gray-800 text-hover-primary fs-5 fw-bolder">' . trans($row->data['title']) . '</a>
+                    return '<a href="/dashboard/notification/'.$row->id .'" class="text-gray-800 text-hover-primary fs-5 fw-bolder">' . trans($row->data['title']) . '</a>
                     ';
                 })
                 ->addColumn('message', function ($row) {
-                    $row->markAsRead();
-                    return '<a href="/dashboard/job-request/' . $row->data['request_id'] . '" class="text-gray-800 text-hover-primary fs-5 fw-bolder">' . $row->data['applier_fullname'] . trans($row->data['message']) . '</a>
+                    return '<a href="/dashboard/notification/'.$row->id .'" class="text-gray-800 text-hover-primary fs-5 fw-bolder">' . $row->data['applier_fullname'] . trans($row->data['message']) . '</a>
                     ';
                 })
                 ->addColumn('read_at', function ($row) {
@@ -55,7 +53,9 @@ class NotificationController extends Controller
 
     public function show(REquest $request, string $id)
     {
-        //
+        $notification = $request->user()->notifications->where('id', $id)->first();
+        $notification->markAsRead();
+        return redirect('/dashboard/job-request/' . $notification->data['request_id'] . '');
     }
 
     /**

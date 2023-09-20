@@ -206,7 +206,7 @@ class RequestsController extends Controller
                     'father_name' => 'required|string|min:3|max:30',
                     'grandfather_name' => 'required|string|min:3|max:30',
                     'last_name' => 'required|string|min:3|max:30',
-                    'phone' => 'required|regex:/^([0-9\-\+]*)$/|min:10',
+                    'phone' => 'required|regex:/^([0-9\-\+\(\)\ ]*)$/|min:10',
                     'email' => 'required|email',
                     'gender' => 'required|string|in:male,female',
                     'qualification' => 'required|string|min:3',
@@ -228,7 +228,7 @@ class RequestsController extends Controller
             case (0):
                 $validated = $request->validate([
                     'full_name' => 'required|string|min:3|max:50',
-                    'phone' => 'required|regex:/^([0-9\-\+]*)$/|min:10',
+                    'phone' => 'required|regex:/^([0-9\-\+\(\)\ ]*)$/|min:10',
                     'email' => 'required|email',
                     'address' => 'required|string|min:3',
                     'volunteered_before' => 'required|in:1,0',

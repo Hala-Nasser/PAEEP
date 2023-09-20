@@ -18,7 +18,9 @@
             </svg>
         </span>
         <!--end::Svg Icon-->
+        @if (auth('admin')->user()->unreadNotifications->count() > 0)
         <span class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink"></span>
+        @endif
     </a>
     <!--begin::Menu-->
     <div class="menu menu-sub menu-sub-dropdown menu-column w-350px w-lg-375px" data-kt-menu="true" data-popper-placement="bottom-end" style="z-index: 105; position: fixed; inset: 0px 0px auto auto; margin: 0px; transform: translate(-254px, 107px);">
@@ -45,7 +47,7 @@
                         <div class="d-flex align-items-center">
                             <!--begin::Title-->
                             <div class="mb-0 me-2">
-                                <a href="#" class="fs-6 text-gray-800 text-hover-primary fw-bolder">{{trans($notification->data['title'])}}</a>
+                                <a href="/dashboard/notification/{{$notification->id}}" class="fs-6 text-gray-800 text-hover-primary fw-bolder">{{trans($notification->data['title'])}}</a>
                                 @if ($notification->unread())
                                 <span class="bullet bullet-dot bg-danger h-6px w-6px"></span>
                                 @endif

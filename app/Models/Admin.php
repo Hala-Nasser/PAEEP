@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Storage;
 class Admin extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory,
-    // HasRoles,
-    Notifiable;
+        // HasRoles,
+        Notifiable;
 
     protected $fillable = [
         'name',
@@ -49,5 +49,13 @@ class Admin extends Authenticatable implements MustVerifyEmail
         } else {
             return '<div class="badge badge-light-primary" style="font-size:1.15rem">Unverified</div>';
         }
+    }
+
+
+
+    public function notificationsByCreated()
+    {
+        return $this->morphMany(\Illuminate\Notifications\DatabaseNotification::class, "notifiable")
+            ->orderByRaw("created_at", "asc");
     }
 }
