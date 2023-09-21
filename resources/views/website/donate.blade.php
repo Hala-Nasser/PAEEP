@@ -43,7 +43,7 @@
                         <textarea name="message" id="message" cols="30" rows="10" placeholder="{{ trans('website-requests.message') }}"></textarea>
                     </div>
                     <div class="inputCheck">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="is_agree">
+                        <input class="form-check-input" type="checkbox" value="" id="is_agree" >
                         <label class="form-check-label" for="defaultCheck1">
                             {{ trans('website-requests.donor_introducing') }}
                             <br>
@@ -195,7 +195,7 @@
         function performStore() {
             let myform = document.getElementById("donate_form");
             let formData = new FormData(myform);
-            formData.append('is_agree', document.getElementById('defaultCheck1').checked);
+            formData.append('is_agree', document.getElementById('is_agree').checked);
             console.log(formData);
 
             if (document.getElementById('program_id').value != -1) {

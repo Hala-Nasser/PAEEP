@@ -20,20 +20,21 @@ use App\Http\Controllers\Dashboard\ReportsController;
 use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\SliderController;
 use App\Http\Controllers\Dashboard\VisualLibraryController;
-use App\Http\Controllers\Dashboard\VisualLibraryMediaController;
 use App\Http\Controllers\Dashboard\VolunteerRequestController;
 use App\Http\Controllers\Dashboard\NotificationController;
+use App\Http\Controllers\Website\CompanyRequestController as WebsiteCompanyRequestController;
+use App\Http\Controllers\Website\ContactUsController as WebsiteContactUsController;
+use App\Http\Controllers\Website\DonationController as WebsiteDonationController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 use App\Http\Controllers\Website\HomeController as WebsiteHomeController;
+use App\Http\Controllers\Website\JobRequestController as WebsiteJobRequestController;
 use App\Http\Controllers\Website\NewsController as WebsiteNewsController;
 use App\Http\Controllers\Website\ProgramController as WebsiteProgramController;
 use App\Http\Controllers\Website\ReportController;
-use App\Http\Controllers\Website\RequestsController;
 use App\Http\Controllers\Website\SettingController as WebsiteSettingController;
 use App\Http\Controllers\Website\VisualLibraryController as WebsiteVisualLibraryController;
-
-use App\Models\News;
+use App\Http\Controllers\Website\VolunteerRequestController as WebsiteVolunteerRequestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -136,22 +137,17 @@ Route::group([
         Route::get('programs', [WebsiteProgramController::class, 'index']);
         Route::get('program/{slug}', [WebsiteProgramController::class, 'show']);
 
-        Route::get('company-request', [RequestsController::class, 'createCompanyRequest']);
-        Route::post('company-request', [RequestsController::class, 'storeCompanyRequest']);
-        Route::get('job-request', [RequestsController::class, 'createJobRequest']);
-        Route::post('job-request', [RequestsController::class, 'storeJobRequest']);
-        Route::get('volunteer-request', [RequestsController::class, 'createVolunteerRequest']);
-        Route::post('volunteer-request', [RequestsController::class, 'storeVolunteerRequest']);
-        Route::get('contact-us', [RequestsController::class, 'createContactUs']);
-        Route::post('contact-us', [RequestsController::class, 'storeContactUs']);
-        Route::get('donate', [RequestsController::class, 'createDonate'])->name('donate');
-        Route::post('donate', [RequestsController::class, 'storeDonate']);
-
-
-
-        // Route::get('checkout', [RequestsController::class, 'checkout'])->name('checkout');
-        // Route::post('session', [RequestsController::class, 'session'])->name('session');
-        Route::get('success', [RequestsController::class, 'success'])->name('success');
+        Route::get('company-request', [WebsiteCompanyRequestController::class, 'createCompanyRequest']);
+        Route::post('company-request', [WebsiteCompanyRequestController::class, 'storeCompanyRequest']);
+        Route::get('job-request', [WebsiteJobRequestController::class, 'createJobRequest']);
+        Route::post('job-request', [WebsiteJobRequestController::class, 'storeJobRequest']);
+        Route::get('volunteer-request', [WebsiteVolunteerRequestController::class, 'createVolunteerRequest']);
+        Route::post('volunteer-request', [WebsiteVolunteerRequestController::class, 'storeVolunteerRequest']);
+        Route::get('contact-us', [WebsiteContactUsController::class, 'createContactUs']);
+        Route::post('contact-us', [WebsiteContactUsController::class, 'storeContactUs']);
+        Route::get('donate', [WebsiteDonationController::class, 'createDonate'])->name('donate');
+        Route::post('donate', [WebsiteDonationController::class, 'storeDonate']);
+        Route::get('success', [WebsiteDonationController::class, 'success'])->name('success');
 
     });
 });
