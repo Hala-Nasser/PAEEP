@@ -11,6 +11,8 @@ return[
     'news_details' => 'تفاصيل الخبر',
     'program_details' => 'تفاصيل البرنامج',
     'share' => 'شارك',
-    'keywords' => 'الكلمات المفتاحية'
+    'keywords' => 'الكلمات المفتاحية',
+    'other_programs' => 'برامج أخرى:'
+
 
 ];

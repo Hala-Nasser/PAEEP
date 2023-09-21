@@ -57,7 +57,7 @@
                                     <a href="{{ url('/website/news/' . $single_news->slug) }}">
                                         <h5 class="card-title">{{ $single_news->getTitleAttribute() }}</h5>
                                     </a>
-                                    <p class="card-text">{!! $single_news->getDescriptionAttribute() !!}
+                                    <p class="card-text">{{ $single_news->getShortDescriptionAttribute() }}
                                     </p>
                                 </div>
                             </div>
@@ -83,7 +83,7 @@
                         <div class="cardpro">
                             <img src="{{ Storage::url($program->image) }}" alt="" data-tilt data-tilt-scale="1.1">
                             <h4><a
-                                    href="{{ url('/website/program/$program->slug') }}">{{ $program->getTitleAttribute() }}</a>
+                                    href="{{ url('/website/program/' . $program->slug) }}">{{ $program->getTitleAttribute() }}</a>
                             </h4>
                         </div>
                     </a>

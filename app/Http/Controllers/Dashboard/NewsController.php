@@ -68,6 +68,7 @@ class NewsController extends Controller
     {
         $is_saved = News::create($request->getData());
         return $is_saved ? parent::successResponse() : parent::errorResponse();
+        
     }
 
     /**

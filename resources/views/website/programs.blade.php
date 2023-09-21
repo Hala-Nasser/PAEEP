@@ -28,7 +28,7 @@
                                         </h4>
                                         <p
                                             style=" display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;">
-                                            {!! $program->getDescriptionAttribute() !!}</p>
+                                            {{ $program->getShortDescriptionAttribute() }}</p>
                                     </div>
                                 @empty
                                 @endforelse

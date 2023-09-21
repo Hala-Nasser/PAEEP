@@ -41,14 +41,14 @@ function contentchange() {
     step_num_content[formnumber].classList.add('active');
 }
 
-function validateForm($page_number) {
+function validateForm($page_number,$local) {
     let myform = document.getElementById("volunteer-request-form");
     let formData = new FormData(myform);
-
-    // formData.append('volunteered_before', document.getElementById('volunteered_before').selected);
     formData.append('page_number', $page_number);
 
-    axios.post('/website/volunteer-request', formData)
+    var route = '/'+$local+'/website/volunteer-request';
+
+    axios.post(route, formData)
         .then(function (response) {
             if (formnumber < 1) {
                 formnumber++;

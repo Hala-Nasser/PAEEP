@@ -24,19 +24,19 @@ body a{
 @media (min-width:1600px) {
     .containerr{
         margin: 0 10%;
-    } 
+    }
 }
 @media (min-width:2000px) {
     .containerr{
         margin: 0 10%;
-    } 
+    }
 }
 @media (max-width:990px){
     .containerr{
         padding: 0;
         margin: 0 15px;
 
-    }   
+    }
 }
 
 
@@ -178,16 +178,16 @@ body a{
     background-color: #f8f9fa ;
 }
 
-/* 
+/*
 @keyframes rotateMenu {
 0% {
     transform: rotateX(-50deg)
 }
 70% {
-    transform: rotateX(20deg) 
+    transform: rotateX(20deg)
 }
 100% {
-    transform: rotateX(0deg) 
+    transform: rotateX(0deg)
 }
 } */
 
@@ -378,7 +378,7 @@ body a{
         margin-top: 10px;
         width: max-content;
         display: block;
-        
+
     }
     .searchnon{
         cursor: pointer;
@@ -477,7 +477,7 @@ body a{
 .textimg3{
     bottom: 8%;
     right: 10%;
-    
+
 }
 
 .serch{
@@ -572,7 +572,7 @@ body a{
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    
+
 }
 
 .mySwiper2{
@@ -659,7 +659,7 @@ body a{
         padding: 20px 0;
     }
     .back_heder{
-        margin-top: 50%; 
+        margin-top: 50%;
     }
     .slide_heder{
         position: absolute !important;
@@ -784,7 +784,7 @@ body a{
     border-radius: 10px;
     transition: all .4s ease;
     margin: auto;
-    
+
 
 }
 .cardNews .btn_more:hover{
@@ -876,7 +876,7 @@ body a{
         width: 350px;
 
     }
-     
+
  }
  @media (max-width:757px){
 
@@ -884,7 +884,7 @@ body a{
         width: 270px;
 
     }
-     
+
  }
  @media (max-width:596px){
 
@@ -892,13 +892,13 @@ body a{
         width: 100%;
 
     }
-     
+
  }
 .cardpro P{
     color: #707070;
 }
 .cardpro h4{
- 
+
 }
 .cardpro img{
     width: 140px;
@@ -1087,7 +1087,7 @@ body a{
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    
+
 }
 .footerall p{
     text-align: center;
@@ -1193,8 +1193,8 @@ body a{
   .scrollup:hover{
     transform: translateY(-.25rem);
     color: #002449;
-  }  
-  
+  }
+
   /* Show Scroll Up*/
   .show-scroll{
     bottom: 5.5rem;
@@ -1234,4 +1234,19 @@ span.step-number{
 
 .imglnews img{
     object-fit: cover;
+}
+
+
+/* //////////////////////////////////// */
+
+.container .card .left-side{
+    height: auto !important;
+}
+
+.container .card .right-side{
+    height: auto !important;
+}
+
+.container .card{
+    height: auto !important;
 }

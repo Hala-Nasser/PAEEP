@@ -41,13 +41,15 @@ function contentchange() {
     step_num_content[formnumber].classList.add('active');
 }
 
-function validateForm($page_number) {
+function validateForm($page_number,$local) {
     let myform = document.getElementById("job-request-form");
     let formData = new FormData(myform);
 
     formData.append('page_number', $page_number);
 
-    axios.post('/website/job-request', formData)
+    var route = '/'+$local+'/website/job-request';
+
+    axios.post(route, formData)
         .then(function (response) {
             if (formnumber < 1) {
                 formnumber++;

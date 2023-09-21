@@ -278,8 +278,6 @@
 
         function performStore() {
 
-            console.log(document.getElementById('keywords_en').value);
-
             let formData = new FormData();
             formData.append('title_en', document.getElementById('title_en').value);
             formData.append('title_ar', document.getElementById('title_ar').value);
@@ -292,8 +290,8 @@
             formData.append('keywords_en', document.getElementById('keywords_en').value);
             formData.append('keywords_ar', document.getElementById('keywords_ar').value);
             formData.append('type', document.getElementById('type').value);
-
-
+            formData.append('short_description_en', tinymce.get("description_en").getContent({ format: "text" }).substring(0, 126));
+            formData.append('short_description_ar', tinymce.get("description_ar").getContent({ format: "text" }).substring(0, 126));
 
             if (document.getElementById('image').files.length > 0) {
                 formData.append('image', document.getElementById('image').files[0]);

@@ -28,7 +28,7 @@
                             <a href="{{ url('website/news/' . $single_news->slug) }}">
                                 <h5 class="card-title">{{ $single_news->getTitleAttribute() }}</h5>
                             </a>
-                            <p class="card-text">{!! $single_news->getDescriptionAttribute() !!}</p>
+                            <p class="card-text">{{ $single_news->getShortDescriptionAttribute() }}</p>
                         </div>
                     </div>
                 @empty

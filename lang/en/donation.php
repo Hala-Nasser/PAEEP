@@ -8,5 +8,6 @@ return[
     'agree' => 'The donor is agree to show his name in donor list',
     'disagree' => 'The donor is not agree to show his name in donor list',
     'donation_details' => 'Donation Details',
-    'donor_message' => 'Donor Message'
+    'donor_message' => 'Donor Message',
+    'select_program' => 'select program please'
 ];

@@ -172,6 +172,8 @@
             formData.append('title_ar', document.getElementById('title_ar').value);
             formData.append('description_en', tinymce.get("description_en").getContent());
             formData.append('description_ar', tinymce.get("description_ar").getContent());
+            formData.append('short_description_en', tinymce.get("description_en").getContent({ format: "text" }).substring(0, 126));
+            formData.append('short_description_ar', tinymce.get("description_ar").getContent({ format: "text" }).substring(0, 126));
             formData.append('_method', 'PUT');
 
             if (document.getElementById('image').files.length > 0) {

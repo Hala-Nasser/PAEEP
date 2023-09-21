@@ -24,6 +24,8 @@ class StoreProgramRequest extends FormRequest
             'description_en' => 'required|string|min:3',
             'description_ar' => 'required|string|min:3',
             'image' => 'required|image',
+            'short_description_en' => 'required|string',
+            'short_description_ar' => 'required|string',
         ];
     }
 

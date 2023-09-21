@@ -18,7 +18,7 @@
             </div>
             <div class="program_more">
 
-                <h2>البرامج :</h2>
+                <h2>{{trans('website-general.other_programs')}}</h2>
 
                 <div class="allcardpro">
 

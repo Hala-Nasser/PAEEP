@@ -27,7 +27,7 @@
                     <div class="right_newsdeta">
                         <h5
                             style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-                            {!! $news->getDescriptionAttribute() !!}
+                            {{ $news->getShortDescriptionAttribute() }}
                         </h5>
                         <div class="icons_ns">
                             <div class="icon_n">

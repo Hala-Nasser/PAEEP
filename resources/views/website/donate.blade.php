@@ -248,7 +248,7 @@
                 })
                 Toast.fire({
                     icon: 'error',
-                    title: "select program please"
+                    title: '{{trans('donation.select_program')}}'
                 })
             }
         }

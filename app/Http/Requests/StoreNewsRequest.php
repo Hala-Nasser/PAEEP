@@ -30,7 +30,10 @@ class StoreNewsRequest extends FormRequest
             'image' => 'required|image',
             'type' => 'required|string|in:"news","advertisment"',
             'keywords_en' => 'required|string',
-            'keywords_ar' => 'required|string'
+            'keywords_ar' => 'required|string',
+            'short_description_en' => 'required|string',
+            'short_description_ar' => 'required|string',
+
         ];
     }
 

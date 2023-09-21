@@ -25,7 +25,10 @@ class News extends Model
         'keywords_en',
         'keywords_ar',
         'image',
-        'type'
+        'type',
+        'short_description_en',
+        'short_description_ar',
+
     ];
 
     public function getTitleAttribute()
@@ -43,6 +46,15 @@ class News extends Model
             return $this->description_ar;
         } else {
             return $this->description_en;
+        }
+    }
+
+    public function getShortDescriptionAttribute()
+    {
+        if (LaravelLocalization::getCurrentLocale() == "ar") {
+            return $this->short_description_ar;
+        } else {
+            return $this->short_description_en;
         }
     }
 

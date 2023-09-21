@@ -50,13 +50,15 @@ var step_num_content=document.querySelectorAll(".step-number-content");
  }
 
 
- function validateForm($page_number) {
+ function validateForm($page_number,$local) {
     let myform = document.getElementById("company-request-form");
     let formData = new FormData(myform);
 
     formData.append('page_number', $page_number);
 
-    axios.post('/website/company-request', formData)
+    var route = '/'+$local+'/website/company-request';
+
+    axios.post(route, formData)
         .then(function (response) {
             if (formnumber < 5) {
                 formnumber++;

@@ -11,6 +11,7 @@ return[
     'news_details' => 'News Details',
     'program_details' => 'Program Details',
     'share' => 'Share',
-    'keywords' => 'Keywords'
+    'keywords' => 'Keywords',
+    'other_programs' => 'Other Programs:'
 
 ];

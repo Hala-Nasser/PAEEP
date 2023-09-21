@@ -19,6 +19,8 @@ class Program extends Model
         'description_en',
         'description_ar',
         'image',
+        'short_description_en',
+        'short_description_ar'
     ];
 
     public function getTitleAttribute()
@@ -36,6 +38,15 @@ class Program extends Model
             return $this->description_ar;
         } else {
             return $this->description_en;
+        }
+    }
+
+    public function getShortDescriptionAttribute()
+    {
+        if (LaravelLocalization::getCurrentLocale() == "ar") {
+            return $this->short_description_ar;
+        } else {
+            return $this->short_description_en;
         }
     }
 

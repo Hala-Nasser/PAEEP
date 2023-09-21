@@ -98,7 +98,7 @@
                             </div>
                             <div class="buttons" style="text-align: left;">
                                 <button type="button" class="next_button"
-                                    onclick="validateForm(0);">{{ trans('website-requests.next_one') }}</button>
+                                    onclick="validateForm(0, '{{app()->getLocale()}}');">{{ trans('website-requests.next_one') }}</button>
                             </div>
                         </div>
                         <div class="main">
@@ -142,7 +142,7 @@
                             <div class="buttons button_space">
                                 <button class="back_button">{{ trans('website-requests.back') }}</button>
                                 <button type="button" class="next_button"
-                                    onclick="validateForm(1);">{{ trans('website-requests.next_one') }}</button>
+                                    onclick="validateForm(1, '{{app()->getLocale()}}');">{{ trans('website-requests.next_one') }}</button>
                             </div>
                         </div>
                         <div class="main">
@@ -174,7 +174,7 @@
                             <div class="buttons button_space">
                                 <button class="back_button">{{ trans('website-requests.back') }}</button>
                                 <button type="button" class="next_button"
-                                    onclick="validateForm(2);">{{ trans('website-requests.next_one') }}</button>
+                                    onclick="validateForm(2, '{{app()->getLocale()}}');">{{ trans('website-requests.next_one') }}</button>
                             </div>
                         </div>
 
@@ -214,7 +214,7 @@
                             <div class="buttons button_space">
                                 <button class="back_button">{{ trans('website-requests.back') }}</button>
                                 <button type="button" class="next_button"
-                                    onclick="validateForm(3);">{{ trans('website-requests.next_one') }}</button>
+                                    onclick="validateForm(3, '{{app()->getLocale()}}');">{{ trans('website-requests.next_one') }}</button>
                             </div>
                         </div>
                         <!-- ---------------- -->
@@ -250,7 +250,7 @@
                             <div class="buttons button_space">
                                 <button class="back_button">{{ trans('website-requests.back') }}</button>
                                 <button type="button" class="next_button"
-                                    onclick="validateForm(4);">{{ trans('website-requests.next_one') }}</button>
+                                    onclick="validateForm(4, '{{app()->getLocale()}}');">{{ trans('website-requests.next_one') }}</button>
                             </div>
                         </div>
                         <!-- ---------------- -->
@@ -278,7 +278,7 @@
                             <div class="buttons button_space">
                                 <button class="back_button">{{ trans('website-requests.back') }}</button>
                                 <button type="button" class="next_button"
-                                    onclick="validateForm(5);">{{ trans('website-requests.next_one') }}</button>
+                                    onclick="validateForm(5, '{{app()->getLocale()}}');">{{ trans('website-requests.next_one') }}</button>
                             </div>
                         </div>
                         <!-- ---------------- -->
