@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\CompanyRequest;
+use App\Notifications\NewCompanyRequestNotification;
 use Illuminate\Http\Request;
 
 class CompanyRequestController extends Controller
@@ -21,6 +23,10 @@ class CompanyRequestController extends Controller
             $request_data['registeration_certification'] = parent::storeFile($request, 'registeration_certification', 'CompanyRequest');
             $request_data['organization_structure'] = parent::storeFile($request, 'organization_structure', 'CompanyRequest');
             $is_saved = CompanyRequest::create($request_data);
+            if($is_saved){
+                $admin = Admin::where('email', 'hala.n.nofal@gmail.com')->first();
+                $admin->notify(new NewCompanyRequestNotification($request_data['name'], $is_saved->id));
+            }
             return $is_saved ? parent::successResponse() : parent::errorResponse();
         }
     }

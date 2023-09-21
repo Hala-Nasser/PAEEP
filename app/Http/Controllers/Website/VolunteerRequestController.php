@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\VolunteerRequest;
+use App\Notifications\NewVolunteerRequestNotification;
 use Illuminate\Http\Request;
 
 class VolunteerRequestController extends Controller
@@ -20,6 +22,10 @@ class VolunteerRequestController extends Controller
         if ($request['page_number'] == 1) {
             $request_data['cv'] = parent::storeFile($request, 'cv', 'VolunteerRequest');
             $is_saved = VolunteerRequest::create($request_data);
+            if($is_saved){
+                $admin = Admin::where('email', 'hala.n.nofal@gmail.com')->first();
+                $admin->notify(new NewVolunteerRequestNotification($request_data['full_name'], $is_saved->id));
+            }
             return $is_saved ? parent::successResponse() : parent::errorResponse();
         }
     }

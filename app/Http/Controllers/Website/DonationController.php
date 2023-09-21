@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDonationRequest;
+use App\Models\Admin;
 use App\Models\Donation;
 use App\Models\Program;
+use App\Notifications\NewDonationNotification;
 use Illuminate\Http\Request;
 
 class DonationController extends Controller
@@ -46,6 +48,10 @@ class DonationController extends Controller
 
         return redirect()->away($session->url);
         $is_saved = Donation::create($request->getData());
+        if($is_saved){
+            $admin = Admin::where('email', 'hala.n.nofal@gmail.com')->first();
+            $admin->notify(new NewDonationNotification($request['name'], $is_saved->id));
+        }
         return $is_saved ? parent::successResponse() : parent::errorResponse();
     }
 
