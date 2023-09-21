@@ -24,8 +24,10 @@
                     <h2>{{ trans('website-requests.donor_details') }}</h2>
                     <div class="blowline"></div>
                     <div class="input_donate">
-                        <input type="text" id="name" name="name" placeholder="{{ trans('website-requests.donor_name') }}">
-                        <input type="email" id="email" name="email" placeholder="{{ trans('website-requests.email') }}">
+                        <input type="text" id="name" name="name"
+                            placeholder="{{ trans('website-requests.donor_name') }}">
+                        <input type="email" id="email" name="email"
+                            placeholder="{{ trans('website-requests.email') }}">
                     </div>
                     <div class="input_donate">
                         <div class="selectPhone">
@@ -40,10 +42,11 @@
                         </select>
                     </div>
                     <div class="input_donate">
-                        <textarea name="message" id="message" cols="30" rows="10" placeholder="{{ trans('website-requests.message') }}"></textarea>
+                        <textarea name="message" id="message" cols="30" rows="10"
+                            placeholder="{{ trans('website-requests.message') }}"></textarea>
                     </div>
                     <div class="inputCheck">
-                        <input class="form-check-input" type="checkbox" value="" id="is_agree" >
+                        <input class="form-check-input" type="checkbox" value="" id="is_agree">
                         <label class="form-check-label" for="defaultCheck1">
                             {{ trans('website-requests.donor_introducing') }}
                             <br>
@@ -53,7 +56,8 @@
                 </div>
                 <div class="leftdonateForm">
                     <div class="mt-4">
-                        <label style="font-weight: bold; font-size: 16px;" for="">{{ trans('website-requests.choose_amount') }}</label>
+                        <label style="font-weight: bold; font-size: 16px;"
+                            for="">{{ trans('website-requests.choose_amount') }}</label>
                         <div class="cardsDonate">
                             <div class="cardDonate active">
                                 <i class='bx bx-check'></i>
@@ -195,65 +199,47 @@
         function performStore() {
             let myform = document.getElementById("donate_form");
             let formData = new FormData(myform);
+
             formData.append('is_agree', document.getElementById('is_agree').checked);
             console.log(formData);
 
-            if (document.getElementById('program_id').value != -1) {
+            axios.post('/{{ LaravelLocalization::getCurrentLocale() }}/website/donate', formData)
+                .then(function(response) {
 
-                axios.post('/{{ LaravelLocalization::getCurrentLocale() }}/website/donate', formData)
-                    .then(function(response) {
-
-                        console.log(response);
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 1500,
-                            timerProgressBar: true,
-                            didOpen: (toast) => {
-                                toast.addEventListener('mouseenter', Swal.stopTimer)
-                                toast.addEventListener('mouseleave', Swal.resumeTimer)
-                            }
-                        })
-                        Toast.fire({
-                            icon: 'success',
-                            title: response.data.message
-                        })
-                    }).catch(function(error) {
-                        console.log(error);
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 1500,
-                            timerProgressBar: true,
-                            didOpen: (toast) => {
-                                toast.addEventListener('mouseenter', Swal.stopTimer)
-                                toast.addEventListener('mouseleave', Swal.resumeTimer)
-                            }
-                        })
-                        Toast.fire({
-                            icon: 'error',
-                            title: error.response.data.message
-                        })
-                    });
-            } else {
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 1500,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
-                Toast.fire({
-                    icon: 'error',
-                    title: '{{trans('donation.select_program')}}'
-                })
-            }
+                    console.log(response);
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'success',
+                        title: response.data.message
+                    })
+                }).catch(function(error) {
+                    console.log(error);
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'error',
+                        title: error.response.data.message
+                    })
+                });
         }
     </script>
 @stop
