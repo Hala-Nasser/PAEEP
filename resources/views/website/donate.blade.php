@@ -195,6 +195,9 @@
         function performStore() {
             let myform = document.getElementById("donate_form");
             let formData = new FormData(myform);
+            formData.append('is_agree', document.getElementById('defaultCheck1').checked);
+            console.log(formData);
+
             if (document.getElementById('program_id').value != -1) {
 
                 axios.post('/{{ LaravelLocalization::getCurrentLocale() }}/website/donate', formData)

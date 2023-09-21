@@ -125,7 +125,7 @@ class RequestsController extends Controller
             'cancel_url'  => route('donate'),
         ]);
 
-        return redirect()->away($session->url);
+        // return redirect()->away($session->url);
         $is_saved = Donation::create($request->getData());
         return $is_saved ? parent::successResponse() : parent::errorResponse();
     }
