@@ -30,6 +30,21 @@
 
 <body id="kt_body" class="bg-body">
     <!--begin::Main-->
+    <ul class="navbar-nav ml-auto" style="margin:20px; display:inline-block">
+        <li class="nav-item dropdown">
+            @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                <a rel="alternate" hreflang="{{ $localeCode }}"
+                    href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
+                    @if ($localeCode == LaravelLocalization::getCurrentLocale())
+                style="color: #181c32;"
+                @else
+                style="color: #858ba9c4;" @endif>
+                    {{ strtoupper($localeCode) }}
+                </a>
+            @endforeach
+
+        </li>
+    </ul>
     <!--begin::Root-->
     <div class="d-flex flex-column flex-root">
         <!--begin::Authentication - Sign-in -->
