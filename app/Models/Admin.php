@@ -20,6 +20,9 @@ class Admin extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'phone',
+        'code',
+        'expire_at'
     ];
 
     /**
@@ -57,5 +60,20 @@ class Admin extends Authenticatable implements MustVerifyEmail
     {
         return $this->morphMany(\Illuminate\Notifications\DatabaseNotification::class, "notifiable")
             ->orderByRaw("created_at", "asc");
+    }
+
+
+    public function generateCode(){
+        $this->timestamps = false;
+        $this->code = rand(1000, 9999);
+        $this->expire_at = now()->addMinute(30);
+        $this->save();
+    }
+
+    public function resetCode(){
+        $this->timestamps = false;
+        $this->code = null;
+        $this->expire_at = null;
+        $this->save();
     }
 }

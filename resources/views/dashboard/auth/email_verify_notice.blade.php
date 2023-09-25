@@ -28,10 +28,10 @@
                         style="text-align:left; margin: 0 20px; padding: 40px; background-color:#ffffff; border-radius: 6px">
                         <!--begin:Email content-->
                         <div style="padding-bottom: 30px; font-size: 17px;">
-                            <strong>Welcome to E-book!</strong>
+                            <strong>Welcome to PAEEP!</strong>
                         </div>
                         <div style="padding-bottom: 30px">To activate your account, please click on the button below to
-                            verify your email address. Once activated, you’ll .</div>
+                            verify your email address. Once activated, you’ll be able to login.</div>
                         <form>
                             <div style="padding-bottom: 40px; text-align:center;">
                                 <button type="button" onclick="sendVerificationEmail();" class="btn btn-primary btn-block">Send
@@ -65,7 +65,7 @@
 <script>
     function sendVerificationEmail() {
 
-        axios.post('{{LaravelLocalization::getCurrentLocale()}}/dashboard/verification-notification')
+        axios.post('/{{LaravelLocalization::getCurrentLocale()}}/dashboard/verification-notification')
             .then(function(response) {
 
                 console.log(response);

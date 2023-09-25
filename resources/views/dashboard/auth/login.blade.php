@@ -81,7 +81,7 @@
                 title: response.data.message
             })
             document.getElementById('login_form').reset();
-            window.location.href = "/dashboard/home";
+            window.location.href = "/dashboard/two_factory_options";
 
         }).catch(function(error) {
             console.log(error);

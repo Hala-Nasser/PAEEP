@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\Auth\ChangePasswordController;
 use App\Http\Controllers\Dashboard\Auth\EmailVerificationController;
 use App\Http\Controllers\Dashboard\Auth\ForgetPasswordController;
 use App\Http\Controllers\Dashboard\Auth\LogoutController;
+use App\Http\Controllers\Dashboard\Auth\TwoFactoryController;
 use App\Http\Controllers\Dashboard\CompanyRequestController;
 use App\Http\Controllers\Dashboard\ContactUsController;
 use App\Http\Controllers\Dashboard\DonationController;
@@ -76,7 +77,20 @@ Route::group([
         Route::get('verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify');
     });
 
-    Route::middleware(['auth:admin', 'verified'])->prefix('dashboard/')->group(function () {
+
+    Route::
+    middleware(['auth:admin', 'verified'])->
+    prefix('dashboard/')->group(function () {
+        // Route::resource('two_factory', TwoFactoryController::class);
+        Route::get('two_factory_options', [TwoFactoryController::class, 'ShowTwoFactoryOptions']);
+        Route::get('two_factory/{option}', [TwoFactoryController::class, 'sendCode']);
+        Route::post('two_factory/verify', [TwoFactoryController::class, 'checkCode']);
+
+
+    });
+
+    Route::middleware(['auth:admin', 'verified', 'twoFactory'])->prefix('dashboard/')->group(function () {
+
         Route::get('home', [HomeController::class, 'index'])->name('home');
         Route::resource('admin', AdminController::class);
         Route::resource('achievement', AchievementController::class);

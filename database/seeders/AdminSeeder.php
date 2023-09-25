@@ -26,6 +26,7 @@ class AdminSeeder extends Seeder
         $admin->email = "hala.n.nofal@gmail.com";
         $admin->password = "Hala123!@#";
         $admin->active = true;
+        $admin->phone = "0595848690";
         $result = $admin->save();
         // if ($result) {
         //     $admin->syncRoles(Role::findById(1, 'admin'));

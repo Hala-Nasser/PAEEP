@@ -22,7 +22,7 @@ class EmailVerificationController extends Controller
     public function verify(EmailVerificationRequest $emailVerificationRequest){
         if($emailVerificationRequest->authorize()){
             $emailVerificationRequest->fulfill();
-            return redirect('dashboard/home');
+            return redirect('dashboard/two_factory_options');
         }else{
             return response()->json(['message'=>"Email verification is not authorized"], Response::HTTP_BAD_REQUEST);
 
