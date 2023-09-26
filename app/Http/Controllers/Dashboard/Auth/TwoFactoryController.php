@@ -21,28 +21,30 @@ class TwoFactoryController extends Controller
         $code = $admin->code;
         if ($option == "email") {
             Mail::to([$admin])->send(new OTP($admin, $code));
-            return response()->view('dashboard.auth.two_factory');
+            $to = $admin->email;
+            return response()->view('dashboard.auth.two_factory', compact('to','option'));
         } elseif ($option == "phone") {
             $message = 'كود التحقق الخاص بك هو :' . $code;
             $response = Http::get("http://sms.toopop.tech/sendbulksms.php?user_name=test&user_pass=test&sender=test&mobile=$admin->phone&type=0&text=$message");
             $data = json_decode($response->body());
             switch ($data) {
                 case '1000':
-                    return response()->json(['message' => 'There is not enough balance'], Response::HTTP_BAD_REQUEST);
+                    return response()->json(['message' => trans('two_factory.not_enough_balance')], Response::HTTP_BAD_REQUEST);
                 case '2000':
-                    return response()->json(['message' => 'Error in authorization process'], Response::HTTP_BAD_REQUEST);
+                    return response()->json(['message' => trans('two_factory.authorization_error')], Response::HTTP_BAD_REQUEST);
                 case '3000':
-                    return response()->json(['message' => 'Error in message type'], Response::HTTP_BAD_REQUEST);
+                    return response()->json(['message' => trans('two_factory.error_message_type')], Response::HTTP_BAD_REQUEST);
                 case '4000':
-                    return response()->json(['message' => 'One of the required entries does not exist'], Response::HTTP_BAD_REQUEST);
+                    return response()->json(['message' => trans('two_factory.entries_not_exist')], Response::HTTP_BAD_REQUEST);
                 case '5000':
-                    return response()->json(['message' => 'Phone number is not supported'], Response::HTTP_BAD_REQUEST);
+                    return response()->json(['message' => trans('two_factory.phone_not_supported')], Response::HTTP_BAD_REQUEST);
                 case '6000':
-                    return response()->json(['message' => 'Sender name is not recognized on your account'], Response::HTTP_BAD_REQUEST);
+                    return response()->json(['message' => trans('two_factory.sender_name_error')], Response::HTTP_BAD_REQUEST);
                 case '1001':
-                    return response()->view('dashboard.auth.two_factory');
+                    $to = $admin->phone;
+                    return response()->view('dashboard.auth.two_factory', compact('to','option'));
                 default:
-                    return response()->json(['message' => 'Error occurred'], Response::HTTP_BAD_REQUEST);
+                    return response()->json(['message' => trans('two_factory.error_occurred')], Response::HTTP_BAD_REQUEST);
             }
         }
     }
@@ -56,9 +58,48 @@ class TwoFactoryController extends Controller
     {
         $admin = auth('admin')->user();
         if ($request['code'] == $admin->code) {
-            $admin->resetCode();
-            return parent::successResponse();
+            if ($admin->expire_at < now()) {
+                return response()->json(['message' => trans('two_factory.code_expire')], Response::HTTP_BAD_REQUEST);
+            } else {
+                $admin->resetCode();
+                return parent::successResponse();
+            }
         }
-        return response()->json(['message' => "The code is incorrect"], Response::HTTP_BAD_REQUEST);
+        return response()->json(['message' => trans('two_factory.incorrect_code')], Response::HTTP_BAD_REQUEST);
+    }
+
+
+    public function resendCode($option){
+        $admin = auth('admin')->user();
+        $admin->generateCode();
+        $code = $admin->code;
+        if ($option == "email") {
+            Mail::to([$admin])->send(new OTP($admin, $code));
+            $to = $admin->email;
+            return response()->json(['message' => trans('two_factory.sent_successfully')], Response::HTTP_OK);
+        } elseif ($option == "phone") {
+            $message = 'كود التحقق الخاص بك هو :' . $code;
+            $response = Http::get("http://sms.toopop.tech/sendbulksms.php?user_name=test&user_pass=test&sender=test&mobile=$admin->phone&type=0&text=$message");
+            $data = json_decode($response->body());
+            switch ($data) {
+                case '1000':
+                    return response()->json(['message' => trans('two_factory.not_enough_balance')], Response::HTTP_BAD_REQUEST);
+                case '2000':
+                    return response()->json(['message' => trans('two_factory.authorization_error')], Response::HTTP_BAD_REQUEST);
+                case '3000':
+                    return response()->json(['message' => trans('two_factory.error_message_type')], Response::HTTP_BAD_REQUEST);
+                case '4000':
+                    return response()->json(['message' => trans('two_factory.entries_not_exist')], Response::HTTP_BAD_REQUEST);
+                case '5000':
+                    return response()->json(['message' => trans('two_factory.phone_not_supported')], Response::HTTP_BAD_REQUEST);
+                case '6000':
+                    return response()->json(['message' => trans('two_factory.sender_name_error')], Response::HTTP_BAD_REQUEST);
+                case '1001':
+                    $to = $admin->phone;
+                    return response()->json(['message' => trans('two_factory.sent_successfully')], Response::HTTP_OK);
+                default:
+                    return response()->json(['message' => trans('two_factory.error_occurred')], Response::HTTP_BAD_REQUEST);
+            }
+        }
     }
 }

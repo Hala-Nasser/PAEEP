@@ -43,7 +43,7 @@ class SettingSeeder extends Seeder
 
         Setting::create([
             'key' => 'name_en',
-            'value' => 'hala nasser',
+            'value' => 'PAEEP',
             'label_en' => 'Name en',
             'label_ar' => 'الاسم بالانجليزية',
             'type' => 'text',
@@ -52,7 +52,7 @@ class SettingSeeder extends Seeder
 
         Setting::create([
             'key' => 'name_ar',
-            'value' => 'هالة نوفل',
+            'value' => 'بيئتي',
             'label_en' => 'Name ar',
             'label_ar' => 'الاسم بالعربية',
             'type' => 'text',
@@ -88,7 +88,7 @@ class SettingSeeder extends Seeder
 
         Setting::create([
             'key' => 'description_en',
-            'value' => 'the intituation aim to protect environment from harm',
+            'value' => 'the instituation aim to protect environment from harm',
             'label_en' => 'Description en',
             'label_ar' => 'نبذة عن المؤسسة بالانجليزية',
             'type' => 'long-text',

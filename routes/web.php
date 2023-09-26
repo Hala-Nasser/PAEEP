@@ -85,6 +85,7 @@ Route::group([
         Route::get('two_factory_options', [TwoFactoryController::class, 'ShowTwoFactoryOptions']);
         Route::get('two_factory/{option}', [TwoFactoryController::class, 'sendCode']);
         Route::post('two_factory/verify', [TwoFactoryController::class, 'checkCode']);
+        Route::post('two_factory/resend/{option}', [TwoFactoryController::class, 'resendCode']);
 
 
     });
